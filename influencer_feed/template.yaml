@@ -1,0 +1,432 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Influencer feed — FindContent + ComposeIssue (POC)
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 120
+    MemorySize: 256
+    Architectures:
+      - x86_64
+
+Parameters:
+  UserIdDefault:
+    Type: String
+    Default: default
+    Description: Default user_id used when seeding / testing
+  OpenAiCheapModel:
+    Type: String
+    Default: gpt-4o-mini
+    Description: OpenAI model for per-source summaries
+  OpenAiSmartModel:
+    Type: String
+    Default: gpt-4o
+    Description: OpenAI model for merged daily digest
+
+Resources:
+  OpenAiApiKeySecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/openai-api-key"
+      Description: JSON object {"api_key":"sk-..."} for OpenAI Chat Completions
+      SecretString: '{"api_key":""}'
+
+  DiscordWebhookSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-webhook"
+      Description: JSON object {"webhook_url":"https://discord.com/api/webhooks/..."} for Discord publish
+      SecretString: '{"webhook_url":""}'
+
+  DiscordBotSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-bot"
+      Description: JSON object {"bot_token":"...","channel_id":"..."} for Discord bot publish (preferred over webhook)
+      SecretString: '{"bot_token":"","channel_id":""}'
+
+  WebshareProxySecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/webshare-proxy"
+      Description: JSON object {"proxy_url":"http://user:pass@host:port"} or {"proxy_urls":[...]}
+      SecretString: '{"proxy_url":""}'
+
+  TranscriptArtifactsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  InfluencerFeedTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "${AWS::StackName}-influencer-feed"
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+
+  ListSourcesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-list-sources"
+      CodeUri: lambdas/list_sources/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref InfluencerFeedTable
+
+  IngestSourceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-ingest-source"
+      CodeUri: lambdas/ingest_source/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+          WEBSHARE_SECRET_ARN: !Ref WebshareProxySecret
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref InfluencerFeedTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: !Ref WebshareProxySecret
+
+  FetchSourceTranscriptsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-fetch-source-transcripts"
+      CodeUri: lambdas/fetch_source_transcripts/
+      Handler: handler.handler
+      Timeout: 300
+      MemorySize: 512
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+          TRANSCRIPT_BUCKET: !Ref TranscriptArtifactsBucket
+          WEBSHARE_SECRET_ARN: !Ref WebshareProxySecret
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref InfluencerFeedTable
+        - S3WritePolicy:
+            BucketName: !Ref TranscriptArtifactsBucket
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: !Ref WebshareProxySecret
+
+  LoadFetchRowsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-load-fetch-rows"
+      CodeUri: lambdas/load_fetch_rows/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref InfluencerFeedTable
+
+  SummarizeSourceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-summarize-source"
+      CodeUri: lambdas/summarize_source/
+      Handler: handler.handler
+      Timeout: 300
+      MemorySize: 512
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+          OPENAI_SECRET_ARN: !Ref OpenAiApiKeySecret
+          OPENAI_CHEAP_MODEL: !Ref OpenAiCheapModel
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref InfluencerFeedTable
+        - S3ReadPolicy:
+            BucketName: !Ref TranscriptArtifactsBucket
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: !Ref OpenAiApiKeySecret
+
+  BuildIssueSummaryFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-build-issue-summary"
+      CodeUri: lambdas/build_issue_summary/
+      Handler: handler.handler
+      Timeout: 300
+      MemorySize: 512
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+          OPENAI_SECRET_ARN: !Ref OpenAiApiKeySecret
+          OPENAI_SMART_MODEL: !Ref OpenAiSmartModel
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref InfluencerFeedTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: !Ref OpenAiApiKeySecret
+
+  PersistIssueFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-persist-issue"
+      CodeUri: lambdas/persist_issue/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref InfluencerFeedTable
+
+  PublishDiscordFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-publish-discord"
+      CodeUri: lambdas/publish_discord/
+      Handler: handler.handler
+      Timeout: 120
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+          DISCORD_SECRET_ARN: !Ref DiscordWebhookSecret
+          DISCORD_BOT_SECRET_ARN: !Ref DiscordBotSecret
+          SKIP_DISCORD_PUBLISH: "false"
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref InfluencerFeedTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource:
+                - !Ref DiscordWebhookSecret
+                - !Ref DiscordBotSecret
+
+  ComposeIssueStateMachine:
+    Type: AWS::Serverless::StateMachine
+    Properties:
+      Name: !Sub "${AWS::StackName}-compose-issue"
+      Type: STANDARD
+      DefinitionUri: statemachine/compose_issue.asl.json
+      DefinitionSubstitutions:
+        LoadFetchRowsArn: !GetAtt LoadFetchRowsFunction.Arn
+        SummarizeSourceArn: !GetAtt SummarizeSourceFunction.Arn
+        BuildIssueSummaryArn: !GetAtt BuildIssueSummaryFunction.Arn
+        PersistIssueArn: !GetAtt PersistIssueFunction.Arn
+        PublishDiscordArn: !GetAtt PublishDiscordFunction.Arn
+      Policies:
+        - LambdaInvokePolicy:
+            FunctionName: !Ref LoadFetchRowsFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref SummarizeSourceFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref BuildIssueSummaryFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref PersistIssueFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref PublishDiscordFunction
+
+  FinalizeFindContentFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-finalize-find-content"
+      CodeUri: lambdas/finalize_find_content/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+          COMPOSE_ISSUE_STATE_MACHINE_ARN: !Ref ComposeIssueStateMachine
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref InfluencerFeedTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - states:StartExecution
+              Resource: !Ref ComposeIssueStateMachine
+
+  FindContentStateMachine:
+    Type: AWS::Serverless::StateMachine
+    Properties:
+      Name: !Sub "${AWS::StackName}-find-content"
+      Type: STANDARD
+      DefinitionUri: statemachine/find_content.asl.json
+      DefinitionSubstitutions:
+        ListSourcesArn: !GetAtt ListSourcesFunction.Arn
+        IngestSourceArn: !GetAtt IngestSourceFunction.Arn
+        FetchSourceTranscriptsArn: !GetAtt FetchSourceTranscriptsFunction.Arn
+        FinalizeFindContentArn: !GetAtt FinalizeFindContentFunction.Arn
+      Policies:
+        - LambdaInvokePolicy:
+            FunctionName: !Ref ListSourcesFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref IngestSourceFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref FetchSourceTranscriptsFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref FinalizeFindContentFunction
+
+  StartFindContentScheduleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-start-find-content-schedule"
+      CodeUri: lambdas/start_find_content_schedule/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          FIND_CONTENT_STATE_MACHINE_ARN: !Ref FindContentStateMachine
+          DEFAULT_USER_ID: !Ref UserIdDefault
+          DEFAULT_START_COMPOSE: "false"
+          SCHEDULE_LOCAL_TZ: America/Los_Angeles
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - states:StartExecution
+              Resource: !Ref FindContentStateMachine
+      Events:
+        HourlyStartFindContent:
+          Type: Schedule
+          Properties:
+            # every hour at minute 5 to avoid top-of-hour thundering herd
+            Schedule: cron(5 * * * ? *)
+            Enabled: true
+        HourlyStartFindContentCrypto:
+          Type: Schedule
+          Properties:
+            # 30 minutes after default scraper (minute 5 → 35)
+            Schedule: cron(35 * * * ? *)
+            Enabled: true
+            Input: '{"user_id":"crypto"}'
+
+  StartComposeWindowScheduleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-start-compose-window-schedule"
+      CodeUri: lambdas/start_compose_window_schedule/
+      Handler: handler.handler
+      Timeout: 900
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InfluencerFeedTable
+          COMPOSE_ISSUE_STATE_MACHINE_ARN: !Ref ComposeIssueStateMachine
+          DEFAULT_USER_ID: !Ref UserIdDefault
+          SCHEDULE_LOCAL_TZ: America/Los_Angeles
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref InfluencerFeedTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - states:StartExecution
+              Resource: !Ref ComposeIssueStateMachine
+            - Effect: Allow
+              Action:
+                - states:DescribeExecution
+              Resource: "*"
+      Events:
+        MorningComposeWindowV2:
+          Type: ScheduleV2
+          Properties:
+            ScheduleExpression: cron(0 6 * * ? *)
+            ScheduleExpressionTimezone: America/Los_Angeles
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: '{"slot":"morning"}'
+        AfternoonComposeWindowV2:
+          Type: ScheduleV2
+          Properties:
+            ScheduleExpression: cron(0 14 * * ? *)
+            ScheduleExpressionTimezone: America/Los_Angeles
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: '{"slot":"afternoon"}'
+        MorningComposeWindowCryptoV2:
+          Type: ScheduleV2
+          Properties:
+            # 1 hour after default morning compose (6:00 → 7:00 America/Los_Angeles)
+            ScheduleExpression: cron(0 7 * * ? *)
+            ScheduleExpressionTimezone: America/Los_Angeles
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: '{"slot":"morning","user_id":"crypto"}'
+        AfternoonComposeWindowCryptoV2:
+          Type: ScheduleV2
+          Properties:
+            # 1 hour after default afternoon compose (14:00 → 15:00 America/Los_Angeles)
+            ScheduleExpression: cron(0 15 * * ? *)
+            ScheduleExpressionTimezone: America/Los_Angeles
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: '{"slot":"afternoon","user_id":"crypto"}'
+
+Outputs:
+  TranscriptArtifactsBucket:
+    Description: S3 bucket for home-runner transcript JSON (predictable keys under v1/)
+    Value: !Ref TranscriptArtifactsBucket
+  InfluencerFeedTable:
+    Description: DynamoDB table name
+    Value: !Ref InfluencerFeedTable
+  FindContentStateMachineArn:
+    Description: Start find + ingest for an issue_date
+    Value: !Ref FindContentStateMachine
+  ComposeIssueStateMachineArn:
+    Description: Summarize issue (stub)
+    Value: !Ref ComposeIssueStateMachine
+  UserIdDefault:
+    Description: Default user id for tests
+    Value: !Ref UserIdDefault
+  OpenAiApiKeySecretArn:
+    Description: Set SecretString to {"api_key":"sk-..."} (then re-run compose; no redeploy needed)
+    Value: !Ref OpenAiApiKeySecret
+  DiscordWebhookSecretArn:
+    Description: Set SecretString to {"webhook_url":"https://discord.com/api/webhooks/..."} to enable Discord publish
+    Value: !Ref DiscordWebhookSecret
+  DiscordBotSecretArn:
+    Description: Set SecretString to {"bot_token":"...","channel_id":"..."} to enable Discord bot/threads
+    Value: !Ref DiscordBotSecret
+  StartFindContentScheduleFunctionName:
+    Description: Invoke manually to start find-content with optional issue_date override
+    Value: !Ref StartFindContentScheduleFunction
+  StartComposeWindowScheduleFunctionName:
+    Description: Invoke manually to run compose window and update publish checkpoint
+    Value: !Ref StartComposeWindowScheduleFunction
+  WebshareProxySecretArn:
+    Description: Set SecretString to {"proxy_url":"http://user:pass@host:port"} or {"proxy_urls":[...]}
+    Value: !Ref WebshareProxySecret

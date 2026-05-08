@@ -1,0 +1,206 @@
+{
+  "Comment": "ComposeIssue — summarize per source then persist top-level issue",
+  "StartAt": "LoadFetchRows",
+  "States": {
+    "LoadFetchRows": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${LoadFetchRowsArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "issue_date.$": "$.Payload.issue_date",
+        "user_id.$": "$.Payload.user_id",
+        "source_refs.$": "$.Payload.source_refs"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "HasSourceRows"
+    },
+    "HasSourceRows": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.source_refs[0]",
+          "IsPresent": true,
+          "Next": "MapSummarizeSources"
+        }
+      ],
+      "Default": "PersistNoRowsIssue"
+    },
+    "MapSummarizeSources": {
+      "Type": "Map",
+      "ItemsPath": "$.source_refs",
+      "MaxConcurrency": 5,
+      "Parameters": {
+        "issue_date.$": "$.issue_date",
+        "user_id.$": "$.user_id",
+        "source_id.$": "$$.Map.Item.Value.source_id",
+        "fetch_sk.$": "$$.Map.Item.Value.fetch_sk"
+      },
+      "Iterator": {
+        "StartAt": "SummarizeOneSource",
+        "States": {
+          "SummarizeOneSource": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::lambda:invoke",
+            "Parameters": {
+              "FunctionName": "${SummarizeSourceArn}",
+              "Payload.$": "$"
+            },
+            "ResultSelector": {
+              "source_id.$": "$.Payload.source_id",
+              "status.$": "$.Payload.status",
+              "issue_source_sk.$": "$.Payload.issue_source_sk"
+            },
+            "Retry": [
+              {
+                "ErrorEquals": [
+                  "Lambda.ServiceException",
+                  "Lambda.AWSLambdaException",
+                  "Lambda.SdkClientException"
+                ],
+                "IntervalSeconds": 3,
+                "MaxAttempts": 4,
+                "BackoffRate": 2
+              }
+            ],
+            "End": true
+          }
+        }
+      },
+      "ResultPath": "$.summaries",
+      "Next": "BuildGlobalSummary"
+    },
+    "BuildGlobalSummary": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${BuildIssueSummaryArn}",
+        "Payload": {
+          "issue_date.$": "$.issue_date",
+          "user_id.$": "$.user_id"
+        }
+      },
+      "ResultSelector": {
+        "issue_date.$": "$.Payload.issue_date",
+        "user_id.$": "$.Payload.user_id",
+        "global_summary_smol.$": "$.Payload.global_summary_smol",
+        "global_summary_shift.$": "$.Payload.global_summary_shift",
+        "global_catalysts.$": "$.Payload.global_catalysts",
+        "global_technical.$": "$.Payload.global_technical",
+        "global_ticker_focus.$": "$.Payload.global_ticker_focus",
+        "global_summary_mode.$": "$.Payload.global_summary_mode",
+        "global_summary_model.$": "$.Payload.global_summary_model",
+        "fetched_sources.$": "$.Payload.fetched_sources",
+        "no_new_sources.$": "$.Payload.no_new_sources",
+        "source_count.$": "$.Payload.source_count"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "PersistIssue"
+    },
+    "PersistIssue": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${PersistIssueArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "status.$": "$.Payload.status",
+        "issue_date.$": "$.Payload.issue_date",
+        "user_id.$": "$.Payload.user_id",
+        "issue_sk.$": "$.Payload.issue_sk"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "PublishDiscord"
+    },
+    "PublishDiscord": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${PublishDiscordArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "status.$": "$.Payload.status",
+        "issue_date.$": "$.Payload.issue_date",
+        "user_id.$": "$.Payload.user_id",
+        "issue_sk.$": "$.Payload.issue_sk",
+        "discord_publish_status.$": "$.Payload.discord_publish_status"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "End": true
+    },
+    "PersistNoRowsIssue": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${PersistIssueArn}",
+        "Payload": {
+          "issue_date.$": "$.issue_date",
+          "user_id.$": "$.user_id",
+          "global_summary_smol.$": "States.Format('No source rows found for {}.', $.issue_date)",
+          "global_summary_shift": "",
+          "global_catalysts": "",
+          "global_technical": "",
+          "global_ticker_focus": [],
+          "fetched_sources": 0,
+          "no_new_sources": 0,
+          "source_count": 0
+        }
+      },
+      "ResultSelector": {
+        "status.$": "$.Payload.status",
+        "issue_date.$": "$.Payload.issue_date",
+        "user_id.$": "$.Payload.user_id",
+        "issue_sk.$": "$.Payload.issue_sk"
+      },
+      "Next": "PublishDiscord"
+    }
+  }
+}

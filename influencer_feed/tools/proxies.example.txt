@@ -1,0 +1,9 @@
+# One proxy per line. Supported formats:
+# 1) URL form:
+#    http://username:password@host:port
+# 2) Compact form:
+#    host:port:username:password
+#
+# Example:
+# 31.59.20.176:6754:myuser:mypass
+# http://myuser:mypass@31.59.20.176:6754

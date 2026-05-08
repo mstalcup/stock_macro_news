@@ -1,0 +1,9 @@
+{
+  "pk": { "S": "USER#default" },
+  "sk": { "S": "SOURCE#investanswers" },
+  "source_id": { "S": "investanswers" },
+  "platform": { "S": "youtube" },
+  "channel_id": { "S": "UClgJyzwGs-GyaNxUHcLZrkg" },
+  "display_name": { "S": "InvestAnswers" },
+  "enabled": { "BOOL": true }
+}

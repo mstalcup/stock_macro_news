@@ -1,0 +1,10 @@
+{
+  "pk": { "S": "USER#default" },
+  "sk": { "S": "SOURCE#coreedgetrader" },
+  "source_id": { "S": "coreedgetrader" },
+  "platform": { "S": "youtube" },
+  "channel_id": { "S": "UCwTS1oRWVB7VVGUQRBYn9aQ" },
+  "channel_handle": { "S": "@CoreEdgeTrader" },
+  "display_name": { "S": "CoreEdgeTrader" },
+  "enabled": { "BOOL": true }
+}

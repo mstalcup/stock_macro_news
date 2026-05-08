@@ -1,0 +1,145 @@
+{
+  "Comment": "Market Pulse — Daily Pre-Market Newsletter Pipeline",
+  "StartAt": "FetchMarketData",
+  "States": {
+    "FetchMarketData": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${FetchMarketDataArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "date.$": "$.Payload.date",
+        "status.$": "$.Payload.status"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException", "Lambda.SdkClientException"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 2,
+          "BackoffRate": 2
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ],
+      "Next": "ComputeSignals"
+    },
+
+    "ComputeSignals": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ComputeSignalsArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "date.$": "$.Payload.date",
+        "status.$": "$.Payload.status",
+        "regime.$": "$.Payload.regime",
+        "rotation_alerts.$": "$.Payload.rotation_alerts"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException"],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 2,
+          "BackoffRate": 1.5
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ],
+      "Next": "ComposeNewsletter"
+    },
+
+    "ComposeNewsletter": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ComposeNewsletterArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "date.$": "$.Payload.date",
+        "status.$": "$.Payload.status",
+        "regime.$": "$.Payload.regime"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException"],
+          "IntervalSeconds": 15,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ],
+      "Next": "PublishDiscord"
+    },
+
+    "PublishDiscord": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${PublishDiscordArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "date.$": "$.Payload.date",
+        "status.$": "$.Payload.status"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": ["Lambda.ServiceException"],
+          "IntervalSeconds": 10,
+          "MaxAttempts": 2,
+          "BackoffRate": 2
+        }
+      ],
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "NotifyFailure",
+          "ResultPath": "$.error"
+        }
+      ],
+      "Next": "Done"
+    },
+
+    "Done": {
+      "Type": "Succeed"
+    },
+
+    "NotifyFailure": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::sns:publish",
+      "Parameters": {
+        "TopicArn": "${AlertSnsTopicArn}",
+        "Subject": "Market Pulse pipeline FAILED",
+        "Message.$": "States.Format('Market Pulse pipeline failed on {}. Error: {}', $.date, $.error)"
+      },
+      "Next": "PipelineFailed"
+    },
+
+    "PipelineFailed": {
+      "Type": "Fail",
+      "Error": "PipelineError",
+      "Cause": "One or more pipeline steps failed. Check CloudWatch logs."
+    }
+  }
+}

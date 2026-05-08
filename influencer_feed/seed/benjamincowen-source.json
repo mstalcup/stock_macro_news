@@ -1,0 +1,9 @@
+{
+  "pk": { "S": "USER#default" },
+  "sk": { "S": "SOURCE#benjamincowen" },
+  "source_id": { "S": "benjamincowen" },
+  "platform": { "S": "youtube" },
+  "channel_id": { "S": "UCRvqjQPSeaWn-uEx-w0XOIg" },
+  "display_name": { "S": "Benjamin Cowen" },
+  "enabled": { "BOOL": true }
+}

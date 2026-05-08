@@ -1,0 +1,148 @@
+{
+  "Comment": "FindContent — list sources, Map ingest in parallel, start ComposeIssue",
+  "StartAt": "ListSources",
+  "States": {
+    "ListSources": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ListSourcesArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "issue_date.$": "$.Payload.issue_date",
+        "user_id.$": "$.Payload.user_id",
+        "sources.$": "$.Payload.sources"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 4,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "MapIngestSources"
+    },
+    "MapIngestSources": {
+      "Type": "Map",
+      "ItemsPath": "$.sources",
+      "MaxConcurrency": 5,
+      "Parameters": {
+        "issue_date.$": "$.issue_date",
+        "user_id.$": "$.user_id",
+        "source.$": "$$.Map.Item.Value"
+      },
+      "Iterator": {
+        "StartAt": "IngestOneSource",
+        "States": {
+          "IngestOneSource": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::lambda:invoke",
+            "Parameters": {
+              "FunctionName": "${IngestSourceArn}",
+              "Payload.$": "$"
+            },
+            "ResultSelector": {
+              "status.$": "$.Payload.status",
+              "source_id.$": "$.Payload.source_id"
+            },
+            "Retry": [
+              {
+                "ErrorEquals": [
+                  "Lambda.ServiceException",
+                  "Lambda.AWSLambdaException",
+                  "Lambda.SdkClientException"
+                ],
+                "IntervalSeconds": 3,
+                "MaxAttempts": 5,
+                "BackoffRate": 2
+              }
+            ],
+            "End": true
+          }
+        }
+      },
+      "ResultPath": "$.ingestResults",
+      "Next": "MapFetchTranscripts"
+    },
+    "MapFetchTranscripts": {
+      "Type": "Map",
+      "ItemsPath": "$.ingestResults",
+      "MaxConcurrency": 3,
+      "Parameters": {
+        "issue_date.$": "$.issue_date",
+        "user_id.$": "$.user_id",
+        "source_id.$": "$$.Map.Item.Value.source_id",
+        "ingest_status.$": "$$.Map.Item.Value.status"
+      },
+      "Iterator": {
+        "StartAt": "FetchOneSourceTranscripts",
+        "States": {
+          "FetchOneSourceTranscripts": {
+            "Type": "Task",
+            "Resource": "arn:aws:states:::lambda:invoke",
+            "Parameters": {
+              "FunctionName": "${FetchSourceTranscriptsArn}",
+              "Payload.$": "$"
+            },
+            "ResultSelector": {
+              "source_id.$": "$.Payload.source_id",
+              "transcript_status.$": "$.Payload.transcript_status"
+            },
+            "Retry": [
+              {
+                "ErrorEquals": [
+                  "Lambda.ServiceException",
+                  "Lambda.AWSLambdaException",
+                  "Lambda.SdkClientException"
+                ],
+                "IntervalSeconds": 3,
+                "MaxAttempts": 4,
+                "BackoffRate": 2
+              }
+            ],
+            "End": true
+          }
+        }
+      },
+      "ResultPath": "$.transcriptResults",
+      "Next": "FinalizeAndStartCompose"
+    },
+    "FinalizeAndStartCompose": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${FinalizeFindContentArn}",
+        "Payload": {
+          "issue_date.$": "$$.Execution.Input.issue_date",
+          "user_id.$": "$$.Execution.Input.user_id",
+          "start_compose.$": "$$.Execution.Input.start_compose",
+          "ingest_results.$": "$.ingestResults"
+        }
+      },
+      "ResultSelector": {
+        "compose_execution_arn.$": "$.Payload.compose_execution_arn",
+        "issue_date.$": "$.Payload.issue_date",
+        "user_id.$": "$.Payload.user_id"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 2,
+          "MaxAttempts": 4,
+          "BackoffRate": 2
+        }
+      ],
+      "End": true
+    }
+  }
+}

@@ -1,0 +1,271 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Market Pulse — Daily Market Newsletter Infrastructure
+
+Parameters:
+  AlphaVantageApiKey:
+    Type: String
+    NoEcho: true
+    Description: Alpha Vantage API key
+  NewsApiKey:
+    Type: String
+    NoEcho: true
+    Description: NewsAPI.org API key
+  AnthropicApiKey:
+    Type: String
+    NoEcho: true
+    Description: Anthropic API key
+  DiscordWebhookUrl:
+    Type: String
+    NoEcho: true
+    Description: Discord webhook URL for the target channel
+  CronSchedule:
+    Type: String
+    Default: "cron(30 13 ? * MON-FRI *)"
+    Description: >
+      EventBridge schedule (UTC). Default = 8:30am ET / 1:30pm UTC on weekdays.
+      For mid-morning update add a second rule at cron(0 16 ? * MON-FRI *)
+
+Resources:
+
+  # ── DynamoDB Table ─────────────────────────────────────────────────────────
+  MarketPulseTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: market-pulse
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: date
+          AttributeType: S
+        - AttributeName: report_type
+          AttributeType: S
+      KeySchema:
+        - AttributeName: date
+          KeyType: HASH
+        - AttributeName: report_type
+          KeyType: RANGE
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: true
+      Tags:
+        - Key: Project
+          Value: market-pulse
+
+  # ── IAM Role for Lambdas ────────────────────────────────────────────────────
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: market-pulse-lambda-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: DynamoDBAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:PutItem
+                  - dynamodb:Scan
+                Resource: !GetAtt MarketPulseTable.Arn
+
+  # ── Lambda: Shared Environment ─────────────────────────────────────────────
+  # (Environment vars shared by all 4 lambdas)
+  SharedEnv: &shared_env
+    DYNAMODB_TABLE: market-pulse
+    AWS_REGION: !Ref AWS::Region
+    ALPHA_VANTAGE_API_KEY: !Ref AlphaVantageApiKey
+    NEWS_API_KEY: !Ref NewsApiKey
+    ANTHROPIC_API_KEY: !Ref AnthropicApiKey
+    DISCORD_WEBHOOK_URL: !Ref DiscordWebhookUrl
+
+  # ── Lambda 1: Fetch Market Data ────────────────────────────────────────────
+  FetchMarketDataFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: market-pulse-fetch-data
+      Runtime: python3.12
+      Handler: lambdas.fetch_market_data.handler.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 120          # yfinance + 2 API calls can take ~60s
+      MemorySize: 512       # pandas/yfinance need memory
+      Code:
+        S3Bucket: !Sub "${AWS::AccountId}-market-pulse-deploy"
+        S3Key: market-pulse.zip
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: market-pulse
+          ALPHA_VANTAGE_API_KEY: !Ref AlphaVantageApiKey
+          NEWS_API_KEY: !Ref NewsApiKey
+          ANTHROPIC_API_KEY: !Ref AnthropicApiKey
+          DISCORD_WEBHOOK_URL: !Ref DiscordWebhookUrl
+
+  # ── Lambda 2: Compute Signals ──────────────────────────────────────────────
+  ComputeSignalsFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: market-pulse-compute-signals
+      Runtime: python3.12
+      Handler: lambdas.compute_signals.handler.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 30
+      MemorySize: 256
+      Code:
+        S3Bucket: !Sub "${AWS::AccountId}-market-pulse-deploy"
+        S3Key: market-pulse.zip
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: market-pulse
+          ALPHA_VANTAGE_API_KEY: !Ref AlphaVantageApiKey
+          NEWS_API_KEY: !Ref NewsApiKey
+          ANTHROPIC_API_KEY: !Ref AnthropicApiKey
+          DISCORD_WEBHOOK_URL: !Ref DiscordWebhookUrl
+
+  # ── Lambda 3: Compose Newsletter ───────────────────────────────────────────
+  ComposeNewsletterFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: market-pulse-compose-newsletter
+      Runtime: python3.12
+      Handler: lambdas.compose_newsletter.handler.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 60           # Claude API can take 15–30s
+      MemorySize: 256
+      Code:
+        S3Bucket: !Sub "${AWS::AccountId}-market-pulse-deploy"
+        S3Key: market-pulse.zip
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: market-pulse
+          ALPHA_VANTAGE_API_KEY: !Ref AlphaVantageApiKey
+          NEWS_API_KEY: !Ref NewsApiKey
+          ANTHROPIC_API_KEY: !Ref AnthropicApiKey
+          DISCORD_WEBHOOK_URL: !Ref DiscordWebhookUrl
+
+  # ── Lambda 4: Publish to Discord ───────────────────────────────────────────
+  PublishDiscordFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: market-pulse-publish-discord
+      Runtime: python3.12
+      Handler: lambdas.publish_discord.handler.handler
+      Role: !GetAtt LambdaExecutionRole.Arn
+      Timeout: 30
+      MemorySize: 128
+      Code:
+        S3Bucket: !Sub "${AWS::AccountId}-market-pulse-deploy"
+        S3Key: market-pulse.zip
+      Environment:
+        Variables:
+          DYNAMODB_TABLE: market-pulse
+          ALPHA_VANTAGE_API_KEY: !Ref AlphaVantageApiKey
+          NEWS_API_KEY: !Ref NewsApiKey
+          ANTHROPIC_API_KEY: !Ref AnthropicApiKey
+          DISCORD_WEBHOOK_URL: !Ref DiscordWebhookUrl
+
+  # ── IAM Role for Step Functions ────────────────────────────────────────────
+  StepFunctionsRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: market-pulse-stepfunctions-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: states.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: InvokeLambdas
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: lambda:InvokeFunction
+                Resource:
+                  - !GetAtt FetchMarketDataFunction.Arn
+                  - !GetAtt ComputeSignalsFunction.Arn
+                  - !GetAtt ComposeNewsletterFunction.Arn
+                  - !GetAtt PublishDiscordFunction.Arn
+        - PolicyName: SNSPublish
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: sns:Publish
+                Resource: !Ref AlertSnsTopic
+
+  # ── SNS Topic for failure alerts ───────────────────────────────────────────
+  AlertSnsTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: market-pulse-alerts
+      DisplayName: Market Pulse Pipeline Alerts
+
+  # ── Step Functions State Machine ───────────────────────────────────────────
+  MarketPulseStateMachine:
+    Type: AWS::StepFunctions::StateMachine
+    Properties:
+      StateMachineName: market-pulse-pipeline
+      RoleArn: !GetAtt StepFunctionsRole.Arn
+      DefinitionSubstitutions:
+        FetchMarketDataArn:    !GetAtt FetchMarketDataFunction.Arn
+        ComputeSignalsArn:     !GetAtt ComputeSignalsFunction.Arn
+        ComposeNewsletterArn:  !GetAtt ComposeNewsletterFunction.Arn
+        PublishDiscordArn:     !GetAtt PublishDiscordFunction.Arn
+        AlertSnsTopicArn:      !Ref AlertSnsTopic
+      DefinitionString: !Sub |
+        ${file(./step_function.json)}
+
+  # ── EventBridge Rule (Morning Schedule) ────────────────────────────────────
+  MorningScheduleRule:
+    Type: AWS::Events::Rule
+    Properties:
+      Name: market-pulse-morning
+      Description: Trigger Market Pulse pipeline at 8:30am ET on weekdays
+      ScheduleExpression: !Ref CronSchedule
+      State: ENABLED
+      Targets:
+        - Id: MarketPulseStateMachine
+          Arn: !Ref MarketPulseStateMachine
+          RoleArn: !GetAtt EventBridgeRole.Arn
+          Input: "{}"
+
+  # ── IAM Role for EventBridge to start Step Functions ──────────────────────
+  EventBridgeRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: market-pulse-eventbridge-role
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: events.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: StartStateMachine
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: states:StartExecution
+                Resource: !Ref MarketPulseStateMachine
+
+Outputs:
+  StateMachineArn:
+    Value: !Ref MarketPulseStateMachine
+    Description: Step Functions state machine ARN
+  DynamoDBTableName:
+    Value: !Ref MarketPulseTable
+    Description: DynamoDB table name
+  AlertsTopicArn:
+    Value: !Ref AlertSnsTopic
+    Description: Subscribe your email here for pipeline failure alerts

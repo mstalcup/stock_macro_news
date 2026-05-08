@@ -1,0 +1,4 @@
+.aws-sam/
+lambdas/ingest_source/vendor/
+tools/proxies.txt
+tools/*.secrets

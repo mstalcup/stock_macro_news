@@ -1,0 +1,9 @@
+{
+  "pk": { "S": "USER#default" },
+  "sk": { "S": "SOURCE#maverickofwallstreet" },
+  "source_id": { "S": "maverickofwallstreet" },
+  "platform": { "S": "youtube" },
+  "channel_id": { "S": "UCvk0KB4Ue0vfPqvDzjIAwiQ" },
+  "display_name": { "S": "The Maverick of Wall Street" },
+  "enabled": { "BOOL": true }
+}

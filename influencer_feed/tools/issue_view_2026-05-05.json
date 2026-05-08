@@ -1,0 +1,61 @@
+{
+  "view": "smol_issue_v1",
+  "user_id": "default",
+  "issue_date": "2026-05-05",
+  "issue": {
+    "status": "COMPOSED",
+    "global_summary_mode": "openai",
+    "global_summary_model": "gpt-4o",
+    "fetched_sources": 1,
+    "no_new_sources": 4,
+    "source_count": 5,
+    "global_summary": "As Bitcoin stabilizes around $78,000, InvestAnswers remains optimistic about Solana's role in tokenized trading, highlighting partnerships with Visa and BlackRock, and suggesting Solana's undervaluation compared to Ethereum. This sentiment contrasts with Benjamin Cowen's cautious stance on potential market weakness in June and October. Meanwhile, the macro environment appears stable, with Bitcoin's recovery from $64,000 and tech IPOs like SpaceX offering both opportunities and risks. Maverickofwallstreet notes ongoing tensions in the Iran conflict, potentially impacting oil prices, and anticipates a pullback in the S&P 500 and NASDAQ if semiconductor performance declines. ZipTrader continues to focus on growth in traditional markets with stock picks like Zeta Global and MP Materials."
+  },
+  "sources": [
+    {
+      "source_id": "maverickofwallstreet",
+      "display_name": "maverickofwallstreet",
+      "status": "FETCHED",
+      "video_count": 1,
+      "summary_mode": "openai",
+      "summary_model": "gpt-4o-mini",
+      "summary": "Today's market recap highlighted ongoing tensions in the Iran conflict and their potential implications for oil prices, with a focus on the Strait of Hormuz. The S&P 500 and NASDAQ continue to rally, largely driven by semiconductor stocks, but a pullback is anticipated, particularly if semiconductor performance declines. Notable trades discussed include buying 7,000 puts and selling 6,900 puts on E-mini futures, as well as bullish bets on IPGP and BTU options. Compared to the prior day, the macro outlook remains consistent, with no significant changes in market sentiment or positioning."
+    },
+    {
+      "source_id": "benjamincowen",
+      "display_name": "benjamincowen",
+      "status": "NO_NEW",
+      "video_count": 0,
+      "summary_mode": "no_update",
+      "summary_model": "n/a",
+      "summary": "No updates from benjamincowen."
+    },
+    {
+      "source_id": "coreedgetrader",
+      "display_name": "coreedgetrader",
+      "status": "NO_NEW",
+      "video_count": 0,
+      "summary_mode": "no_update",
+      "summary_model": "n/a",
+      "summary": "No updates from coreedgetrader."
+    },
+    {
+      "source_id": "investanswers",
+      "display_name": "investanswers",
+      "status": "NO_NEW",
+      "video_count": 0,
+      "summary_mode": "no_update",
+      "summary_model": "n/a",
+      "summary": "No updates from investanswers."
+    },
+    {
+      "source_id": "ziptrader",
+      "display_name": "ziptrader",
+      "status": "NO_NEW",
+      "video_count": 0,
+      "summary_mode": "no_update",
+      "summary_model": "n/a",
+      "summary": "No updates from ziptrader."
+    }
+  ]
+}
