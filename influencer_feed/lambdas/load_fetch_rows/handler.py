@@ -53,6 +53,8 @@ def handler(event, context):
                 no_new += 1
             if status != "FETCHED":
                 continue
+            if row.get("transcript_status") != "FETCHED":
+                continue
             ts = _parse_iso_utc(row.get("transcript_fetched_at")) or _parse_iso_utc(row.get("updated_at"))
             if not ts or ts < window_start or ts >= window_end:
                 continue
@@ -72,19 +74,39 @@ def handler(event, context):
                     "fetch_sk": row["sk"],
                 }
             )
-    else:
-        for row in rows:
-            status = row.get("status", "UNKNOWN")
-            if status == "FETCHED":
+        if not refs:
+            # Fallback: same-day issue rows with completed transcripts (recover missed windows).
+            day_prefix = f"FETCH#{issue_date}#"
+            for row in rows:
+                if not str(row.get("sk", "")).startswith(day_prefix):
+                    continue
+                if row.get("status") != "FETCHED":
+                    continue
+                if row.get("transcript_status") != "FETCHED":
+                    continue
+                if not row.get("transcript_fetched_at"):
+                    continue
+                sid = row.get("source_id") or row["sk"].split("#", 2)[-1]
+                if any(r["source_id"] == sid for r in refs):
+                    continue
                 fetched += 1
+                refs.append({"source_id": sid, "fetch_sk": row["sk"]})
+    else:
+        day_prefix = f"FETCH#{issue_date}#"
+        for row in rows:
+            if not str(row.get("sk", "")).startswith(day_prefix):
+                continue
+            status = row.get("status", "UNKNOWN")
+            if status == "FETCHED" and row.get("transcript_status") == "FETCHED":
+                fetched += 1
+                refs.append(
+                    {
+                        "source_id": row.get("source_id") or row["sk"].split("#", 2)[-1],
+                        "fetch_sk": row["sk"],
+                    }
+                )
             elif status == "NO_NEW":
                 no_new += 1
-            refs.append(
-                {
-                    "source_id": row.get("source_id") or row["sk"].split("#", 2)[-1],
-                    "fetch_sk": row["sk"],
-                }
-            )
 
     return {
         "issue_date": issue_date,

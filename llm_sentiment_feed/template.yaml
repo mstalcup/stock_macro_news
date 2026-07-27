@@ -1,0 +1,260 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: LLM sentiment panel — daily picks + live scoring
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 300
+    MemorySize: 512
+    Architectures:
+      - x86_64
+
+Parameters:
+  ScheduleLocalTz:
+    Type: String
+    Default: America/Los_Angeles
+  MacroArtifactsBucket:
+    Type: String
+    Description: Macro news S3 bucket (digest.json source)
+  TestRun:
+    Type: String
+    Default: "false"
+    AllowedValues: ["true", "false"]
+  SentimentDiscordChannelId:
+    Type: String
+    Default: "1505821117770629311"
+    Description: Discord channel for daily LLM sentiment panel posts
+
+Conditions:
+  IsTestRun: !Equals [!Ref TestRun, "true"]
+
+Resources:
+  LlmPanelKeysSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/llm-panel-keys"
+      Description: >
+        JSON openai, perplexity, gemini, grok, finnhub api keys
+      SecretString: >-
+        {"openai_api_key":"","perplexity_api_key":"","gemini_api_key":"","grok_api_key":"","finnhub_api_key":""}
+
+  SentimentArtifactsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  DiscordBotSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-bot"
+      Description: JSON {"bot_token":"...","channel_id":"..."} for sentiment Discord
+      SecretString: !Sub '{"bot_token":"","channel_id":"${SentimentDiscordChannelId}"}'
+
+  DiscordWebhookSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-webhook"
+      Description: Optional webhook fallback for sentiment Discord
+      SecretString: '{"webhook_url":""}'
+
+  SentimentTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "${AWS::StackName}-sentiment"
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+
+  QueryLlmPanelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-query-llm-panel"
+      CodeUri: lambdas/query_llm_panel/
+      Handler: handler.handler
+      Timeout: 900
+      Environment:
+        Variables:
+          SENTIMENT_TABLE_NAME: !Ref SentimentTable
+          SENTIMENT_ARTIFACTS_BUCKET: !Ref SentimentArtifactsBucket
+          MACRO_ARTIFACTS_BUCKET: !Ref MacroArtifactsBucket
+          LLM_PANEL_KEYS_SECRET_ARN: !Ref LlmPanelKeysSecret
+          SCHEDULE_LOCAL_TZ: !Ref ScheduleLocalTz
+          TEST_RUN: !Ref TestRun
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SentimentTable
+        - S3CrudPolicy:
+            BucketName: !Ref SentimentArtifactsBucket
+        - S3ReadPolicy:
+            BucketName: !Ref MacroArtifactsBucket
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: !Ref LlmPanelKeysSecret
+
+  ScoreRecommendationsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-score-recommendations"
+      CodeUri: lambdas/score_recommendations/
+      Handler: handler.handler
+      Timeout: 300
+      Environment:
+        Variables:
+          SENTIMENT_TABLE_NAME: !Ref SentimentTable
+          LLM_PANEL_KEYS_SECRET_ARN: !Ref LlmPanelKeysSecret
+          SCHEDULE_LOCAL_TZ: !Ref ScheduleLocalTz
+          TEST_RUN: !Ref TestRun
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref SentimentTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: !Ref LlmPanelKeysSecret
+      Events:
+        ScoreAfterCloseWeekdays:
+          Type: Schedule
+          Properties:
+            # ~1:05 PM PT (after US cash close) = 20:05 UTC (PDT)
+            Schedule: cron(5 20 ? * MON-FRI *)
+            Input: "{}"
+            Enabled: true
+
+  PublishDiscordSentimentFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-publish-discord-sentiment"
+      CodeUri: lambdas/publish_discord/
+      Handler: handler.handler
+      Timeout: 60
+      Environment:
+        Variables:
+          SENTIMENT_TABLE_NAME: !Ref SentimentTable
+          DISCORD_BOT_SECRET_ARN: !Ref DiscordBotSecret
+          DISCORD_WEBHOOK_SECRET_ARN: !Ref DiscordWebhookSecret
+          SENTIMENT_DISCORD_CHANNEL_ID: !Ref SentimentDiscordChannelId
+          PUBLISH_MODEL_IDS: openai-gpt-4o,gemini-2.5-flash,grok-4.3
+          MACRO_ARTIFACTS_BUCKET: !Ref MacroArtifactsBucket
+          MACRO_STACK_NAME: macro-news-feed
+          SCORE_LAMBDA_NAME: !Sub "${AWS::StackName}-score-recommendations"
+          TEST_RUN: !Ref TestRun
+      Policies:
+        - DynamoDBReadPolicy:
+            TableName: !Ref SentimentTable
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource:
+                - !Ref DiscordBotSecret
+                - !Ref DiscordWebhookSecret
+        - Statement:
+            - Effect: Allow
+              Action:
+                - lambda:InvokeFunction
+              Resource: !GetAtt ScoreRecommendationsFunction.Arn
+        - Statement:
+            - Effect: Allow
+              Action:
+                - cloudformation:DescribeStacks
+              Resource: !Sub "arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/macro-news-feed/*"
+        - Statement:
+            - Effect: Allow
+              Action:
+                - cloudformation:DescribeStacks
+              Resource: !Sub "arn:aws:cloudformation:${AWS::Region}:${AWS::AccountId}:stack/influencer-feed/*"
+        - Statement:
+            - Effect: Allow
+              Action:
+                - dynamodb:Query
+                - dynamodb:GetItem
+                - dynamodb:Scan
+              Resource:
+                - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/influencer-feed-influencer-feed"
+                - !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/influencer-feed-influencer-feed/index/*"
+        - Statement:
+            - Effect: Allow
+              Action:
+                - s3:GetObject
+              Resource: !Sub "arn:aws:s3:::${MacroArtifactsBucket}/*"
+
+  RunSentimentStateMachine:
+    Type: AWS::Serverless::StateMachine
+    Properties:
+      Name: !Sub "${AWS::StackName}-run-sentiment"
+      Type: STANDARD
+      DefinitionUri: statemachine/run_sentiment.asl.json
+      DefinitionSubstitutions:
+        QueryLlmPanelArn: !GetAtt QueryLlmPanelFunction.Arn
+        PublishDiscordSentimentArn: !GetAtt PublishDiscordSentimentFunction.Arn
+        ScoreRecommendationsArn: !GetAtt ScoreRecommendationsFunction.Arn
+      Policies:
+        - LambdaInvokePolicy:
+            FunctionName: !Ref QueryLlmPanelFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref PublishDiscordSentimentFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref ScoreRecommendationsFunction
+
+  StartPanelScheduleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-start-panel-schedule"
+      CodeUri: lambdas/start_panel_schedule/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          RUN_SENTIMENT_STATE_MACHINE_ARN: !Ref RunSentimentStateMachine
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - states:StartExecution
+              Resource: !Ref RunSentimentStateMachine
+      Events:
+        PanelAfterMacroWeekdays:
+          Type: Schedule
+          Properties:
+            # Disabled — macro-news-feed Step Functions starts panel after pre_open compose
+            Schedule: cron(40 13 ? * MON-FRI *)
+            Input: "{}"
+            Enabled: false
+
+Outputs:
+  SentimentTableName:
+    Value: !Ref SentimentTable
+  SentimentArtifactsBucket:
+    Value: !Ref SentimentArtifactsBucket
+  LlmPanelKeysSecretArn:
+    Value: !Ref LlmPanelKeysSecret
+  QueryLlmPanelFunction:
+    Value: !Ref QueryLlmPanelFunction
+  ScoreRecommendationsFunction:
+    Value: !Ref ScoreRecommendationsFunction
+  RunSentimentStateMachineArn:
+    Description: Step Functions — query panel + score (same pattern as macro-news-feed-fetch-news)
+    Value: !Ref RunSentimentStateMachine
+  PublishDiscordSentimentFunction:
+    Value: !Ref PublishDiscordSentimentFunction
+  DiscordBotSecretArn:
+    Value: !Ref DiscordBotSecret

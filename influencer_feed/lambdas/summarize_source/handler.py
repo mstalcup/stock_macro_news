@@ -5,6 +5,7 @@ from datetime import date, datetime, timedelta, timezone
 import boto3
 
 from openai_client import chat_completion
+from video_links import links_for_report
 
 TABLE_NAME = os.environ["TABLE_NAME"]
 OPENAI_SECRET_ARN = (os.environ.get("OPENAI_SECRET_ARN") or "").strip()
@@ -86,7 +87,7 @@ def _get_openai_api_key():
     return raw
 
 
-def _full_transcript_from_s3(fetch_row, max_chars=28000):
+def _full_transcript_from_s3(fetch_row, *, allowed_video_ids: set[str] | None = None, max_chars=28000):
     bucket = fetch_row.get("transcript_s3_bucket")
     manifest_key = fetch_row.get("transcript_manifest_s3_key")
     if not bucket or not manifest_key:
@@ -97,6 +98,9 @@ def _full_transcript_from_s3(fetch_row, max_chars=28000):
     manifest = json.loads(manifest_raw)
     pieces = []
     for video in manifest.get("videos", []):
+        vid = (video.get("video_id") or "").strip()
+        if allowed_video_ids is not None and vid and vid not in allowed_video_ids:
+            continue
         key = video.get("s3_key")
         if not key:
             continue
@@ -251,8 +255,16 @@ def handler(event, context):
         source_summary = ""
         summary_mode = "unavailable"
         if not excerpt:
-            source_summary = "No transcript text available for this source on this day."
-            summary_mode = "no_transcript"
+            issue_source_sk = f"ISSUE_SOURCE#{issue_date}#{source_id}"
+            table.delete_item(Key={"pk": pk, "sk": issue_source_sk})
+            return {
+                "source_id": source_id,
+                "issue_source_sk": issue_source_sk,
+                "status": status,
+                "video_count": video_count,
+                "display_name": display_name,
+                "skipped": "no_transcript",
+            }
         elif not api_key:
             source_summary = (
                 "LLM summary skipped: OpenAI API key is not configured in Secrets Manager for this stack."
@@ -313,7 +325,7 @@ def handler(event, context):
         source_tickers = []
     if "source_tickers" not in locals():
         source_tickers = []
-    source_links = [m.get("video_url") for m in (fetch_row.get("video_meta") or []) if m.get("video_url")]
+    source_links = links_for_report(fetch_row=fetch_row)
 
     issue_source_sk = f"ISSUE_SOURCE#{issue_date}#{source_id}"
     item = {

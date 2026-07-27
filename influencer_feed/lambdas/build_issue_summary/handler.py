@@ -197,6 +197,25 @@ def handler(event, context):
     fetched_rows = [r for r in rows if r.get("status") == "FETCHED"]
     no_new_rows = [r for r in rows if r.get("status") == "NO_NEW"]
 
+    def _actionable(row: dict) -> bool:
+        mode = (row.get("source_summary_mode") or "").strip().lower()
+        if mode != "openai":
+            return False
+        summary = (row.get("source_summary") or "").strip()
+        if not summary or summary.lower().startswith("no transcript"):
+            return False
+        return True
+
+    actionable_rows = [r for r in fetched_rows if _actionable(r)]
+
+    # Drop stale per-source rows (e.g. old "no transcript" placeholders).
+    actionable_ids = {r.get("source_id") for r in actionable_rows}
+    for row in rows:
+        sid = row.get("source_id")
+        if not sid or sid in actionable_ids:
+            continue
+        table.delete_item(Key={"pk": pk, "sk": row["sk"]})
+
     prior_digest = ""
     try:
         prev_day = (date.fromisoformat(issue_date) - timedelta(days=1)).isoformat()
@@ -206,10 +225,10 @@ def handler(event, context):
     except ValueError:
         prior_digest = ""
 
-    global_mode = "heuristic"
-    if fetched_rows:
+    global_mode = "none"
+    if actionable_rows:
         blocks = []
-        for row in sorted(fetched_rows, key=lambda r: r.get("display_name", r.get("source_id", ""))):
+        for row in sorted(actionable_rows, key=lambda r: r.get("display_name", r.get("source_id", ""))):
             name = row.get("display_name") or row.get("source_id", "")
             summary = (row.get("source_summary", "") or "").strip()
             tickers = row.get("source_tickers") or []
@@ -265,17 +284,19 @@ def handler(event, context):
                 global_summary = ""
 
         if not global_summary:
-            global_summary = _heuristic_global(fetched_rows, issue_date)
+            global_summary = _heuristic_global(actionable_rows, issue_date)
             global_ticker_focus = []
             global_shift = ""
             global_catalysts = ""
             global_technical = ""
+            global_mode = "heuristic"
     else:
-        global_summary = f"No new influencer updates for {issue_date}."
+        global_summary = "No updates today."
         global_shift = ""
         global_catalysts = ""
         global_technical = ""
         global_ticker_focus = []
+        global_mode = "none"
 
     return {
         "issue_date": issue_date,
@@ -287,7 +308,7 @@ def handler(event, context):
         "global_ticker_focus": global_ticker_focus,
         "global_summary_mode": global_mode,
         "global_summary_model": OPENAI_SMART_MODEL if global_mode == "openai" else "n/a",
-        "fetched_sources": len(fetched_rows),
+        "fetched_sources": len(actionable_rows),
         "no_new_sources": len(no_new_rows),
         "source_count": len(rows),
     }

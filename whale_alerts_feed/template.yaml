@@ -1,0 +1,94 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Whale alerts — anticipatory 13D/G (pre-13F), Phase 0 backtest + live poll
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 300
+    MemorySize: 512
+    Architectures:
+      - x86_64
+
+Parameters:
+  WhaleDiscordChannelId:
+    Type: String
+    Default: ""
+    Description: Discord channel id for whale alerts (set after creating channel)
+  ScheduleLocalTz:
+    Type: String
+    Default: America/Los_Angeles
+
+Resources:
+  WhaleTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "${AWS::StackName}-whales"
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+
+  WhaleArtifactsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  DiscordBotSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-bot"
+      Description: JSON bot_token + channel_id for whale alerts Discord
+      SecretString: !Sub '{"bot_token":"","channel_id":"${WhaleDiscordChannelId}"}'
+
+  PollWhalesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-poll-whales"
+      CodeUri: .
+      Handler: lambdas.poll_whales.handler.handler
+      Environment:
+        Variables:
+          WHALE_TABLE_NAME: !Ref WhaleTable
+          DISCORD_BOT_SECRET_ARN: !Ref DiscordBotSecret
+          WHALE_DISCORD_CHANNEL_ID: !Ref WhaleDiscordChannelId
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref WhaleTable
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref DiscordBotSecret
+      Events:
+        MarketHoursPoll:
+          Type: ScheduleV2
+          Properties:
+            ScheduleExpression: cron(0/30 5-17 ? * MON-FRI *)
+            ScheduleExpressionTimezone: !Ref ScheduleLocalTz
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: '{"lookback_days":3}'
+
+Outputs:
+  WhaleTableName:
+    Value: !Ref WhaleTable
+  WhaleArtifactsBucket:
+    Value: !Ref WhaleArtifactsBucket
+  PollWhalesFunction:
+    Value: !Ref PollWhalesFunction
+  DiscordBotSecretArn:
+    Value: !Ref DiscordBotSecret

@@ -189,7 +189,7 @@ Resources:
           OPENAI_SECRET_ARN: !Ref OpenAiApiKeySecret
           OPENAI_SMART_MODEL: !Ref OpenAiSmartModel
       Policies:
-        - DynamoDBReadPolicy:
+        - DynamoDBCrudPolicy:
             TableName: !Ref InfluencerFeedTable
         - Statement:
             - Effect: Allow
@@ -226,6 +226,8 @@ Resources:
       Policies:
         - DynamoDBReadPolicy:
             TableName: !Ref InfluencerFeedTable
+        - S3ReadPolicy:
+            BucketName: !Ref TranscriptArtifactsBucket
         - Statement:
             - Effect: Allow
               Action:

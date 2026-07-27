@@ -34,8 +34,10 @@ This document reflects the current working state of the `influencer_feed` stack,
 
 Sources are keyed under `USER#<user_id>` as `SOURCE#<source_id>`.
 
-- **`default` — macro / equities tilt** (crypto-primary channels disabled): Maverick of Wall Street, Patrick Boyle, Joseph Carlson, Forward Guidance, The Compound (`@the-compound-pod`), Geeks of Finance. Legacy crypto-heavy sources stay in the table but **`enabled: false`** (Benjamin Cowen, InvestAnswers, CoreEdgeTrader, ZipTrader).
-- **`crypto` — crypto-only feed**: CryptosRUs (requested), Benjamin Cowen, InvestAnswers, Bankless, Coin Bureau, Altcoin Daily.
+- **`default` — main influencer feed** (equities tilt): Maverick of Wall Street, Patrick Boyle, Joseph Carlson, Forward Guidance, Geeks of Finance, ZipTrader, CoreEdgeTrader (`@CoreEdgeTrader`). Paused on this feed only (`enabled: false`): Benjamin Cowen, InvestAnswers, The Compound (`@the-compound-pod`) — still available on the crypto feed where listed.
+- **`crypto` — crypto-only influencer feed**: CryptosRUs, Benjamin Cowen, InvestAnswers, Bankless, Coin Bureau, Altcoin Daily.
+
+Roster lists live in `tools/seed_roster.py` as `DEFAULT_FEED_ENABLED`, `DEFAULT_FEED_PAUSED`, and `CRYPTO_FEED_ENABLED` (not related to the separate `macro_news_feed` headline stack).
 
 Re-seed from the repo after edits:
 
@@ -195,13 +197,9 @@ Rework prompts and output contracts for:
 - prioritize channels with consistent macro/trade edge
 - potentially tier sources (core vs secondary) in summarization
 
-### 3) Add macro news sources
+### 3) Macro news feed (started)
 
-Add a parallel news ingestor and merge into compose:
-
-- candidates: Alpha Vantage, Yahoo Finance, possibly FRED/calendar feeds
-- store normalized news events into Dynamo/S3
-- include in top-level summary prompt context
+See **`../macro_news_feed/`** — Alpha Vantage + NewsAPI + Finnhub → S3 (`deduped.json` per slot). Scheduled pre-open / pre-close PT. Wire into compose + Discord later.
 
 ### 4) Reliability hardening
 

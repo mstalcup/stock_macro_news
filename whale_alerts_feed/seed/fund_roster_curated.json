@@ -1,0 +1,20 @@
+[
+  {"cik": "2045724", "fund_name": "Situational Awareness LP", "tier": "S"},
+  {"cik": "1336528", "fund_name": "Pershing Square Capital Management", "tier": "S"},
+  {"cik": "1649339", "fund_name": "Scion Asset Management (Burry)", "tier": "S"},
+  {"cik": "1350694", "fund_name": "Elliott Investment Management", "tier": "A"},
+  {"cik": "1040273", "fund_name": "Third Point LLC", "tier": "A"},
+  {"cik": "1138995", "fund_name": "ValueAct Capital", "tier": "A"},
+  {"cik": "1029160", "fund_name": "Soros Fund Management", "tier": "A"},
+  {"cik": "1536411", "fund_name": "Duquesne Family Office", "tier": "A"},
+  {"cik": "1167483", "fund_name": "Tiger Global Management", "tier": "B"},
+  {"cik": "1135730", "fund_name": "Coatue Management", "tier": "B"},
+  {"cik": "1541617", "fund_name": "Altimeter Capital", "tier": "B"},
+  {"cik": "1067983", "fund_name": "Berkshire Hathaway", "tier": "C"},
+  {"cik": "1364742", "fund_name": "Greenlight Capital (Einhorn)", "tier": "A"},
+  {"cik": "1273087", "fund_name": "Millennium Management", "tier": "B"},
+  {"cik": "1603466", "fund_name": "Point72 Asset Management", "tier": "B"},
+  {"cik": "1517137", "fund_name": "Starboard Value", "tier": "A"},
+  {"cik": "1656456", "fund_name": "Appaloosa Management (Tepper)", "tier": "A"},
+  {"cik": "1709323", "fund_name": "Himalaya Capital (Li Lu)", "tier": "S"}
+]

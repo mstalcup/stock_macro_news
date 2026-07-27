@@ -1,0 +1,20 @@
+[
+  {
+    "fund_id": "bridgewater",
+    "fund_name": "Bridgewater (example)",
+    "ticker": "NVDA",
+    "position": "long",
+    "as_of_date": "2026-03-31",
+    "weight": 1.0,
+    "source": "example_seed"
+  },
+  {
+    "fund_id": "pershing",
+    "fund_name": "Pershing Square (example)",
+    "ticker": "GOOGL",
+    "position": "long",
+    "as_of_date": "2026-03-31",
+    "weight": 0.8,
+    "source": "example_seed"
+  }
+]

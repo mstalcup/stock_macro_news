@@ -1,0 +1,278 @@
+[
+  {
+    "filer_cik": "1011438",
+    "filer_name": "PEABODY ENERGY CORP",
+    "signal_count": 9,
+    "status": "ranked",
+    "median_alpha_20d": 9.3449,
+    "median_alpha_60d": 3.5374,
+    "hit_rate_20d": 0.875,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 13.1353
+  },
+  {
+    "filer_cik": "1178913",
+    "filer_name": "CHECK POINT SOFTWARE TECHNOLOGIES LTD",
+    "signal_count": 15,
+    "status": "ranked",
+    "median_alpha_20d": 3.0604,
+    "median_alpha_60d": 8.506,
+    "hit_rate_20d": 0.6,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 9.4749
+  },
+  {
+    "filer_cik": "1999371",
+    "filer_name": "Warby Parker Inc.",
+    "signal_count": 8,
+    "status": "ranked",
+    "median_alpha_20d": -1.7933,
+    "median_alpha_60d": -0.7968,
+    "hit_rate_20d": 0.25,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 1.8929
+  },
+  {
+    "filer_cik": "1193805",
+    "filer_name": "DocGo Inc.",
+    "signal_count": 11,
+    "status": "ranked",
+    "median_alpha_20d": -4.9851,
+    "median_alpha_60d": -4.6693,
+    "hit_rate_20d": 0.375,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 1.0864
+  },
+  {
+    "filer_cik": "1753926",
+    "filer_name": "Allarity Therapeutics, Inc.",
+    "signal_count": 13,
+    "status": "ranked",
+    "median_alpha_20d": -5.9789,
+    "median_alpha_60d": -4.4391,
+    "hit_rate_20d": 0.3333,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 0.3948
+  },
+  {
+    "filer_cik": "1941040",
+    "filer_name": "loanDepot, Inc.",
+    "signal_count": 3,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1883154",
+    "filer_name": "Dutch Bros Inc.",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1852668",
+    "filer_name": "KALTURA INC",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1781002",
+    "filer_name": "SCIENTIFIC INDUSTRIES INC",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1654954",
+    "filer_name": "ENGLOBAL CORP",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1487118",
+    "filer_name": "Oklo Inc.",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1341004",
+    "filer_name": "Borr Drilling Ltd",
+    "signal_count": 4,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1171843",
+    "filer_name": "SilverBox Corp III",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1163648",
+    "filer_name": "PYXUS INTERNATIONAL, INC.",
+    "signal_count": 2,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1123292",
+    "filer_name": "Elastic N.V.",
+    "signal_count": 3,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1102578",
+    "filer_name": "CRACKER BARREL OLD COUNTRY STORE, INC",
+    "signal_count": 4,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1079973",
+    "filer_name": "Fangdd Network Group Ltd.",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1062993",
+    "filer_name": "LION COPPER & GOLD CORP.",
+    "signal_count": 3,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1050470",
+    "filer_name": "Xerox Holdings Corp",
+    "signal_count": 4,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1037792",
+    "filer_name": "Citi Trends Inc",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "950170",
+    "filer_name": "Desktop Metal, Inc.",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "950103",
+    "filer_name": "CARRIER GLOBAL Corp",
+    "signal_count": 2,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1777813",
+    "filer_name": "RH",
+    "signal_count": 2,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1628280",
+    "filer_name": "Nerdy Inc.",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1622627",
+    "filer_name": "DELCATH SYSTEMS, INC.",
+    "signal_count": 2,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1604488",
+    "filer_name": "SDCL EDGE Acquisition Corp",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1595888",
+    "filer_name": "MARA Holdings, Inc.",
+    "signal_count": 5,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1580642",
+    "filer_name": "Xometry, Inc.",
+    "signal_count": 7,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1546190",
+    "filer_name": "CommScope Holding Company, Inc.",
+    "signal_count": 2,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1535264",
+    "filer_name": "Silynxcom Ltd.",
+    "signal_count": 3,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1418660",
+    "filer_name": "EverQuote, Inc.",
+    "signal_count": 2,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1415889",
+    "filer_name": "CBRE GROUP, INC.",
+    "signal_count": 3,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1389932",
+    "filer_name": "Regulus Therapeutics Inc.",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1326389",
+    "filer_name": "Currenc Group Inc.",
+    "signal_count": 2,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1315863",
+    "filer_name": "Yext, Inc.",
+    "signal_count": 3,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1284812",
+    "filer_name": "WELLTOWER INC.",
+    "signal_count": 6,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1171520",
+    "filer_name": "Citizens Community Bancorp Inc.",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1137774",
+    "filer_name": "Savara Inc",
+    "signal_count": 7,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1126328",
+    "filer_name": "Quad/Graphics, Inc.",
+    "signal_count": 6,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1076809",
+    "filer_name": "PetIQ, Inc.",
+    "signal_count": 3,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1058854",
+    "filer_name": "North American Construction Group Ltd.",
+    "signal_count": 3,
+    "status": "insufficient_data"
+  }
+]

@@ -5,5 +5,5 @@
   "platform": { "S": "youtube" },
   "channel_id": { "S": "UC0BGhWsIbV7Dm-lsvhdlMbA" },
   "display_name": { "S": "ZipTrader" },
-  "enabled": { "BOOL": false }
+  "enabled": { "BOOL": true }
 }

@@ -63,6 +63,21 @@
                 "BackoffRate": 2
               }
             ],
+            "Catch": [
+              {
+                "ErrorEquals": ["States.ALL"],
+                "ResultPath": "$.error",
+                "Next": "IngestFailed"
+              }
+            ],
+            "End": true
+          },
+          "IngestFailed": {
+            "Type": "Pass",
+            "Parameters": {
+              "status": "FETCH_ERROR",
+              "source_id.$": "$.source.source_id"
+            },
             "End": true
           }
         }

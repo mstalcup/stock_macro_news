@@ -1,0 +1,127 @@
+{
+  "Comment": "FetchNews — fetch, compose, Discord (pre_open only by default)",
+  "StartAt": "FetchNewsSlot",
+  "States": {
+    "FetchNewsSlot": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${FetchNewsSlotArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "status.$": "$.Payload.status",
+        "issue_date.$": "$.Payload.issue_date",
+        "slot.$": "$.Payload.slot",
+        "counts.$": "$.Payload.counts",
+        "cached_providers.$": "$.Payload.cached_providers",
+        "cache_enabled.$": "$.Payload.cache_enabled",
+        "errors.$": "$.Payload.errors",
+        "s3.$": "$.Payload.s3"
+      },
+      "ResultPath": "$.fetch",
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 3,
+          "MaxAttempts": 4,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "ComposeNewsSlot"
+    },
+    "ComposeNewsSlot": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ComposeNewsSlotArn}",
+        "Payload": {
+          "issue_date.$": "$.fetch.issue_date",
+          "slot.$": "$.fetch.slot",
+          "fetch_status.$": "$.fetch.status",
+          "deduped_s3_key.$": "$.fetch.s3.deduped_s3_key"
+        }
+      },
+      "ResultPath": "$.compose",
+      "ResultSelector": {
+        "status.$": "$.Payload.status",
+        "issue_date.$": "$.Payload.issue_date",
+        "slot.$": "$.Payload.slot",
+        "fetch_status.$": "$.Payload.fetch_status",
+        "compose_mode.$": "$.Payload.compose_mode",
+        "article_count.$": "$.Payload.article_count",
+        "s3.$": "$.Payload.s3",
+        "digest_preview.$": "$.Payload.digest_preview"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "PublishDiscordMacro"
+    },
+    "PublishDiscordMacro": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${PublishDiscordMacroArn}",
+        "Payload": {
+          "issue_date.$": "$.compose.issue_date",
+          "slot.$": "$.compose.slot",
+          "digest_s3_key.$": "$.compose.s3.digest_s3_key",
+          "deduped_s3_key.$": "$.fetch.s3.deduped_s3_key"
+        }
+      },
+      "ResultPath": "$.discord",
+      "ResultSelector": {
+        "discord_publish_status.$": "$.Payload.discord_publish_status",
+        "issue_date.$": "$.Payload.issue_date",
+        "slot.$": "$.Payload.slot"
+      },
+      "Next": "MaybeStartLlmPanel"
+    },
+    "MaybeStartLlmPanel": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.compose.slot",
+          "StringEquals": "pre_open",
+          "Next": "StartLlmPanel"
+        }
+      ],
+      "Default": "Done"
+    },
+    "StartLlmPanel": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${StartLlmPanelArn}",
+        "Payload": {
+          "issue_date.$": "$.compose.issue_date",
+          "macro_slot.$": "$.compose.slot"
+        }
+      },
+      "ResultPath": "$.llm_panel",
+      "ResultSelector": {
+        "status.$": "$.Payload.status",
+        "executionArn.$": "$.Payload.executionArn"
+      },
+      "Next": "Done"
+    },
+    "Done": {
+      "Type": "Pass",
+      "End": true
+    }
+  }
+}

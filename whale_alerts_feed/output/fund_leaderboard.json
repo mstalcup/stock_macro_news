@@ -1,0 +1,200 @@
+[
+  {
+    "cik": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "current_tier": "A",
+    "suggested_tier": "S",
+    "tier_change": true,
+    "composite_score": 7.4325,
+    "median_alpha_20d": 4.102,
+    "signal_count": 76,
+    "status": "ranked"
+  },
+  {
+    "cik": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "current_tier": "B",
+    "suggested_tier": "S",
+    "tier_change": true,
+    "composite_score": 5.1628,
+    "median_alpha_20d": 0.1373,
+    "signal_count": 243,
+    "status": "ranked"
+  },
+  {
+    "cik": "1517137",
+    "fund_name": "Starboard Value",
+    "current_tier": "A",
+    "suggested_tier": "S",
+    "tier_change": true,
+    "composite_score": 4.4686,
+    "median_alpha_20d": -0.7991,
+    "signal_count": 33,
+    "status": "ranked"
+  },
+  {
+    "cik": "1273087",
+    "fund_name": "Millennium Management",
+    "current_tier": "B",
+    "suggested_tier": "S",
+    "tier_change": true,
+    "composite_score": 3.7477,
+    "median_alpha_20d": -1.9247,
+    "signal_count": 196,
+    "status": "ranked"
+  },
+  {
+    "cik": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "current_tier": "C",
+    "suggested_tier": "S",
+    "tier_change": true,
+    "composite_score": 2.26,
+    "median_alpha_20d": -1.7245,
+    "signal_count": 24,
+    "status": "ranked"
+  },
+  {
+    "cik": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "current_tier": "S",
+    "suggested_tier": "A",
+    "tier_change": true,
+    "composite_score": 1.3066,
+    "median_alpha_20d": -1.5589,
+    "signal_count": 20,
+    "status": "ranked"
+  },
+  {
+    "cik": "1138995",
+    "fund_name": "ValueAct Capital",
+    "current_tier": "A",
+    "suggested_tier": "A",
+    "tier_change": false,
+    "composite_score": 0.8749,
+    "median_alpha_20d": -2.9005,
+    "signal_count": 15,
+    "status": "ranked"
+  },
+  {
+    "cik": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "current_tier": "S",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "current_tier": "S",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "current_tier": "A",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1040273",
+    "fund_name": "Third Point LLC",
+    "current_tier": "A",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1029160",
+    "fund_name": "Soros Fund Management",
+    "current_tier": "A",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "current_tier": "A",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1167483",
+    "fund_name": "Tiger Global Management",
+    "current_tier": "B",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1135730",
+    "fund_name": "Coatue Management",
+    "current_tier": "B",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1541617",
+    "fund_name": "Altimeter Capital",
+    "current_tier": "B",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "current_tier": "A",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  },
+  {
+    "cik": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "current_tier": "S",
+    "suggested_tier": "C",
+    "tier_change": true,
+    "composite_score": null,
+    "median_alpha_20d": null,
+    "signal_count": 0,
+    "status": "not_ranked"
+  }
+]

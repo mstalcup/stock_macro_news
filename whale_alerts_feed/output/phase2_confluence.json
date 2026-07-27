@@ -1,0 +1,1424 @@
+[
+  {
+    "ticker": "QSR",
+    "anchor_date": "2024-07-09",
+    "layers": [
+      "13d_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-07-09#QSR",
+      "13d_increase#0001193125-24-181174#QSR"
+    ],
+    "filer_ciks": [
+      "1336528"
+    ]
+  },
+  {
+    "ticker": "HHH",
+    "anchor_date": "2024-07-18",
+    "layers": [
+      "13d_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 3,
+    "signals": [
+      "13d_increase#0001193125-24-181173#HHH",
+      "13d_increase#0000930413-24-002192#HHH",
+      "volume_spike#2024-07-31#HHH"
+    ],
+    "filer_ciks": [
+      "1336528"
+    ]
+  },
+  {
+    "ticker": "HHH",
+    "anchor_date": "2025-04-30",
+    "layers": [
+      "13d_increase",
+      "8k_stake",
+      "volume_spike"
+    ],
+    "layer_count": 3,
+    "signal_count": 4,
+    "signals": [
+      "13d_increase#0001140361-25-016521#HHH",
+      "volume_spike#2025-05-03#HHH",
+      "8k_stake#0001104659-25-044710#HHH#1336528",
+      "13d_increase#0001140361-25-017784#HHH"
+    ],
+    "filer_ciks": [
+      "1336528"
+    ]
+  },
+  {
+    "ticker": "BFLY",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#BFLY",
+      "13g_increase#0001086364-24-008231#BFLY"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "BFLY",
+    "anchor_date": "2024-08-31",
+    "layers": [
+      "13d_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-08-31#BFLY",
+      "13d_increase#0001140361-24-039984#BFLY"
+    ],
+    "filer_ciks": [
+      "1138995"
+    ]
+  },
+  {
+    "ticker": "ALIT",
+    "anchor_date": "2024-10-18",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_new#0000905148-24-002751#ALIT",
+      "13g_increase#0000905148-24-002750#ALIT"
+    ],
+    "filer_ciks": [
+      "1138995"
+    ]
+  },
+  {
+    "ticker": "KDKRW",
+    "anchor_date": "2025-09-30",
+    "layers": [
+      "13g_new",
+      "8k_stake"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "8k_stake#0001193125-25-225299#KDKRW#1029160",
+      "13g_new#0000902664-25-004257#KDKRW"
+    ],
+    "filer_ciks": [
+      "1029160"
+    ]
+  },
+  {
+    "ticker": "HUT",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#HUT",
+      "13g_new#0000919574-24-003932#HUT"
+    ],
+    "filer_ciks": [
+      "1135730"
+    ]
+  },
+  {
+    "ticker": "POOL",
+    "anchor_date": "2026-02-17",
+    "layers": [
+      "13d_new",
+      "13g_increase",
+      "news_stake"
+    ],
+    "layer_count": 3,
+    "signal_count": 4,
+    "signals": [
+      "13g_increase#0001193125-26-054609#POOL",
+      "13g_increase#0001493152-26-007130#POOL",
+      "news_stake#2026-02-27#POOL#139249915",
+      "13d_new#0001493152-26-008749#POOL"
+    ],
+    "filer_ciks": [
+      "1067983",
+      "1656456"
+    ]
+  },
+  {
+    "ticker": "DVA",
+    "anchor_date": "2024-08-06",
+    "layers": [
+      "13d_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-08-06#DVA",
+      "13d_increase#0001193125-24-197170#DVA"
+    ],
+    "filer_ciks": [
+      "1067983"
+    ]
+  },
+  {
+    "ticker": "SITC",
+    "anchor_date": "2024-08-31",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-08-31#SITC",
+      "13g_increase#0001086364-24-008653#SITC"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "ON",
+    "anchor_date": "2024-08-31",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-08-31#ON",
+      "13g_increase#0001086364-24-008641#ON"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "BZH",
+    "anchor_date": "2024-08-02",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-08-02#BZH",
+      "13g_increase#0001086364-24-008409#BZH"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "WING",
+    "anchor_date": "2024-07-31",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-07-31#WING",
+      "13g_increase#0001086364-24-008383#WING"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "AVTR",
+    "anchor_date": "2024-07-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-07-28#AVTR",
+      "13g_increase#0001086364-24-008365#AVTR"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "LPSN",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#LPSN",
+      "13g_increase#0001086364-24-008263#LPSN"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "CVNA",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#CVNA",
+      "13g_increase#0001086364-24-008256#CVNA"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "EXC",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#EXC",
+      "13g_increase#0001086364-24-008243#EXC"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "VUZI",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#VUZI",
+      "13g_increase#0001086364-24-008240#VUZI"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "MTRX",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#MTRX",
+      "13g_new#0001086364-24-008239#MTRX"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "NDLS",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#NDLS",
+      "13g_increase#0001086364-24-008238#NDLS"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "ASRT",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#ASRT",
+      "13g_increase#0001086364-24-008236#ASRT"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "CFFI",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#CFFI",
+      "13g_increase#0001086364-24-008233#CFFI"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "EXFY",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#EXFY",
+      "13g_increase#0001086364-24-008179#EXFY"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "MASS",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#MASS",
+      "13g_increase#0001086364-24-008230#MASS"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "STOK",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#STOK",
+      "13g_new#0001086364-24-008222#STOK"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "CLPT",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#CLPT",
+      "13g_increase#0001086364-24-008211#CLPT"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "AMKR",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#AMKR",
+      "13g_increase#0001086364-24-008202#AMKR"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "VSAT",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#VSAT",
+      "13g_increase#0001086364-24-008201#VSAT"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "EHTH",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#EHTH",
+      "13g_increase#0001086364-24-008181#EHTH"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "SVRA",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#SVRA",
+      "13g_increase#0001086364-24-008194#SVRA"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "DOUG",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#DOUG",
+      "13g_increase#0001086364-24-008192#DOUG"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "TDGMW",
+    "anchor_date": "2024-06-25",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_new#0001273087-24-000079#TDGMW",
+      "13g_increase#0001086364-24-008176#TDGMW"
+    ],
+    "filer_ciks": [
+      "1273087",
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "CSTL",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#CSTL",
+      "13g_increase#0001086364-24-008168#CSTL"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "PETS",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#PETS",
+      "13g_increase#0001086364-24-008167#PETS"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "GNE",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#GNE",
+      "13g_increase#0001086364-24-008164#GNE"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "TTEC",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#TTEC",
+      "13g_increase#0001086364-24-008161#TTEC"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "BCAB",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#BCAB",
+      "13g_increase#0001086364-24-008160#BCAB"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "BCAB",
+    "anchor_date": "2024-07-31",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-07-31#BCAB",
+      "13g_new#0001273087-24-000082#BCAB"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "MED",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#MED",
+      "13g_increase#0001086364-24-008158#MED"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "TBRG",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#TBRG",
+      "13g_increase#0001086364-24-008154#TBRG"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "ELF",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#ELF",
+      "13g_increase#0001086364-24-008153#ELF"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "AMWL",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#AMWL",
+      "13g_increase#0001086364-24-008152#AMWL"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "ATOM",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#ATOM",
+      "13g_increase#0001086364-24-008143#ATOM"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "CATO",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#CATO",
+      "13g_increase#0001086364-24-008139#CATO"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "OM",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#OM",
+      "13g_increase#0001086364-24-008137#OM"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "OM",
+    "anchor_date": "2024-08-13",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-08-13#OM",
+      "13g_new#0001273087-24-000088#OM"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "BIRD",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#BIRD",
+      "13g_increase#0001086364-24-008136#BIRD"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "TSEOF",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#TSEOF",
+      "13g_increase#0001086364-24-008135#TSEOF"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "INTT",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#INTT",
+      "13g_increase#0001086364-24-008134#INTT"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "APG",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#APG",
+      "13g_increase#0001086364-24-008133#APG"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "SEER",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#SEER",
+      "13g_increase#0001086364-24-008129#SEER"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "NVCR",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#NVCR",
+      "13g_increase#0001086364-24-008123#NVCR"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "QRVO",
+    "anchor_date": "2025-01-09",
+    "layers": [
+      "13d_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2025-01-09#QRVO",
+      "13d_new#0000921895-25-000115#QRVO"
+    ],
+    "filer_ciks": [
+      "1517137"
+    ]
+  },
+  {
+    "ticker": "QRVO",
+    "anchor_date": "2025-10-28",
+    "layers": [
+      "13d_increase",
+      "8k_stake",
+      "news_stake",
+      "volume_spike"
+    ],
+    "layer_count": 4,
+    "signal_count": 4,
+    "signals": [
+      "8k_stake#0000950103-25-013687#QRVO#1517137",
+      "volume_spike#2025-10-28#QRVO",
+      "news_stake#2025-10-28#QRVO#137244559",
+      "13d_increase#0000921895-25-002829#QRVO"
+    ],
+    "filer_ciks": [
+      "1517137"
+    ]
+  },
+  {
+    "ticker": "NRIX",
+    "anchor_date": "2024-05-31",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-05-31#NRIX",
+      "13g_increase#0001086364-24-007816#NRIX"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "LKQ",
+    "anchor_date": "2024-05-31",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-05-31#LKQ",
+      "13g_increase#0001086364-24-007794#LKQ"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "BILL",
+    "anchor_date": "2024-05-31",
+    "layers": [
+      "13g_increase",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-05-31#BILL",
+      "13g_increase#0001086364-24-007772#BILL"
+    ],
+    "filer_ciks": [
+      "1364742"
+    ]
+  },
+  {
+    "ticker": "BILL",
+    "anchor_date": "2025-08-27",
+    "layers": [
+      "13d_increase",
+      "13d_new",
+      "news_stake",
+      "volume_spike"
+    ],
+    "layer_count": 4,
+    "signal_count": 4,
+    "signals": [
+      "volume_spike#2025-08-27#BILL",
+      "13d_new#0000921895-25-002532#BILL",
+      "news_stake#2025-09-04#BILL#136643343",
+      "13d_increase#0000921895-25-002554#BILL"
+    ],
+    "filer_ciks": [
+      "1517137"
+    ]
+  },
+  {
+    "ticker": "TENX",
+    "anchor_date": "2026-05-15",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_increase#0000919574-26-003499#TENX",
+      "13g_new#0001104659-26-064597#TENX"
+    ],
+    "filer_ciks": [
+      "1273087",
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "KALV",
+    "anchor_date": "2025-12-30",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 3,
+    "signals": [
+      "13g_increase#0001104659-25-125246#KALV",
+      "13g_new#0000902664-26-000176#KALV",
+      "13g_increase#0000902664-26-000191#KALV"
+    ],
+    "filer_ciks": [
+      "1273087",
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "ALXO",
+    "anchor_date": "2024-08-03",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-08-03#ALXO",
+      "13g_new#0001273087-24-000083#ALXO"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "ALXO",
+    "anchor_date": "2025-10-08",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_new#0001104659-25-097929#ALXO",
+      "13g_increase#0001104659-25-101541#ALXO"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "STEP",
+    "anchor_date": "2024-06-10",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-10#STEP",
+      "13g_new#0001273087-24-000078#STEP"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "STEP",
+    "anchor_date": "2025-05-21",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_new#0001104659-25-051609#STEP",
+      "13g_increase#0001104659-25-054253#STEP"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "HELP",
+    "anchor_date": "2026-04-10",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_new#0001104659-26-042082#HELP",
+      "13g_increase#0001104659-26-046924#HELP"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "STRO",
+    "anchor_date": "2026-04-21",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_increase#0001104659-26-046182#STRO",
+      "13g_new#0000919574-26-002548#STRO"
+    ],
+    "filer_ciks": [
+      "1273087",
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "SPRY",
+    "anchor_date": "2026-03-24",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_new#0001104659-26-033875#SPRY",
+      "13g_increase#0001104659-26-037977#SPRY"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "PHAT",
+    "anchor_date": "2025-08-13",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_new#0001104659-25-077523#PHAT",
+      "13g_increase#0001104659-25-082527#PHAT"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "AVTX",
+    "anchor_date": "2026-02-03",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 4,
+    "signals": [
+      "13g_new#0001104659-26-009818#AVTX",
+      "13g_new#0001104659-26-012613#AVTX",
+      "13g_new#0001104659-26-016415#AVTX",
+      "13g_increase#0000902664-26-001147#AVTX"
+    ],
+    "filer_ciks": [
+      "1273087",
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "IVZ",
+    "anchor_date": "2025-10-21",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_new#0001104659-25-101225#IVZ",
+      "13g_increase#0001104659-25-104951#IVZ"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "DCH",
+    "anchor_date": "2026-01-28",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_new#0001104659-26-007440#DCH",
+      "13g_increase#0001104659-26-011590#DCH"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "ESPR",
+    "anchor_date": "2024-06-07",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-07#ESPR",
+      "13g_new#0001273087-24-000077#ESPR"
+    ],
+    "filer_ciks": [
+      "1273087"
+    ]
+  },
+  {
+    "ticker": "SNDX",
+    "anchor_date": "2025-08-14",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_increase#0000902664-25-003706#SNDX",
+      "13g_new#0000902664-25-003741#SNDX"
+    ],
+    "filer_ciks": [
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "TDOC",
+    "anchor_date": "2024-08-31",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-08-31#TDOC",
+      "13g_new#0000902664-24-005434#TDOC"
+    ],
+    "filer_ciks": [
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "TDOC",
+    "anchor_date": "2025-05-15",
+    "layers": [
+      "13g_increase",
+      "13g_new"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "13g_increase#0000902664-25-002380#TDOC",
+      "13g_new#0000902664-25-002478#TDOC"
+    ],
+    "filer_ciks": [
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "LITE",
+    "anchor_date": "2024-06-28",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-28#LITE",
+      "13g_new#0000902664-24-004578#LITE"
+    ],
+    "filer_ciks": [
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "OLMA",
+    "anchor_date": "2024-06-04",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-04#OLMA",
+      "13g_new#0000902664-24-004309#OLMA"
+    ],
+    "filer_ciks": [
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "URGN",
+    "anchor_date": "2024-06-14",
+    "layers": [
+      "13g_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-06-14#URGN",
+      "13g_new#0000902664-24-004451#URGN"
+    ],
+    "filer_ciks": [
+      "1603466"
+    ]
+  },
+  {
+    "ticker": "TRIP",
+    "anchor_date": "2025-06-25",
+    "layers": [
+      "13d_new",
+      "news_stake",
+      "volume_spike"
+    ],
+    "layer_count": 3,
+    "signal_count": 3,
+    "signals": [
+      "volume_spike#2025-06-25#TRIP",
+      "13d_new#0001193805-25-000968#TRIP",
+      "news_stake#2025-07-03#TRIP#135750392"
+    ],
+    "filer_ciks": [
+      "1517137"
+    ]
+  },
+  {
+    "ticker": "ROG",
+    "anchor_date": "2025-07-27",
+    "layers": [
+      "13d_new",
+      "news_stake",
+      "volume_spike"
+    ],
+    "layer_count": 3,
+    "signal_count": 3,
+    "signals": [
+      "volume_spike#2025-07-27#ROG",
+      "13d_new#0000921895-25-002118#ROG",
+      "news_stake#2025-08-06#ROG#136246799"
+    ],
+    "filer_ciks": [
+      "1517137"
+    ]
+  },
+  {
+    "ticker": "HR",
+    "anchor_date": "2024-11-22",
+    "layers": [
+      "13d_new",
+      "volume_spike"
+    ],
+    "layer_count": 2,
+    "signal_count": 2,
+    "signals": [
+      "volume_spike#2024-11-22#HR",
+      "13d_new#0001193805-24-001416#HR"
+    ],
+    "filer_ciks": [
+      "1517137"
+    ]
+  }
+]

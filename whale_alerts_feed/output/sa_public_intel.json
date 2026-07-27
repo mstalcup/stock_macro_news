@@ -1,0 +1,2603 @@
+{
+  "fund_cik": "2045724",
+  "verdict": "**No clean public 'short chips' signal before the May 18, 2026 13F.** The June 2024 essay/interviews support a **long physical-infra / power** barbell thesis, but the prior 13F (Feb 2026) still showed **large Intel calls** \u2014 bullish chips. The ~$8.5B semiconductor put stack appeared suddenly in Q1 2026 and was only knowable from 13F (or leaks) with ~45-day lag. Best forward monitor: **13F put diff** on CIK 2045724, not 13D/G.",
+  "public_sources": [
+    {
+      "date": "2024-06-04",
+      "type": "essay",
+      "title": "Situational Awareness: The Decade Ahead",
+      "url": "https://situational-awareness.ai/",
+      "signal_strength": "inferential",
+      "summary": "165-page manifesto. Core investable thesis: AGI by ~2027, but the binding industrial constraint is **power/electricity and datacenter mobilization**, not chip design alone. Mentions CoWoS/HBM as near-term bottlenecks but argues chips scale faster than power. Does **not** say 'short NVDA' \u2014 supports long physical infra over pure silicon hype."
+    },
+    {
+      "date": "2024-06-04",
+      "type": "interview",
+      "title": "Dwarkesh Podcast \u2014 2027 AGI, launching AGI hedge fund",
+      "url": "https://www.youtube.com/watch?v=zdbVtZIn9IM",
+      "signal_strength": "inferential",
+      "summary": "4.5h interview tied to essay launch. Discusses trillion-dollar cluster, intelligence explosion, and starting an investment firm. Focus on compute buildout and geopolitics \u2014 no disclosed short-semiconductor book."
+    },
+    {
+      "date": "2025-10-08",
+      "type": "news",
+      "title": "Fortune \u2014 fund at $1.5B+, thesis from manifesto",
+      "url": "https://fortune.com/2025/10/08/leopold-aschenbrenner-openai-ftx-1-5-billion-hedge-fund-situational-awareness/",
+      "signal_strength": "context",
+      "summary": "Profiles fund growth and Silicon Valley backing. Physical AI infra narrative; no chip-short disclosure."
+    },
+    {
+      "date": "2026-02-11",
+      "type": "13F",
+      "title": "Q4 2025 13F-HR (filed Feb 2026)",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2045724",
+      "signal_strength": "contradicts_chip_short",
+      "summary": "Public filing still **bullish chips via calls**: Intel calls ~$747M, CoreWeave calls ~$774M. Put notional tiny (~$10M). Would NOT have predicted Q1 chip short."
+    },
+    {
+      "date": "2026-05-18",
+      "type": "13F",
+      "title": "Q1 2026 13F-HR \u2014 first chip put stack",
+      "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=2045724",
+      "signal_strength": "hard",
+      "summary": "First public evidence of ~$8.46B put notional: SMH, NVDA, ORCL, AVGO, AMD, MU, TSM, ASML, INTC puts. Intel calls from prior quarter gone. **45-day lag** after quarter-end (Mar 31)."
+    },
+    {
+      "date": "2026-05-19",
+      "type": "news",
+      "title": "Press coverage of Q1 13F (Yahoo, Dave Manuel, etc.)",
+      "url": "https://finance.yahoo.com/markets/options/articles/leopold-aschenbrenners-situational-awareness-files-174339413.html",
+      "signal_strength": "post-filing",
+      "summary": "Media explains barbell: long power/miners/hosting, puts on 'priced for perfection' semis. All after 13F public."
+    }
+  ],
+  "f13_intel": {
+    "timeline": [
+      {
+        "filing_date": "2026-05-18",
+        "put_notional_usd": 8459056999.0,
+        "chip_put_notional_usd": 5315690947.0,
+        "chip_call_notional_usd": 777147500.0,
+        "top_chip_puts": [
+          {
+            "ticker": "",
+            "issuer_name": "ASML HLDG NV N Y REGISTRY",
+            "title_of_class": "SHS",
+            "value_usd": 494122503.0,
+            "shares": "374100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "N07059210"
+          },
+          {
+            "ticker": "AMD",
+            "issuer_name": "ADVANCED MICRO DEVICES INC",
+            "title_of_class": "COM",
+            "value_usd": 969160863.0,
+            "shares": "4764100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "007903107"
+          },
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 1006247961.0,
+            "shares": "3251100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 159106302.0,
+            "shares": "3605400",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "458140100"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 583686168.0,
+            "shares": "1727700",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "595112103"
+          },
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 1568257120.0,
+            "shares": "8992300",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "TSMWF",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MANUFAC",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 535110030.0,
+            "shares": "1583400",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "874039100"
+          }
+        ],
+        "top_chip_calls": [
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 422300000.0,
+            "shares": "1250000",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "595112103"
+          },
+          {
+            "ticker": "TSMWF",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MANUFAC",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 354847500.0,
+            "shares": "1050000",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "874039100"
+          }
+        ]
+      },
+      {
+        "filing_date": "2026-02-11",
+        "put_notional_usd": 8910000.0,
+        "chip_put_notional_usd": 0,
+        "chip_call_notional_usd": 746760060.0,
+        "top_chip_puts": [],
+        "top_chip_calls": [
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 746760060.0,
+            "shares": "20237400",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "458140100"
+          }
+        ]
+      },
+      {
+        "filing_date": "2025-11-14",
+        "put_notional_usd": 887417600.0,
+        "chip_put_notional_usd": 500011600.0,
+        "chip_call_notional_usd": 678964770.0,
+        "top_chip_puts": [
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 75879300.0,
+            "shares": "230000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 50196000.0,
+            "shares": "300000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "595112103"
+          },
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 298528000.0,
+            "shares": "1600000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MFG LTD",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 75408300.0,
+            "shares": "270000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "874039100"
+          }
+        ],
+        "top_chip_calls": [
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 678964770.0,
+            "shares": "20237400",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "458140100"
+          }
+        ]
+      },
+      {
+        "filing_date": "2025-08-14",
+        "put_notional_usd": 570058608.0,
+        "chip_put_notional_usd": 0,
+        "chip_call_notional_usd": 453317760.0,
+        "top_chip_puts": [],
+        "top_chip_calls": [
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 453317760.0,
+            "shares": "20237400",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "458140100"
+          }
+        ]
+      }
+    ],
+    "latest_diff": {
+      "from_filing": "2026-02-11",
+      "to_filing": "2026-05-18",
+      "put_notional_change_usd": 8450146999.0,
+      "new_puts": [
+        {
+          "ticker": "",
+          "issuer_name": "VANECK ETF TRUST",
+          "title_of_class": "SEMICONDUCTR ETF",
+          "value_usd": 2042716860.0,
+          "shares": "5327900",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "92189F676"
+        },
+        {
+          "ticker": "NVDA",
+          "issuer_name": "NVIDIA CORPORATION",
+          "title_of_class": "COM",
+          "value_usd": 1568257120.0,
+          "shares": "8992300",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "67066G104"
+        },
+        {
+          "ticker": "ORCL-PD",
+          "issuer_name": "ORACLE CORP",
+          "title_of_class": "COM",
+          "value_usd": 1072873230.0,
+          "shares": "7293000",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "68389X105"
+        },
+        {
+          "ticker": "AVGO",
+          "issuer_name": "BROADCOM INC",
+          "title_of_class": "COM",
+          "value_usd": 1006247961.0,
+          "shares": "3251100",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "11135F101"
+        },
+        {
+          "ticker": "AMD",
+          "issuer_name": "ADVANCED MICRO DEVICES INC",
+          "title_of_class": "COM",
+          "value_usd": 969160863.0,
+          "shares": "4764100",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "007903107"
+        },
+        {
+          "ticker": "MU",
+          "issuer_name": "MICRON TECHNOLOGY INC",
+          "title_of_class": "COM",
+          "value_usd": 583686168.0,
+          "shares": "1727700",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "595112103"
+        },
+        {
+          "ticker": "TSMWF",
+          "issuer_name": "TAIWAN SEMICONDUCTOR MANUFAC",
+          "title_of_class": "SPONSORED ADS",
+          "value_usd": 535110030.0,
+          "shares": "1583400",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "874039100"
+        },
+        {
+          "ticker": "",
+          "issuer_name": "ASML HLDG NV N Y REGISTRY",
+          "title_of_class": "SHS",
+          "value_usd": 494122503.0,
+          "shares": "374100",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "N07059210"
+        },
+        {
+          "ticker": "INTC",
+          "issuer_name": "INTEL CORP",
+          "title_of_class": "COM",
+          "value_usd": 159106302.0,
+          "shares": "3605400",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "458140100"
+        },
+        {
+          "ticker": "GLW",
+          "issuer_name": "CORNING INC",
+          "title_of_class": "COM",
+          "value_usd": 21020962.0,
+          "shares": "154600",
+          "shares_type": "SH",
+          "side": "put",
+          "cusip": "219350105"
+        }
+      ],
+      "exited_puts": [],
+      "increased_puts": []
+    }
+  },
+  "f13_study": {
+    "fund_name": "Situational Awareness LP",
+    "filer_cik": "2045724",
+    "quarters": [
+      {
+        "filing_date": "2026-05-18",
+        "accession": "0002045724-26-000008",
+        "holdings_count": 42,
+        "long_count": 26,
+        "put_count": 11,
+        "call_count": 5,
+        "total_value_usd": 102689382750.0,
+        "put_notional_usd": 8459056999.0,
+        "put_pct_of_book": 8.24,
+        "top_puts": [
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 2042716860.0,
+            "shares": "5327900",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F676"
+          },
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 1568257120.0,
+            "shares": "8992300",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "ORCL-PD",
+            "issuer_name": "ORACLE CORP",
+            "title_of_class": "COM",
+            "value_usd": 1072873230.0,
+            "shares": "7293000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "68389X105"
+          },
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 1006247961.0,
+            "shares": "3251100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "AMD",
+            "issuer_name": "ADVANCED MICRO DEVICES INC",
+            "title_of_class": "COM",
+            "value_usd": 969160863.0,
+            "shares": "4764100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "007903107"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 583686168.0,
+            "shares": "1727700",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "595112103"
+          },
+          {
+            "ticker": "TSMWF",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MANUFAC",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 535110030.0,
+            "shares": "1583400",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "874039100"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "ASML HLDG NV N Y REGISTRY",
+            "title_of_class": "SHS",
+            "value_usd": 494122503.0,
+            "shares": "374100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "N07059210"
+          },
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 159106302.0,
+            "shares": "3605400",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "458140100"
+          },
+          {
+            "ticker": "GLW",
+            "issuer_name": "CORNING INC",
+            "title_of_class": "COM",
+            "value_usd": 21020962.0,
+            "shares": "154600",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "219350105"
+          },
+          {
+            "ticker": "INFY",
+            "issuer_name": "INFOSYS LTD",
+            "title_of_class": "SPONSORED ADR",
+            "value_usd": 6755000.0,
+            "shares": "500000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "456788108"
+          }
+        ],
+        "top_longs": [
+          {
+            "ticker": "TE-WT",
+            "issuer_name": "T1 ENERGY INC",
+            "title_of_class": "COM NEW",
+            "value_usd": 43900000000.0,
+            "shares": "10000000",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "35834F104"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "BITFARMS LTD",
+            "title_of_class": "COM",
+            "value_usd": 38757888000.0,
+            "shares": "19875840",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "09173B107"
+          },
+          {
+            "ticker": "HIVE",
+            "issuer_name": "HIVE DIGITAL TECHNOLOGIES LT",
+            "title_of_class": "COM NEW",
+            "value_usd": 6443939000.0,
+            "shares": "3391547",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "433921103"
+          },
+          {
+            "ticker": "BE",
+            "issuer_name": "BLOOM ENERGY CORP",
+            "title_of_class": "COM CL A",
+            "value_usd": 878707930.0,
+            "shares": "6485408",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "093712107"
+          },
+          {
+            "ticker": "SNDK",
+            "issuer_name": "SANDISK CORP",
+            "title_of_class": "COM",
+            "value_usd": 724363205.0,
+            "shares": "1140119",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "80004C200"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 556073385.0,
+            "shares": "7177919",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "IREN LIMITED",
+            "title_of_class": "ORDINARY SHARES",
+            "value_usd": 401036064.0,
+            "shares": "11698835",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "Q4982L109"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CORE SCIENTIFIC INC NEW",
+            "title_of_class": "COM",
+            "value_usd": 389086756.0,
+            "shares": "26008473",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21874A106"
+          },
+          {
+            "ticker": "APLD",
+            "issuer_name": "APPLIED DIGITAL CORP",
+            "title_of_class": "COM NEW",
+            "value_usd": 319978118.0,
+            "shares": "13478438",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "038169207"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "RIOT PLATFORMS INC",
+            "title_of_class": "COM",
+            "value_usd": 142166413.0,
+            "shares": "11502137",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "767292105"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CLEANSPARK INC",
+            "title_of_class": "COM NEW",
+            "value_usd": 104469943.0,
+            "shares": "12276139",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "18452B209"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "SOLARIS ENERGY INFRAS INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 62474687.0,
+            "shares": "1105551",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "83418M103"
+          },
+          {
+            "ticker": "BTDR",
+            "issuer_name": "BITDEER TECHNOLOGIES GROUP",
+            "title_of_class": "CL A ORD SHS",
+            "value_usd": 29751243.0,
+            "shares": "3439450",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "G11448100"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "POWER SOLUTIONS INTL INC",
+            "title_of_class": "COM NEW",
+            "value_usd": 26318424.0,
+            "shares": "432300",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "73933G202"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "WHITEFIBER INC",
+            "title_of_class": "SHS",
+            "value_usd": 20933016.0,
+            "shares": "1757600",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "G96115103"
+          }
+        ],
+        "all_holdings": [
+          {
+            "ticker": "",
+            "issuer_name": "ASML HLDG NV N Y REGISTRY",
+            "title_of_class": "SHS",
+            "value_usd": 494122503.0,
+            "shares": "374100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "N07059210"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "ASML HLDG NV N Y REGISTRY",
+            "title_of_class": "SHS",
+            "value_usd": 6119405.0,
+            "shares": "4633",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "N07059210"
+          },
+          {
+            "ticker": "AMD",
+            "issuer_name": "ADVANCED MICRO DEVICES INC",
+            "title_of_class": "COM",
+            "value_usd": 969160863.0,
+            "shares": "4764100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "007903107"
+          },
+          {
+            "ticker": "AMD",
+            "issuer_name": "ADVANCED MICRO DEVICES INC",
+            "title_of_class": "COM",
+            "value_usd": 20167643.0,
+            "shares": "99138",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "007903107"
+          },
+          {
+            "ticker": "APLD",
+            "issuer_name": "APPLIED DIGITAL CORP",
+            "title_of_class": "COM NEW",
+            "value_usd": 319978118.0,
+            "shares": "13478438",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "038169207"
+          },
+          {
+            "ticker": "BW-PA",
+            "issuer_name": "BABCOCK & WILCOX ENTERPRISES",
+            "title_of_class": "COM",
+            "value_usd": 19888791.0,
+            "shares": "1353900",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "05614L209"
+          },
+          {
+            "ticker": "BTDR",
+            "issuer_name": "BITDEER TECHNOLOGIES GROUP",
+            "title_of_class": "CL A ORD SHS",
+            "value_usd": 29751243.0,
+            "shares": "3439450",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "G11448100"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "BITFARMS LTD",
+            "title_of_class": "COM",
+            "value_usd": 38757888000.0,
+            "shares": "19875840",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "09173B107"
+          },
+          {
+            "ticker": "BE",
+            "issuer_name": "BLOOM ENERGY CORP",
+            "title_of_class": "COM CL A",
+            "value_usd": 55347665.0,
+            "shares": "408500",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "093712107"
+          },
+          {
+            "ticker": "BE",
+            "issuer_name": "BLOOM ENERGY CORP",
+            "title_of_class": "COM CL A",
+            "value_usd": 878707930.0,
+            "shares": "6485408",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "093712107"
+          },
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 1006247961.0,
+            "shares": "3251100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CLEANSPARK INC",
+            "title_of_class": "COM NEW",
+            "value_usd": 104469943.0,
+            "shares": "12276139",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "18452B209"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CORE SCIENTIFIC INC NEW",
+            "title_of_class": "COM",
+            "value_usd": 389086756.0,
+            "shares": "26008473",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21874A106"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 140569315.0,
+            "shares": "1814500",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 556073385.0,
+            "shares": "7177919",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "GLW",
+            "issuer_name": "CORNING INC",
+            "title_of_class": "COM",
+            "value_usd": 718330.0,
+            "shares": "5283",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "219350105"
+          },
+          {
+            "ticker": "GLW",
+            "issuer_name": "CORNING INC",
+            "title_of_class": "COM",
+            "value_usd": 21020962.0,
+            "shares": "154600",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "219350105"
+          },
+          {
+            "ticker": "HIVE",
+            "issuer_name": "HIVE DIGITAL TECHNOLOGIES LT",
+            "title_of_class": "COM NEW",
+            "value_usd": 6443939000.0,
+            "shares": "3391547",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "433921103"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "IREN LIMITED",
+            "title_of_class": "ORDINARY SHARES",
+            "value_usd": 401036064.0,
+            "shares": "11698835",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "Q4982L109"
+          },
+          {
+            "ticker": "INFY",
+            "issuer_name": "INFOSYS LTD",
+            "title_of_class": "SPONSORED ADR",
+            "value_usd": 6755000.0,
+            "shares": "500000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "456788108"
+          },
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 8929441.0,
+            "shares": "202344",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "458140100"
+          },
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 159106302.0,
+            "shares": "3605400",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "458140100"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 5865578.0,
+            "shares": "17362",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "595112103"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 422300000.0,
+            "shares": "1250000",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "595112103"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 583686168.0,
+            "shares": "1727700",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "595112103"
+          },
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 497912.0,
+            "shares": "2855",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 1568257120.0,
+            "shares": "8992300",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "ORCL-PD",
+            "issuer_name": "ORACLE CORP",
+            "title_of_class": "COM",
+            "value_usd": 1072873230.0,
+            "shares": "7293000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "68389X105"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "POWER SOLUTIONS INTL INC",
+            "title_of_class": "COM NEW",
+            "value_usd": 26318424.0,
+            "shares": "432300",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "73933G202"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "PROPETRO HLDG CORP",
+            "title_of_class": "COM",
+            "value_usd": 13117423.0,
+            "shares": "910300",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "74347M108"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "RIOT PLATFORMS INC",
+            "title_of_class": "COM",
+            "value_usd": 142166413.0,
+            "shares": "11502137",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "767292105"
+          },
+          {
+            "ticker": "SNDK",
+            "issuer_name": "SANDISK CORP",
+            "title_of_class": "COM",
+            "value_usd": 388764546.0,
+            "shares": "611900",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "80004C200"
+          },
+          {
+            "ticker": "SNDK",
+            "issuer_name": "SANDISK CORP",
+            "title_of_class": "COM",
+            "value_usd": 724363205.0,
+            "shares": "1140119",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "80004C200"
+          },
+          {
+            "ticker": "SHAZW",
+            "issuer_name": "SHARONAI HOLDINGS INC",
+            "title_of_class": "COM CL A  ADDED",
+            "value_usd": 18095535.0,
+            "shares": "796108",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "778920306"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "SOLARIS ENERGY INFRAS INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 62474687.0,
+            "shares": "1105551",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "83418M103"
+          },
+          {
+            "ticker": "TE-WT",
+            "issuer_name": "T1 ENERGY INC",
+            "title_of_class": "COM NEW",
+            "value_usd": 43900000000.0,
+            "shares": "10000000",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "35834F104"
+          },
+          {
+            "ticker": "TSMWF",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MANUFAC",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 7577853.0,
+            "shares": "22423",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "874039100"
+          },
+          {
+            "ticker": "TSMWF",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MANUFAC",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 354847500.0,
+            "shares": "1050000",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "874039100"
+          },
+          {
+            "ticker": "TSMWF",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MANUFAC",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 535110030.0,
+            "shares": "1583400",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "874039100"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 2042716860.0,
+            "shares": "5327900",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F676"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 10332630.0,
+            "shares": "26950",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "92189F676"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "WHITEFIBER INC",
+            "title_of_class": "SHS",
+            "value_usd": 20933016.0,
+            "shares": "1757600",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "G96115103"
+          }
+        ]
+      },
+      {
+        "filing_date": "2026-02-11",
+        "accession": "0002045724-26-000002",
+        "holdings_count": 29,
+        "long_count": 24,
+        "put_count": 1,
+        "call_count": 4,
+        "total_value_usd": 21708735160.0,
+        "put_notional_usd": 8910000.0,
+        "put_pct_of_book": 0.04,
+        "top_puts": [
+          {
+            "ticker": "INFY",
+            "issuer_name": "INFOSYS LTD",
+            "title_of_class": "SPONSORED ADR",
+            "value_usd": 8910000.0,
+            "shares": "500000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "456788108"
+          }
+        ],
+        "top_longs": [
+          {
+            "ticker": "",
+            "issuer_name": "BITFARMS LTD",
+            "title_of_class": "COM",
+            "value_usd": 16208185000.0,
+            "shares": "6897100",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "09173B107"
+          },
+          {
+            "ticker": "BE",
+            "issuer_name": "BLOOM ENERGY CORP",
+            "title_of_class": "COM CL A",
+            "value_usd": 875505552.0,
+            "shares": "10076022",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "093712107"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "LUMENTUM HLDGS INC",
+            "title_of_class": "COM",
+            "value_usd": 478577256.0,
+            "shares": "1298400",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "55024U109"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 436735927.0,
+            "shares": "6098812",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CORE SCIENTIFIC INC NEW",
+            "title_of_class": "COM",
+            "value_usd": 418694320.0,
+            "shares": "28756478",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21874A106"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "IREN LIMITED",
+            "title_of_class": "ORDINARY SHARES",
+            "value_usd": 328622455.0,
+            "shares": "8700621",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "Q4982L109"
+          },
+          {
+            "ticker": "APLD",
+            "issuer_name": "APPLIED DIGITAL CORP",
+            "title_of_class": "COM NEW",
+            "value_usd": 278033751.0,
+            "shares": "11339060",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "038169207"
+          },
+          {
+            "ticker": "SNDK",
+            "issuer_name": "SANDISK CORP",
+            "title_of_class": "COM",
+            "value_usd": 250245996.0,
+            "shares": "1054200",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "80004C200"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CIPHER MINING INC",
+            "title_of_class": "COM",
+            "value_usd": 154523813.0,
+            "shares": "10469093",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "17253J106"
+          },
+          {
+            "ticker": "EQT",
+            "issuer_name": "EQT CORP",
+            "title_of_class": "COM",
+            "value_usd": 133047260.0,
+            "shares": "2482225",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "26884L109"
+          },
+          {
+            "ticker": "COHR",
+            "issuer_name": "COHERENT CORP",
+            "title_of_class": "COM",
+            "value_usd": 88648971.0,
+            "shares": "480300",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "19247G107"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "SOLARIS ENERGY INFRAS INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 85803005.0,
+            "shares": "1866500",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "83418M103"
+          },
+          {
+            "ticker": "TSEM",
+            "issuer_name": "TOWER SEMICONDUCTOR LTD",
+            "title_of_class": "SHS NEW",
+            "value_usd": 84895130.0,
+            "shares": "723004",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "M87915274"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "RIOT PLATFORMS INC",
+            "title_of_class": "COM",
+            "value_usd": 78144759.0,
+            "shares": "6167700",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "767292105"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "KILROY RLTY CORP",
+            "title_of_class": "COM",
+            "value_usd": 49616149.0,
+            "shares": "1327700",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "49427F108"
+          }
+        ],
+        "all_holdings": [
+          {
+            "ticker": "APLD",
+            "issuer_name": "APPLIED DIGITAL CORP",
+            "title_of_class": "COM NEW",
+            "value_usd": 278033751.0,
+            "shares": "11339060",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "038169207"
+          },
+          {
+            "ticker": "BW-PA",
+            "issuer_name": "BABCOCK & WILCOX ENTERPRISES",
+            "title_of_class": "COM",
+            "value_usd": 8583726.0,
+            "shares": "1353900",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "05614L209"
+          },
+          {
+            "ticker": "BTDR",
+            "issuer_name": "BITDEER TECHNOLOGIES GROUP",
+            "title_of_class": "CL A ORD SHS",
+            "value_usd": 20043480.0,
+            "shares": "1788000",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "G11448100"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "BITFARMS LTD",
+            "title_of_class": "COM",
+            "value_usd": 16208185000.0,
+            "shares": "6897100",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "09173B107"
+          },
+          {
+            "ticker": "BE",
+            "issuer_name": "BLOOM ENERGY CORP",
+            "title_of_class": "COM CL A",
+            "value_usd": 875505552.0,
+            "shares": "10076022",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "093712107"
+          },
+          {
+            "ticker": "BE",
+            "issuer_name": "BLOOM ENERGY CORP",
+            "title_of_class": "COM CL A",
+            "value_usd": 35494565.0,
+            "shares": "408500",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "093712107"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CIPHER MINING INC",
+            "title_of_class": "COM",
+            "value_usd": 154523813.0,
+            "shares": "10469093",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "17253J106"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CLEANSPARK INC",
+            "title_of_class": "COM NEW",
+            "value_usd": 16600848.0,
+            "shares": "1640400",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "18452B209"
+          },
+          {
+            "ticker": "COHR",
+            "issuer_name": "COHERENT CORP",
+            "title_of_class": "COM",
+            "value_usd": 88648971.0,
+            "shares": "480300",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "19247G107"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CORE SCIENTIFIC INC NEW",
+            "title_of_class": "COM",
+            "value_usd": 418694320.0,
+            "shares": "28756478",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21874A106"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 436735927.0,
+            "shares": "6098812",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 774426345.0,
+            "shares": "10814500",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "EQT",
+            "issuer_name": "EQT CORP",
+            "title_of_class": "COM",
+            "value_usd": 133047260.0,
+            "shares": "2482225",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "26884L109"
+          },
+          {
+            "ticker": "EQT",
+            "issuer_name": "EQT CORP",
+            "title_of_class": "COM",
+            "value_usd": 37520000.0,
+            "shares": "700000",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "26884L109"
+          },
+          {
+            "ticker": "HUT",
+            "issuer_name": "HUT 8 CORP",
+            "title_of_class": "COM",
+            "value_usd": 39517588.0,
+            "shares": "860200",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "44812J104"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "IREN LIMITED",
+            "title_of_class": "ORDINARY SHARES",
+            "value_usd": 328622455.0,
+            "shares": "8700621",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "Q4982L109"
+          },
+          {
+            "ticker": "INFY",
+            "issuer_name": "INFOSYS LTD",
+            "title_of_class": "SPONSORED ADR",
+            "value_usd": 8910000.0,
+            "shares": "500000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "456788108"
+          },
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 37.0,
+            "shares": "1",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "458140100"
+          },
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 746760060.0,
+            "shares": "20237400",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "458140100"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "KILROY RLTY CORP",
+            "title_of_class": "COM",
+            "value_usd": 49616149.0,
+            "shares": "1327700",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "49427F108"
+          },
+          {
+            "ticker": "LBRT",
+            "issuer_name": "LIBERTY ENERGY INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 10470512.0,
+            "shares": "567200",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "53115L104"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "LUMENTUM HLDGS INC",
+            "title_of_class": "COM",
+            "value_usd": 478577256.0,
+            "shares": "1298400",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "55024U109"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "POWER SOLUTIONS INTL INC",
+            "title_of_class": "COM NEW",
+            "value_usd": 24701622.0,
+            "shares": "432300",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "73933G202"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "PROPETRO HLDG CORP",
+            "title_of_class": "COM",
+            "value_usd": 8656953.0,
+            "shares": "910300",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "74347M108"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "RIOT PLATFORMS INC",
+            "title_of_class": "COM",
+            "value_usd": 78144759.0,
+            "shares": "6167700",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "767292105"
+          },
+          {
+            "ticker": "SNDK",
+            "issuer_name": "SANDISK CORP",
+            "title_of_class": "COM",
+            "value_usd": 250245996.0,
+            "shares": "1054200",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "80004C200"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "SOLARIS ENERGY INFRAS INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 85803005.0,
+            "shares": "1866500",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "83418M103"
+          },
+          {
+            "ticker": "TSEM",
+            "issuer_name": "TOWER SEMICONDUCTOR LTD",
+            "title_of_class": "SHS NEW",
+            "value_usd": 84895130.0,
+            "shares": "723004",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "M87915274"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "WHITEFIBER INC",
+            "title_of_class": "SHS",
+            "value_usd": 27770080.0,
+            "shares": "1757600",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "G96115103"
+          }
+        ]
+      },
+      {
+        "filing_date": "2025-11-14",
+        "accession": "0002045724-25-000008",
+        "holdings_count": 28,
+        "long_count": 19,
+        "put_count": 6,
+        "call_count": 3,
+        "total_value_usd": 4138368748.0,
+        "put_notional_usd": 887417600.0,
+        "put_pct_of_book": 21.44,
+        "top_puts": [
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 298528000.0,
+            "shares": "1600000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 195816000.0,
+            "shares": "600000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F106"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 191590000.0,
+            "shares": "1400000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 75879300.0,
+            "shares": "230000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MFG LTD",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 75408300.0,
+            "shares": "270000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "874039100"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 50196000.0,
+            "shares": "300000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "595112103"
+          }
+        ],
+        "top_longs": [
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 563200154.0,
+            "shares": "4115456",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CORE SCIENTIFIC INC NEW",
+            "title_of_class": "COM",
+            "value_usd": 362038780.0,
+            "shares": "20180534",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21874A106"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "IREN LIMITED",
+            "title_of_class": "ORDINARY SHARES",
+            "value_usd": 338854358.0,
+            "shares": "7220421",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "Q4982L109"
+          },
+          {
+            "ticker": "VST",
+            "issuer_name": "VISTRA CORP",
+            "title_of_class": "COM",
+            "value_usd": 252327327.0,
+            "shares": "1287910",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "92840M102"
+          },
+          {
+            "ticker": "APLD",
+            "issuer_name": "APPLIED DIGITAL CORP",
+            "title_of_class": "COM NEW",
+            "value_usd": 139111716.0,
+            "shares": "6064155",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "038169207"
+          },
+          {
+            "ticker": "GLXY",
+            "issuer_name": "GALAXY DIGITAL INC.",
+            "title_of_class": "CL A",
+            "value_usd": 92554875.0,
+            "shares": "2737500",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "36317J209"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CIPHER MINING INC",
+            "title_of_class": "COM",
+            "value_usd": 72272807.0,
+            "shares": "5740493",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "17253JAA4"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "RIOT PLATFORMS INC",
+            "title_of_class": "COM",
+            "value_usd": 68369062.0,
+            "shares": "3592699",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "767292105"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "LUMENTUM HLDGS INC",
+            "title_of_class": "COM",
+            "value_usd": 67947696.0,
+            "shares": "417600",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "55024UAD1"
+          },
+          {
+            "ticker": "EQT",
+            "issuer_name": "EQT CORP",
+            "title_of_class": "COM",
+            "value_usd": 66262320.0,
+            "shares": "1217386",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "26884L109"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "SOLARIS ENERGY INFRAS INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 45977491.0,
+            "shares": "1150300",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "83418M103"
+          },
+          {
+            "ticker": "BE",
+            "issuer_name": "BLOOM ENERGY CORP",
+            "title_of_class": "COM CL A",
+            "value_usd": 43890344.0,
+            "shares": "3048002",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "093712AH0"
+          },
+          {
+            "ticker": "TSEM",
+            "issuer_name": "TOWER SEMICONDUCTOR LTD",
+            "title_of_class": "SHS NEW",
+            "value_usd": 34024380.0,
+            "shares": "470600",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "M87915274"
+          },
+          {
+            "ticker": "HUT",
+            "issuer_name": "HUT 8 CORP",
+            "title_of_class": "COM",
+            "value_usd": 20851190.0,
+            "shares": "599000",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "44812J104"
+          },
+          {
+            "ticker": "WDC",
+            "issuer_name": "WESTERN DIGITAL CORP",
+            "title_of_class": "COM",
+            "value_usd": 18347689.0,
+            "shares": "152821",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "958102AT2"
+          }
+        ],
+        "all_holdings": [
+          {
+            "ticker": "APLD",
+            "issuer_name": "APPLIED DIGITAL CORP",
+            "title_of_class": "COM NEW",
+            "value_usd": 139111716.0,
+            "shares": "6064155",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "038169207"
+          },
+          {
+            "ticker": "BTDR",
+            "issuer_name": "BITDEER TECHNOLOGIES GROUP",
+            "title_of_class": "CL A ORD SHS",
+            "value_usd": 15886864.0,
+            "shares": "929600",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "G11448100"
+          },
+          {
+            "ticker": "BE",
+            "issuer_name": "BLOOM ENERGY CORP",
+            "title_of_class": "COM CL A",
+            "value_usd": 43890344.0,
+            "shares": "3048002",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "093712AH0"
+          },
+          {
+            "ticker": "BE",
+            "issuer_name": "BLOOM ENERGY CORP",
+            "title_of_class": "COM CL A",
+            "value_usd": 12330306.0,
+            "shares": "145800",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "093712AH0"
+          },
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 75879300.0,
+            "shares": "230000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CIPHER MINING INC",
+            "title_of_class": "COM",
+            "value_usd": 72272807.0,
+            "shares": "5740493",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "17253JAA4"
+          },
+          {
+            "ticker": "COHR",
+            "issuer_name": "COHERENT CORP",
+            "title_of_class": "COM",
+            "value_usd": 16631968.0,
+            "shares": "154400",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "19247G107"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CORE SCIENTIFIC INC NEW",
+            "title_of_class": "COM",
+            "value_usd": 362038780.0,
+            "shares": "20180534",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21874A106"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 191590000.0,
+            "shares": "1400000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 316739325.0,
+            "shares": "2314500",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 563200154.0,
+            "shares": "4115456",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "EQT",
+            "issuer_name": "EQT CORP",
+            "title_of_class": "COM",
+            "value_usd": 66262320.0,
+            "shares": "1217386",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "26884L109"
+          },
+          {
+            "ticker": "GLXY",
+            "issuer_name": "GALAXY DIGITAL INC.",
+            "title_of_class": "CL A",
+            "value_usd": 92554875.0,
+            "shares": "2737500",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "36317J209"
+          },
+          {
+            "ticker": "HUT",
+            "issuer_name": "HUT 8 CORP",
+            "title_of_class": "COM",
+            "value_usd": 20851190.0,
+            "shares": "599000",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "44812J104"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "IREN LIMITED",
+            "title_of_class": "ORDINARY SHARES",
+            "value_usd": 338854358.0,
+            "shares": "7220421",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "Q4982L109"
+          },
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 678964770.0,
+            "shares": "20237400",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "458140100"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "LUMENTUM HLDGS INC",
+            "title_of_class": "COM",
+            "value_usd": 67947696.0,
+            "shares": "417600",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "55024UAD1"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 50196000.0,
+            "shares": "300000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "595112103"
+          },
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 298528000.0,
+            "shares": "1600000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "RIOT PLATFORMS INC",
+            "title_of_class": "COM",
+            "value_usd": 68369062.0,
+            "shares": "3592699",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "767292105"
+          },
+          {
+            "ticker": "SNDK",
+            "issuer_name": "SANDISK CORP",
+            "title_of_class": "COM",
+            "value_usd": 12903000.0,
+            "shares": "115000",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "80004C200"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "SEAGATE TECHNOLOGY HLDNGS PL",
+            "title_of_class": "ORD SHS",
+            "value_usd": 11464726.0,
+            "shares": "48567",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "G7997R103"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "SOLARIS ENERGY INFRAS INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 45977491.0,
+            "shares": "1150300",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "83418M103"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MFG LTD",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 75408300.0,
+            "shares": "270000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "874039100"
+          },
+          {
+            "ticker": "TSEM",
+            "issuer_name": "TOWER SEMICONDUCTOR LTD",
+            "title_of_class": "SHS NEW",
+            "value_usd": 34024380.0,
+            "shares": "470600",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "M87915274"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 195816000.0,
+            "shares": "600000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F106"
+          },
+          {
+            "ticker": "VST",
+            "issuer_name": "VISTRA CORP",
+            "title_of_class": "COM",
+            "value_usd": 252327327.0,
+            "shares": "1287910",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "92840M102"
+          },
+          {
+            "ticker": "WDC",
+            "issuer_name": "WESTERN DIGITAL CORP",
+            "title_of_class": "COM",
+            "value_usd": 18347689.0,
+            "shares": "152821",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "958102AT2"
+          }
+        ]
+      },
+      {
+        "filing_date": "2025-08-14",
+        "accession": "0002045724-25-000006",
+        "holdings_count": 9,
+        "long_count": 7,
+        "put_count": 1,
+        "call_count": 1,
+        "total_value_usd": 2123023762.0,
+        "put_notional_usd": 570058608.0,
+        "put_pct_of_book": 26.85,
+        "top_puts": [
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 570058608.0,
+            "shares": "2044100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F676"
+          }
+        ],
+        "top_longs": [
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 328466194.0,
+            "shares": "1191606",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "VST",
+            "issuer_name": "VISTRA CORP",
+            "title_of_class": "COM",
+            "value_usd": 246948438.0,
+            "shares": "1274178",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "92840M102"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CORE SCIENTIFIC INC NEW",
+            "title_of_class": "COM",
+            "value_usd": 136458229.0,
+            "shares": "7994038",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21874A106"
+          },
+          {
+            "ticker": "EQT",
+            "issuer_name": "EQT CORP",
+            "title_of_class": "COM",
+            "value_usd": 125116520.0,
+            "shares": "2145345",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "26884L109"
+          },
+          {
+            "ticker": "CEG",
+            "issuer_name": "CONSTELLATION ENERGY CORP",
+            "title_of_class": "COM",
+            "value_usd": 103024992.0,
+            "shares": "319200",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21037T109"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "IREN LIMITED",
+            "title_of_class": "ORDINARY SHARES",
+            "value_usd": 93253595.0,
+            "shares": "6400384",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "Q4982L109"
+          },
+          {
+            "ticker": "APLD",
+            "issuer_name": "APPLIED DIGITAL CORP",
+            "title_of_class": "COM NEW",
+            "value_usd": 66379426.0,
+            "shares": "6591800",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "038169207"
+          }
+        ],
+        "all_holdings": [
+          {
+            "ticker": "APLD",
+            "issuer_name": "APPLIED DIGITAL CORP",
+            "title_of_class": "COM NEW",
+            "value_usd": 66379426.0,
+            "shares": "6591800",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "038169207"
+          },
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 328466194.0,
+            "shares": "1191606",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "CEG",
+            "issuer_name": "CONSTELLATION ENERGY CORP",
+            "title_of_class": "COM",
+            "value_usd": 103024992.0,
+            "shares": "319200",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21037T109"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "CORE SCIENTIFIC INC NEW",
+            "title_of_class": "COM",
+            "value_usd": 136458229.0,
+            "shares": "7994038",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "21874A106"
+          },
+          {
+            "ticker": "EQT",
+            "issuer_name": "EQT CORP",
+            "title_of_class": "COM",
+            "value_usd": 125116520.0,
+            "shares": "2145345",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "26884L109"
+          },
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 453317760.0,
+            "shares": "20237400",
+            "shares_type": "SH",
+            "side": "call",
+            "cusip": "458140100"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "IREN LIMITED",
+            "title_of_class": "ORDINARY SHARES",
+            "value_usd": 93253595.0,
+            "shares": "6400384",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "Q4982L109"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 570058608.0,
+            "shares": "2044100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F676"
+          },
+          {
+            "ticker": "VST",
+            "issuer_name": "VISTRA CORP",
+            "title_of_class": "COM",
+            "value_usd": 246948438.0,
+            "shares": "1274178",
+            "shares_type": "SH",
+            "side": "long",
+            "cusip": "92840M102"
+          }
+        ]
+      }
+    ],
+    "quarter_diffs": [
+      {
+        "from_filing": "2026-02-11",
+        "to_filing": "2026-05-18",
+        "put_notional_change_usd": 8450146999.0,
+        "new_puts": [
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 2042716860.0,
+            "shares": "5327900",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F676"
+          },
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 1568257120.0,
+            "shares": "8992300",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "ORCL-PD",
+            "issuer_name": "ORACLE CORP",
+            "title_of_class": "COM",
+            "value_usd": 1072873230.0,
+            "shares": "7293000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "68389X105"
+          },
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 1006247961.0,
+            "shares": "3251100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "AMD",
+            "issuer_name": "ADVANCED MICRO DEVICES INC",
+            "title_of_class": "COM",
+            "value_usd": 969160863.0,
+            "shares": "4764100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "007903107"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 583686168.0,
+            "shares": "1727700",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "595112103"
+          },
+          {
+            "ticker": "TSMWF",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MANUFAC",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 535110030.0,
+            "shares": "1583400",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "874039100"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "ASML HLDG NV N Y REGISTRY",
+            "title_of_class": "SHS",
+            "value_usd": 494122503.0,
+            "shares": "374100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "N07059210"
+          },
+          {
+            "ticker": "INTC",
+            "issuer_name": "INTEL CORP",
+            "title_of_class": "COM",
+            "value_usd": 159106302.0,
+            "shares": "3605400",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "458140100"
+          },
+          {
+            "ticker": "GLW",
+            "issuer_name": "CORNING INC",
+            "title_of_class": "COM",
+            "value_usd": 21020962.0,
+            "shares": "154600",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "219350105"
+          }
+        ],
+        "exited_puts": [],
+        "increased_puts": []
+      },
+      {
+        "from_filing": "2025-11-14",
+        "to_filing": "2026-02-11",
+        "put_notional_change_usd": -878507600.0,
+        "new_puts": [
+          {
+            "ticker": "INFY",
+            "issuer_name": "INFOSYS LTD",
+            "title_of_class": "SPONSORED ADR",
+            "value_usd": 8910000.0,
+            "shares": "500000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "456788108"
+          }
+        ],
+        "exited_puts": [
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 298528000.0,
+            "shares": "1600000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 195816000.0,
+            "shares": "600000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F106"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 191590000.0,
+            "shares": "1400000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 75879300.0,
+            "shares": "230000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MFG LTD",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 75408300.0,
+            "shares": "270000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "874039100"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 50196000.0,
+            "shares": "300000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "595112103"
+          }
+        ],
+        "increased_puts": []
+      },
+      {
+        "from_filing": "2025-08-14",
+        "to_filing": "2025-11-14",
+        "put_notional_change_usd": 317358992.0,
+        "new_puts": [
+          {
+            "ticker": "NVDA",
+            "issuer_name": "NVIDIA CORPORATION",
+            "title_of_class": "COM",
+            "value_usd": 298528000.0,
+            "shares": "1600000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "67066G104"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 195816000.0,
+            "shares": "600000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F106"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "COREWEAVE INC",
+            "title_of_class": "COM CL A",
+            "value_usd": 191590000.0,
+            "shares": "1400000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "21873S108"
+          },
+          {
+            "ticker": "AVGO",
+            "issuer_name": "BROADCOM INC",
+            "title_of_class": "COM",
+            "value_usd": 75879300.0,
+            "shares": "230000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "11135F101"
+          },
+          {
+            "ticker": "",
+            "issuer_name": "TAIWAN SEMICONDUCTOR MFG LTD",
+            "title_of_class": "SPONSORED ADS",
+            "value_usd": 75408300.0,
+            "shares": "270000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "874039100"
+          },
+          {
+            "ticker": "MU",
+            "issuer_name": "MICRON TECHNOLOGY INC",
+            "title_of_class": "COM",
+            "value_usd": 50196000.0,
+            "shares": "300000",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "595112103"
+          }
+        ],
+        "exited_puts": [
+          {
+            "ticker": "",
+            "issuer_name": "VANECK ETF TRUST",
+            "title_of_class": "SEMICONDUCTR ETF",
+            "value_usd": 570058608.0,
+            "shares": "2044100",
+            "shares_type": "SH",
+            "side": "put",
+            "cusip": "92189F676"
+          }
+        ],
+        "increased_puts": []
+      }
+    ],
+    "latest_chip_puts": [
+      {
+        "ticker": "",
+        "issuer_name": "VANECK ETF TRUST",
+        "title_of_class": "SEMICONDUCTR ETF",
+        "value_usd": 2042716860.0,
+        "shares": "5327900",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "92189F676"
+      },
+      {
+        "ticker": "NVDA",
+        "issuer_name": "NVIDIA CORPORATION",
+        "title_of_class": "COM",
+        "value_usd": 1568257120.0,
+        "shares": "8992300",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "67066G104"
+      },
+      {
+        "ticker": "ORCL-PD",
+        "issuer_name": "ORACLE CORP",
+        "title_of_class": "COM",
+        "value_usd": 1072873230.0,
+        "shares": "7293000",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "68389X105"
+      },
+      {
+        "ticker": "AVGO",
+        "issuer_name": "BROADCOM INC",
+        "title_of_class": "COM",
+        "value_usd": 1006247961.0,
+        "shares": "3251100",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "11135F101"
+      },
+      {
+        "ticker": "AMD",
+        "issuer_name": "ADVANCED MICRO DEVICES INC",
+        "title_of_class": "COM",
+        "value_usd": 969160863.0,
+        "shares": "4764100",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "007903107"
+      },
+      {
+        "ticker": "MU",
+        "issuer_name": "MICRON TECHNOLOGY INC",
+        "title_of_class": "COM",
+        "value_usd": 583686168.0,
+        "shares": "1727700",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "595112103"
+      },
+      {
+        "ticker": "TSMWF",
+        "issuer_name": "TAIWAN SEMICONDUCTOR MANUFAC",
+        "title_of_class": "SPONSORED ADS",
+        "value_usd": 535110030.0,
+        "shares": "1583400",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "874039100"
+      },
+      {
+        "ticker": "",
+        "issuer_name": "ASML HLDG NV N Y REGISTRY",
+        "title_of_class": "SHS",
+        "value_usd": 494122503.0,
+        "shares": "374100",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "N07059210"
+      },
+      {
+        "ticker": "INTC",
+        "issuer_name": "INTEL CORP",
+        "title_of_class": "COM",
+        "value_usd": 159106302.0,
+        "shares": "3605400",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "458140100"
+      },
+      {
+        "ticker": "GLW",
+        "issuer_name": "CORNING INC",
+        "title_of_class": "COM",
+        "value_usd": 21020962.0,
+        "shares": "154600",
+        "shares_type": "SH",
+        "side": "put",
+        "cusip": "219350105"
+      }
+    ],
+    "schedule_filing_note": "13D/G only fires when a stake crosses 5% \u2014 most SA chip exposure is 13F puts/options and sub-5% equity; schedule layer misses the book."
+  }
+}

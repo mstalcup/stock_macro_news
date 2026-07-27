@@ -1,0 +1,13 @@
+{
+  "XLC": ["META", "GOOGL", "GOOG", "NFLX", "DIS", "CMCSA", "VZ", "T", "TMUS", "CHTR", "EA", "TTWO"],
+  "XLY": ["AMZN", "TSLA", "HD", "MCD", "BKNG", "LOW", "TJX", "NKE", "SBUX", "ABNB", "CMG", "MAR"],
+  "XLP": ["PG", "COST", "KO", "PEP", "WMT", "PM", "MO", "CL", "MDLZ", "KMB", "GIS", "STZ"],
+  "XLE": ["XOM", "CVX", "COP", "SLB", "EOG", "MPC", "PSX", "VLO", "WMB", "OXY", "KMI", "HAL"],
+  "XLF": ["BRK-B", "JPM", "V", "MA", "BAC", "WFC", "GS", "MS", "AXP", "SPGI", "BLK", "C"],
+  "XLV": ["LLY", "UNH", "JNJ", "ABBV", "MRK", "TMO", "ABT", "DHR", "PFE", "AMGN", "ISRG", "BMY"],
+  "XLI": ["GE", "CAT", "RTX", "UBER", "UNP", "HON", "ETN", "BA", "DE", "LMT", "ADP", "GD"],
+  "XLB": ["LIN", "SHW", "NEM", "ECL", "FCX", "APD", "NUE", "DOW", "CTVA", "VMC", "MLM", "PPG"],
+  "XLRE": ["PLD", "AMT", "EQIX", "WELL", "SPG", "PSA", "O", "DLR", "CCI", "CBRE", "AVB", "EQR"],
+  "XLK": ["NVDA", "MSFT", "AAPL", "AVGO", "ORCL", "CRM", "AMD", "CSCO", "PLTR", "MU", "IBM", "INTC"],
+  "XLU": ["NEE", "CEG", "SO", "DUK", "AEP", "SRE", "D", "EXC", "XEL", "PEG", "ED", "WEC"]
+}

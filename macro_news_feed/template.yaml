@@ -1,0 +1,248 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Macro news feed — Step Functions fetch to S3 (pre-open / pre-close PT)
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 120
+    MemorySize: 256
+    Architectures:
+      - x86_64
+
+Parameters:
+  ScheduleLocalTz:
+    Type: String
+    Default: America/Los_Angeles
+  OpenAiCheapModel:
+    Type: String
+    Default: gpt-4o-mini
+    Description: OpenAI model for per-headline notes
+  OpenAiSmartModel:
+    Type: String
+    Default: gpt-4o
+    Description: OpenAI model for merged macro digest
+  MacroDiscordChannelId:
+    Type: String
+    Default: "1505454996567625768"
+    Description: Discord channel for macro news digests
+  DiscordPublishSlots:
+    Type: String
+    Default: pre_open
+    Description: Comma-separated slots to post (pre_open, pre_close)
+  LlmSentimentStackName:
+    Type: String
+    Default: llm-sentiment-feed
+    Description: Stack name for LLM panel state machine trigger
+
+Resources:
+  NewsApiKeysSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/news-api-keys"
+      Description: >
+        JSON {"alpha_vantage_api_key":"","news_api_key":"","finnhub_api_key":""}
+      SecretString: '{"alpha_vantage_api_key":"","news_api_key":"","finnhub_api_key":""}'
+
+  OpenAiApiKeySecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/openai-api-key"
+      Description: JSON {"api_key":"sk-..."} for macro digest compose
+      SecretString: '{"api_key":""}'
+
+  DiscordBotSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-bot"
+      Description: JSON {"bot_token":"...","channel_id":"..."} for macro Discord
+      SecretString: !Sub '{"bot_token":"","channel_id":"${MacroDiscordChannelId}"}'
+
+  DiscordWebhookSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-webhook"
+      Description: Optional webhook fallback {"webhook_url":"..."}
+      SecretString: '{"webhook_url":""}'
+
+  NewsArtifactsBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  FetchNewsSlotFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-fetch-news-slot"
+      CodeUri: lambdas/fetch_news_slot/
+      Handler: handler.handler
+      Timeout: 180
+      Environment:
+        Variables:
+          NEWS_ARTIFACTS_BUCKET: !Ref NewsArtifactsBucket
+          NEWS_API_KEYS_SECRET_ARN: !Ref NewsApiKeysSecret
+          SCHEDULE_LOCAL_TZ: !Ref ScheduleLocalTz
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref NewsArtifactsBucket
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: !Ref NewsApiKeysSecret
+
+  ComposeNewsSlotFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-compose-news-slot"
+      CodeUri: lambdas/compose_news_slot/
+      Handler: handler.handler
+      Timeout: 300
+      MemorySize: 512
+      Environment:
+        Variables:
+          NEWS_ARTIFACTS_BUCKET: !Ref NewsArtifactsBucket
+          OPENAI_SECRET_ARN: !Ref OpenAiApiKeySecret
+          OPENAI_CHEAP_MODEL: !Ref OpenAiCheapModel
+          OPENAI_SMART_MODEL: !Ref OpenAiSmartModel
+          SCHEDULE_LOCAL_TZ: !Ref ScheduleLocalTz
+      Policies:
+        - S3CrudPolicy:
+            BucketName: !Ref NewsArtifactsBucket
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource: !Ref OpenAiApiKeySecret
+
+  PublishDiscordMacroFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-publish-discord-macro"
+      CodeUri: lambdas/publish_discord/
+      Handler: handler.handler
+      Timeout: 60
+      Environment:
+        Variables:
+          NEWS_ARTIFACTS_BUCKET: !Ref NewsArtifactsBucket
+          DISCORD_BOT_SECRET_ARN: !Ref DiscordBotSecret
+          DISCORD_WEBHOOK_SECRET_ARN: !Ref DiscordWebhookSecret
+          MACRO_DISCORD_CHANNEL_ID: !Ref MacroDiscordChannelId
+          DISCORD_PUBLISH_SLOTS: !Ref DiscordPublishSlots
+      Policies:
+        - S3ReadPolicy:
+            BucketName: !Ref NewsArtifactsBucket
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:GetSecretValue
+              Resource:
+                - !Ref DiscordBotSecret
+                - !Ref DiscordWebhookSecret
+
+  StartLlmPanelFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-start-llm-panel"
+      CodeUri: lambdas/start_llm_panel/
+      Handler: handler.handler
+      Timeout: 30
+      Environment:
+        Variables:
+          RUN_SENTIMENT_STATE_MACHINE_ARN: !Sub
+            - "arn:aws:states:${AWS::Region}:${AWS::AccountId}:stateMachine:${SmName}"
+            - SmName: !Sub "${LlmSentimentStackName}-run-sentiment"
+          LLM_PANEL_SLOTS: pre_open
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - states:StartExecution
+              Resource: !Sub
+                - "arn:aws:states:${AWS::Region}:${AWS::AccountId}:stateMachine:${SmName}"
+                - SmName: !Sub "${LlmSentimentStackName}-run-sentiment"
+
+  FetchNewsStateMachine:
+    Type: AWS::Serverless::StateMachine
+    Properties:
+      Name: !Sub "${AWS::StackName}-fetch-news"
+      Type: STANDARD
+      DefinitionUri: statemachine/fetch_news.asl.json
+      DefinitionSubstitutions:
+        FetchNewsSlotArn: !GetAtt FetchNewsSlotFunction.Arn
+        ComposeNewsSlotArn: !GetAtt ComposeNewsSlotFunction.Arn
+        PublishDiscordMacroArn: !GetAtt PublishDiscordMacroFunction.Arn
+        StartLlmPanelArn: !GetAtt StartLlmPanelFunction.Arn
+      Policies:
+        - LambdaInvokePolicy:
+            FunctionName: !Ref FetchNewsSlotFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref ComposeNewsSlotFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref PublishDiscordMacroFunction
+        - LambdaInvokePolicy:
+            FunctionName: !Ref StartLlmPanelFunction
+
+  StartFetchScheduleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-start-fetch-schedule"
+      CodeUri: lambdas/start_fetch_schedule/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          FETCH_NEWS_STATE_MACHINE_ARN: !Ref FetchNewsStateMachine
+          SCHEDULE_LOCAL_TZ: !Ref ScheduleLocalTz
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action:
+                - states:StartExecution
+              Resource: !Ref FetchNewsStateMachine
+      Events:
+        PreOpenWeekdays:
+          Type: Schedule
+          Properties:
+            # UTC cron for PDT: 6:25 AM PT = 13:25 UTC (shift +1h in PST)
+            Schedule: cron(25 13 ? * MON-FRI *)
+            Input: '{"slot":"pre_open"}'
+            Enabled: true
+        PreCloseWeekdays:
+          Type: Schedule
+          Properties:
+            Schedule: cron(50 19 ? * MON-FRI *)
+            Input: '{"slot":"pre_close"}'
+            Enabled: true
+
+Outputs:
+  NewsArtifactsBucket:
+    Description: S3 bucket for macro news JSON artifacts
+    Value: !Ref NewsArtifactsBucket
+  NewsApiKeysSecretArn:
+    Description: Secrets Manager ARN — set alpha_vantage, newsapi, finnhub keys
+    Value: !Ref NewsApiKeysSecret
+  FetchNewsSlotFunction:
+    Value: !Ref FetchNewsSlotFunction
+  ComposeNewsSlotFunction:
+    Value: !Ref ComposeNewsSlotFunction
+  OpenAiApiKeySecretArn:
+    Description: Set {"api_key":"sk-..."} for digest compose
+    Value: !Ref OpenAiApiKeySecret
+  FetchNewsStateMachineArn:
+    Description: Step Functions — FetchNews workflow
+    Value: !Ref FetchNewsStateMachine
+  StartFetchScheduleFunction:
+    Value: !Ref StartFetchScheduleFunction
+  PublishDiscordMacroFunction:
+    Value: !Ref PublishDiscordMacroFunction
+  DiscordBotSecretArn:
+    Description: Set bot_token (copy from influencer-feed); channel_id preset for macro
+    Value: !Ref DiscordBotSecret

@@ -3,8 +3,9 @@
   "sk": { "S": "SOURCE#coreedgetrader" },
   "source_id": { "S": "coreedgetrader" },
   "platform": { "S": "youtube" },
-  "channel_id": { "S": "UCwTS1oRWVB7VVGUQRBYn9aQ" },
+  "channel_id": { "S": "UCeyyGiEZ7NH-6YixEafqD0Q" },
   "channel_handle": { "S": "@CoreEdgeTrader" },
   "display_name": { "S": "CoreEdgeTrader" },
-  "enabled": { "BOOL": true }
+  "enabled": { "BOOL": true },
+  "feed": { "S": "default" }
 }

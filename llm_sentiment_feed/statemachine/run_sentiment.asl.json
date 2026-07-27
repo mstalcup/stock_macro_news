@@ -1,0 +1,95 @@
+{
+  "Comment": "RunSentiment — query panel, Discord publish, then score eligible picks (live only)",
+  "StartAt": "QueryLlmPanel",
+  "States": {
+    "QueryLlmPanel": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${QueryLlmPanelArn}",
+        "Payload.$": "$"
+      },
+      "ResultSelector": {
+        "status.$": "$.Payload.status",
+        "issue_date.$": "$.Payload.issue_date",
+        "macro_slot.$": "$.Payload.macro_slot",
+        "models.$": "$.Payload.models",
+        "errors.$": "$.Payload.errors",
+        "test_run.$": "$.Payload.test_run"
+      },
+      "ResultPath": "$.query",
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 3,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "PublishDiscordSentiment"
+    },
+    "PublishDiscordSentiment": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${PublishDiscordSentimentArn}",
+        "Payload": {
+          "issue_date.$": "$.query.issue_date",
+          "macro_slot.$": "$.query.macro_slot"
+        }
+      },
+      "ResultPath": "$.discord",
+      "ResultSelector": {
+        "discord_publish_status.$": "$.Payload.discord_publish_status",
+        "issue_date.$": "$.Payload.issue_date",
+        "macro_slot.$": "$.Payload.macro_slot",
+        "model_count.$": "$.Payload.model_count"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 2,
+          "BackoffRate": 2
+        }
+      ],
+      "Next": "ScoreRecommendations"
+    },
+    "ScoreRecommendations": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "Parameters": {
+        "FunctionName": "${ScoreRecommendationsArn}",
+        "Payload": {}
+      },
+      "ResultPath": "$.score",
+      "ResultSelector": {
+        "status.$": "$.Payload.status",
+        "today_pt.$": "$.Payload.today_pt",
+        "scanned.$": "$.Payload.scanned",
+        "updated.$": "$.Payload.updated"
+      },
+      "Retry": [
+        {
+          "ErrorEquals": [
+            "Lambda.ServiceException",
+            "Lambda.AWSLambdaException",
+            "Lambda.SdkClientException"
+          ],
+          "IntervalSeconds": 5,
+          "MaxAttempts": 2,
+          "BackoffRate": 2
+        }
+      ],
+      "End": true
+    }
+  }
+}

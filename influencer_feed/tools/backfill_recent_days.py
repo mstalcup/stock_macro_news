@@ -85,6 +85,7 @@ def main() -> None:
     ap.add_argument("--region", default="us-east-1", help="AWS region")
     ap.add_argument("--stack", default="influencer-feed", help="CloudFormation stack name")
     ap.add_argument("--days", type=int, default=7, help="Number of calendar days (LA) to cover")
+    ap.add_argument("--issue-date", default="", help="Single date YYYY-MM-DD (overrides --days)")
     ap.add_argument(
         "--users",
         default="default,crypto",
@@ -107,7 +108,10 @@ def main() -> None:
     if not users:
         raise SystemExit("No users in --users")
 
-    dates = _la_dates_last_n_days(args.days)
+    if args.issue_date.strip():
+        dates = [args.issue_date.strip()]
+    else:
+        dates = _la_dates_last_n_days(args.days)
     sess = boto3.Session(profile_name=args.profile, region_name=args.region)
     cf = sess.client("cloudformation")
     sf = sess.client("stepfunctions")

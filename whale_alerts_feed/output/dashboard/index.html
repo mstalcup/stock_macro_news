@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Whale 13F Index</title>
+
+  <style>
+
+    :root {
+
+      --bg: #0f1419;
+
+      --panel: #1a2332;
+
+      --border: #2d3a4f;
+
+      --text: #e7ecf3;
+
+      --muted: #8b9cb3;
+
+      --accent: #3d8bfd;
+
+      --green: #3dd68c;
+
+      --red: #f07178;
+
+      --amber: #f5c542;
+
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+
+      margin: 0;
+
+      font-family: "Segoe UI", system-ui, sans-serif;
+
+      background: var(--bg);
+
+      color: var(--text);
+
+      line-height: 1.45;
+
+    }
+
+    header {
+
+      padding: 1.25rem 1.5rem;
+
+      border-bottom: 1px solid var(--border);
+
+      background: var(--panel);
+
+    }
+
+    header h1 { margin: 0 0 0.25rem; font-size: 1.35rem; }
+
+    header p { margin: 0; color: var(--muted); font-size: 0.9rem; }
+
+    main { padding: 1.25rem 1.5rem 2rem; max-width: 1400px; margin: 0 auto; }
+
+    .stats {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+
+      gap: 0.75rem;
+
+      margin-bottom: 1.25rem;
+
+    }
+
+    .stat {
+
+      background: var(--panel);
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      padding: 0.85rem 1rem;
+
+    }
+
+    .stat .label { color: var(--muted); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+    .stat .value { font-size: 1.25rem; font-weight: 600; margin-top: 0.2rem; }
+
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+
+    .tab {
+
+      background: var(--panel);
+
+      border: 1px solid var(--border);
+
+      color: var(--text);
+
+      padding: 0.45rem 0.9rem;
+
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      font-size: 0.9rem;
+
+    }
+
+    .tab.active { border-color: var(--accent); color: var(--accent); }
+
+    .panel {
+
+      display: none;
+
+      background: var(--panel);
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      padding: 1rem;
+
+    }
+
+    .panel.active { display: block; }
+
+    .panel-hint {
+
+      color: var(--muted);
+
+      font-size: 0.82rem;
+
+      margin: 0 0 0.75rem;
+
+    }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+
+    th, td { text-align: left; padding: 0.5rem 0.65rem; border-bottom: 1px solid var(--border); }
+
+    th { color: var(--muted); font-weight: 500; font-size: 0.78rem; text-transform: uppercase; }
+
+    tr.clickable { cursor: pointer; }
+
+    tr.clickable:hover td { background: rgba(61, 139, 253, 0.1); }
+
+    tr.selected td { background: rgba(61, 139, 253, 0.14); }
+
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+
+    .tag {
+
+      display: inline-block;
+
+      padding: 0.1rem 0.45rem;
+
+      border-radius: 4px;
+
+      font-size: 0.72rem;
+
+      font-weight: 600;
+
+    }
+
+    .tag-S { background: rgba(61, 211, 140, 0.15); color: var(--green); }
+
+    .tag-A { background: rgba(61, 139, 253, 0.15); color: var(--accent); }
+
+    .tag-B, .tag-C { background: rgba(139, 156, 179, 0.15); color: var(--muted); }
+
+    .put { color: var(--red); }
+
+    .call { color: var(--amber); }
+
+    .fund-grid {
+
+      display: grid;
+
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+
+      gap: 0.85rem;
+
+    }
+
+    .fund-card {
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      padding: 0.85rem;
+
+      background: rgba(0,0,0,0.15);
+
+    }
+
+    .fund-card h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+
+    .fund-card .meta { color: var(--muted); font-size: 0.8rem; margin-bottom: 0.6rem; }
+
+    .fund-card ul { margin: 0; padding-left: 1.1rem; font-size: 0.82rem; }
+
+    .err { color: var(--red); padding: 1rem; }
+
+    .detail-panel {
+
+      margin-top: 1rem;
+
+      padding: 1rem 1.1rem;
+
+      border: 1px solid var(--border);
+
+      border-radius: 8px;
+
+      background: rgba(0, 0, 0, 0.2);
+
+      display: none;
+
+    }
+
+    .detail-panel.open { display: block; }
+
+    .detail-panel h3 { margin: 0 0 0.35rem; font-size: 1.05rem; }
+
+    .detail-meta { color: var(--muted); font-size: 0.82rem; margin-bottom: 0.85rem; }
+
+    .stacked-bar {
+
+      display: flex;
+
+      height: 32px;
+
+      border-radius: 6px;
+
+      overflow: hidden;
+
+      border: 1px solid var(--border);
+
+      margin-bottom: 0.85rem;
+
+    }
+
+    .stack-seg {
+
+      height: 100%;
+
+      min-width: 3px;
+
+      transition: opacity 0.15s;
+
+    }
+
+    .stack-seg:hover { opacity: 0.85; }
+
+    .fund-rows { display: flex; flex-direction: column; gap: 0.45rem; }
+
+    .fund-row {
+
+      display: grid;
+
+      grid-template-columns: minmax(140px, 1.2fr) minmax(100px, 1fr) auto auto;
+
+      gap: 0.65rem;
+
+      align-items: center;
+
+      font-size: 0.84rem;
+
+    }
+
+    .fund-row .bar-wrap {
+
+      height: 10px;
+
+      background: rgba(255,255,255,0.06);
+
+      border-radius: 4px;
+
+      overflow: hidden;
+
+    }
+
+    .fund-row .bar-fill { height: 100%; border-radius: 4px; }
+
+    .fund-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+    .fund-val { text-align: right; font-variant-numeric: tabular-nums; color: var(--muted); }
+
+    @media (max-width: 720px) {
+
+      .fund-row { grid-template-columns: 1fr; gap: 0.25rem; }
+
+      .fund-row .bar-wrap { display: none; }
+
+    }
+
+  </style>
+
+  <script src="dashboard_data.js"></script>
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>Whale 13F Index</h1>
+
+    <p id="subtitle">Curated fund holdings — rolled-up synthetic portfolio</p>
+
+  </header>
+
+  <main>
+
+    <div id="error" class="err" style="display:none"></div>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="tabs">
+
+      <button class="tab active" data-tab="index">Rolled-up index</button>
+
+      <button class="tab" data-tab="longs">Stock longs</button>
+
+      <button class="tab" data-tab="calls">Call book</button>
+
+      <button class="tab" data-tab="puts">Put book</button>
+
+      <button class="tab" data-tab="funds">Per-fund cards</button>
+
+    </div>
+
+    <section class="panel active" id="panel-index"></section>
+
+    <section class="panel" id="panel-longs"></section>
+
+    <section class="panel" id="panel-calls"></section>
+
+    <section class="panel" id="panel-puts"></section>
+
+    <section class="panel" id="panel-funds"></section>
+
+    <section class="detail-panel" id="detail-panel" aria-live="polite">
+
+      <h3 id="detail-title"></h3>
+
+      <div class="detail-meta" id="detail-meta"></div>
+
+      <div class="stacked-bar" id="detail-stacked"></div>
+
+      <div class="fund-rows" id="detail-funds"></div>
+
+    </section>
+
+  </main>
+
+  <script>
+
+    const PALETTE = [
+
+      "#3d8bfd", "#3dd68c", "#f5c542", "#b388ff", "#4dd0e1",
+
+      "#ff8a65", "#81c784", "#64b5f6", "#e57373", "#aed581",
+
+      "#9575cd", "#4db6ac", "#f06292", "#7986cb", "#dce775",
+
+    ];
+
+
+
+    const fmtUsd = (n) => {
+
+      if (n == null || isNaN(n)) return "—";
+
+      if (Math.abs(n) >= 1e9) return "$" + (n / 1e9).toFixed(2) + "B";
+
+      if (Math.abs(n) >= 1e6) return "$" + (n / 1e6).toFixed(1) + "M";
+
+      return "$" + Number(n).toLocaleString();
+
+    };
+
+
+
+    let dashboardData = null;
+
+    let selectedPosId = null;
+
+
+
+    function colorForIndex(i) {
+
+      return PALETTE[i % PALETTE.length];
+
+    }
+
+
+
+    function sideLabel(side) {
+
+      if (side === "put") return "put options";
+
+      if (side === "call") return "call options";
+
+      return "stock long";
+
+    }
+
+
+
+    function table(headers, rows, { clickable = false } = {}) {
+
+      const thead = "<tr>" + headers.map((h) => `<th class="${h.align || ""}">${h.label}</th>`).join("") + "</tr>";
+
+      const tbody = rows.map((r) => {
+
+        const cls = clickable && r.pos_id ? ` class="clickable${r.pos_id === selectedPosId ? " selected" : ""}" data-pos-id="${r.pos_id}"` : "";
+
+        return `<tr${cls}>` + headers.map((h) => `<td class="${h.align || ""}">${r[h.key] ?? ""}</td>`).join("") + "</tr>";
+
+      }).join("");
+
+      return `<table><thead>${thead}</thead><tbody>${tbody}</tbody></table>`;
+
+    }
+
+
+
+    function showPositionDetail(posId) {
+
+      const panel = document.getElementById("detail-panel");
+
+      const detail = (dashboardData.position_details || {})[posId];
+
+      if (!detail) {
+
+        panel.classList.remove("open");
+
+        selectedPosId = null;
+
+        return;
+
+      }
+
+      selectedPosId = posId;
+
+      document.querySelectorAll("tr.clickable.selected").forEach((tr) => tr.classList.remove("selected"));
+
+      const row = document.querySelector(`tr[data-pos-id="${CSS.escape(posId)}"]`);
+
+      if (row) row.classList.add("selected");
+
+
+
+      const side = detail.side || "long";
+
+      const sideCls = side === "put" ? "put" : side === "call" ? "call" : "";
+
+      document.getElementById("detail-title").innerHTML =
+
+        `<span class="${sideCls}">${detail.label}</span> · ${sideLabel(side)}`;
+
+      document.getElementById("detail-meta").textContent =
+
+        `${fmtUsd(detail.value_usd)} total · ${detail.fund_count} fund(s) · click a row in Stock longs / Calls / Puts to compare`;
+
+
+
+      const funds = detail.funds || [];
+
+      const stacked = document.getElementById("detail-stacked");
+
+      stacked.innerHTML = funds.map((f, i) => {
+
+        const pct = f.share_of_position_pct || 0;
+
+        const title = `${f.name}: ${fmtUsd(f.value_usd)} (${pct}%)`;
+
+        return `<div class="stack-seg" style="width:${pct}%;background:${colorForIndex(i)}" title="${title.replace(/"/g, "&quot;")}"></div>`;
+
+      }).join("");
+
+
+
+      const maxVal = funds[0]?.value_usd || 1;
+
+      document.getElementById("detail-funds").innerHTML = funds.map((f, i) => {
+
+        const tier = f.tier ? `<span class="tag tag-${f.tier}">${f.tier}</span> ` : "";
+
+        const barPct = Math.max(2, (f.value_usd / maxVal) * 100);
+
+        const contracts = f.shares && side !== "long"
+
+          ? ` · ${Number(f.shares).toLocaleString()} contracts`
+
+          : f.shares ? ` · ${Number(f.shares).toLocaleString()} sh` : "";
+
+        return `<div class="fund-row">
+
+          <div class="fund-name">${tier}${f.name}</div>
+
+          <div class="bar-wrap"><div class="bar-fill" style="width:${barPct}%;background:${colorForIndex(i)}"></div></div>
+
+          <div class="fund-val">${fmtUsd(f.value_usd)} (${f.share_of_position_pct}%)</div>
+
+          <div class="fund-val">${f.weight_in_fund_pct != null ? f.weight_in_fund_pct + "% of fund" : ""}${contracts}</div>
+
+        </div>`;
+
+      }).join("");
+
+
+
+      panel.classList.add("open");
+
+      panel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+
+    }
+
+
+
+    function bindDrillDown(containerId) {
+
+      const el = document.getElementById(containerId);
+
+      el.addEventListener("click", (ev) => {
+
+        const tr = ev.target.closest("tr[data-pos-id]");
+
+        if (!tr) return;
+
+        const posId = tr.getAttribute("data-pos-id");
+
+        if (posId === selectedPosId) {
+
+          selectedPosId = null;
+
+          document.getElementById("detail-panel").classList.remove("open");
+
+          tr.classList.remove("selected");
+
+          return;
+
+        }
+
+        showPositionDetail(posId);
+
+      });
+
+    }
+
+
+
+    function renderSidePanel(panelId, rows, side) {
+
+      const hint = "Click a row to see which funds hold it.";
+
+      const sideCls = side === "put" ? "put" : side === "call" ? "call" : "";
+
+      const mapped = (rows || []).map((p) => ({
+
+        pos_id: p.pos_id,
+
+        ticker: sideCls ? `<span class="${sideCls}">${p.label || p.ticker}</span>` : (p.label || p.ticker),
+
+        funds: p.fund_count,
+
+        weight: (p.weight_pct != null ? p.weight_pct.toFixed(2) : "0") + "%",
+
+        value: sideCls ? `<span class="${sideCls}">${fmtUsd(p.value_usd)}</span>` : fmtUsd(p.value_usd),
+
+      }));
+
+      document.getElementById(panelId).innerHTML =
+
+        `<p class="panel-hint">${hint}</p>` +
+
+        table(
+
+          [
+
+            { key: "ticker", label: side === "put" ? "Underlying (put)" : side === "call" ? "Underlying (call)" : "Ticker" },
+
+            { key: "funds", label: "Funds", align: "num" },
+
+            { key: "weight", label: "Book weight", align: "num" },
+
+            { key: "value", label: "Notional", align: "num" },
+
+          ],
+
+          mapped,
+
+          { clickable: true }
+
+        );
+
+    }
+
+
+
+    function render(data) {
+
+      dashboardData = data;
+
+      const q = data.latest_quarter ? ` · latest quarter ${data.latest_quarter}` : "";
+
+      document.getElementById("subtitle").textContent =
+
+        `As of ${data.generated_at}${q} · ${data.fund_count} funds with 13F data`;
+
+
+
+      document.getElementById("stats").innerHTML = [
+
+        { label: "Funds", value: data.fund_count },
+
+        { label: "Aggregate AUM", value: fmtUsd(data.aggregate_aum_usd) },
+
+        { label: "Stock long lines", value: (data.rolled_up_longs || []).length },
+
+        { label: "Call lines", value: (data.rolled_up_calls || []).length },
+
+        { label: "Put lines", value: (data.rolled_up_puts || []).length },
+
+      ].map((s) => `<div class="stat"><div class="label">${s.label}</div><div class="value">${s.value}</div></div>`).join("");
+
+
+
+      const idxRows = (data.index_positions || []).slice(0, 40).map((p) => ({
+
+        ticker: p.ticker,
+
+        weight: (p.weight_pct != null ? p.weight_pct.toFixed(2) : "0") + "%",
+
+        funds: p.fund_count,
+
+        value: fmtUsd(p.value_usd),
+
+      }));
+
+      document.getElementById("panel-index").innerHTML =
+
+        `<p class="panel-hint">All sides combined per ticker (legacy rollup). Use side tabs for puts/calls/stock drill-down.</p>` +
+
+        table(
+
+          [
+
+            { key: "ticker", label: "Ticker" },
+
+            { key: "weight", label: "Weight", align: "num" },
+
+            { key: "funds", label: "Funds", align: "num" },
+
+            { key: "value", label: "Value", align: "num" },
+
+          ],
+
+          idxRows
+
+        );
+
+
+
+      renderSidePanel("panel-longs", data.rolled_up_longs, "long");
+
+      renderSidePanel("panel-calls", data.rolled_up_calls, "call");
+
+      renderSidePanel("panel-puts", data.rolled_up_puts, "put");
+
+
+
+      document.getElementById("panel-funds").innerHTML = `<div class="fund-grid">` +
+
+        (data.funds || []).map((f) => {
+
+          const tier = f.tier ? `<span class="tag tag-${f.tier}">${f.tier}</span> ` : "";
+
+          const puts = (f.top_puts || []).slice(0, 5).map((p) =>
+
+            `<li class="put">${p.ticker || p.issuer_name}: ${fmtUsd(p.value_usd)}</li>`
+
+          ).join("");
+
+          const calls = (f.top_calls || []).slice(0, 5).map((p) =>
+
+            `<li class="call">${p.ticker || p.issuer_name}: ${fmtUsd(p.value_usd)}</li>`
+
+          ).join("");
+
+          const longs = (f.top_longs || []).slice(0, 5).map((p) =>
+
+            `<li>${p.ticker || p.issuer_name}: ${fmtUsd(p.value_usd)}</li>`
+
+          ).join("");
+
+          return `<div class="fund-card">
+
+            <h3>${tier}${f.name}</h3>
+
+            <div class="meta">Filed ${f.filing_date || "—"} · Q ${f.period_ending || "—"} · ${fmtUsd(f.total_value_usd)}</div>
+
+            ${puts ? `<div><strong class="put">Top puts</strong><ul>${puts}</ul></div>` : ""}
+
+            ${calls ? `<div><strong class="call">Top calls</strong><ul>${calls}</ul></div>` : ""}
+
+            <div><strong>Top longs</strong><ul>${longs || "<li>—</li>"}</ul></div>
+
+          </div>`;
+
+        }).join("") + `</div>`;
+
+
+
+      bindDrillDown("panel-longs");
+
+      bindDrillDown("panel-calls");
+
+      bindDrillDown("panel-puts");
+
+    }
+
+
+
+    document.querySelectorAll(".tab").forEach((btn) => {
+
+      btn.addEventListener("click", () => {
+
+        document.querySelectorAll(".tab").forEach((b) => b.classList.remove("active"));
+
+        document.querySelectorAll(".panel").forEach((p) => p.classList.remove("active"));
+
+        btn.classList.add("active");
+
+        document.getElementById("panel-" + btn.dataset.tab).classList.add("active");
+
+      });
+
+    });
+
+
+
+    if (window.__DASHBOARD_DATA__) {
+
+      render(window.__DASHBOARD_DATA__);
+
+    } else {
+
+      const el = document.getElementById("error");
+
+      el.style.display = "block";
+
+      el.textContent = "Missing dashboard_data.js — run: py tools/build_dashboard_data.py";
+
+    }
+
+  </script>
+
+</body>
+
+</html>
+
+

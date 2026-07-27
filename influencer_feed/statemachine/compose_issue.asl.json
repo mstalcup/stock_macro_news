@@ -37,7 +37,7 @@
           "Next": "MapSummarizeSources"
         }
       ],
-      "Default": "PersistNoRowsIssue"
+      "Default": "BuildGlobalSummary"
     },
     "MapSummarizeSources": {
       "Type": "Map",
@@ -176,31 +176,5 @@
       ],
       "End": true
     },
-    "PersistNoRowsIssue": {
-      "Type": "Task",
-      "Resource": "arn:aws:states:::lambda:invoke",
-      "Parameters": {
-        "FunctionName": "${PersistIssueArn}",
-        "Payload": {
-          "issue_date.$": "$.issue_date",
-          "user_id.$": "$.user_id",
-          "global_summary_smol.$": "States.Format('No source rows found for {}.', $.issue_date)",
-          "global_summary_shift": "",
-          "global_catalysts": "",
-          "global_technical": "",
-          "global_ticker_focus": [],
-          "fetched_sources": 0,
-          "no_new_sources": 0,
-          "source_count": 0
-        }
-      },
-      "ResultSelector": {
-        "status.$": "$.Payload.status",
-        "issue_date.$": "$.Payload.issue_date",
-        "user_id.$": "$.Payload.user_id",
-        "issue_sk.$": "$.Payload.issue_sk"
-      },
-      "Next": "PublishDiscord"
-    }
   }
 }

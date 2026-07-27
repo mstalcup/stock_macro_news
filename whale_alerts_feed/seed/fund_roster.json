@@ -1,0 +1,129 @@
+[
+  {
+    "fund_id": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "cik": "2045724",
+    "tier": "S",
+    "source": "manual_overrides",
+    "override_reason": "High-conviction thematic fund; 13D before 13F (e.g. CORZ)"
+  },
+  {
+    "fund_id": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "cik": "1336528",
+    "tier": "S",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "cik": "1649339",
+    "tier": "S",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "cik": "1350694",
+    "tier": "A",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1040273",
+    "fund_name": "Third Point LLC",
+    "cik": "1040273",
+    "tier": "A",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1138995",
+    "fund_name": "ValueAct Capital",
+    "cik": "1138995",
+    "tier": "A",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1029160",
+    "fund_name": "Soros Fund Management",
+    "cik": "1029160",
+    "tier": "A",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "cik": "1536411",
+    "tier": "A",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1167483",
+    "fund_name": "Tiger Global Management",
+    "cik": "1167483",
+    "tier": "B",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1135730",
+    "fund_name": "Coatue Management",
+    "cik": "1135730",
+    "tier": "B",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1541617",
+    "fund_name": "Altimeter Capital",
+    "cik": "1541617",
+    "tier": "B",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "cik": "1067983",
+    "tier": "C",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "cik": "1364742",
+    "tier": "A",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1273087",
+    "fund_name": "Millennium Management",
+    "cik": "1273087",
+    "tier": "B",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "cik": "1603466",
+    "tier": "B",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1517137",
+    "fund_name": "Starboard Value",
+    "cik": "1517137",
+    "tier": "A",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "cik": "1656456",
+    "tier": "A",
+    "source": "fund_roster_curated"
+  },
+  {
+    "fund_id": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "cik": "1709323",
+    "tier": "S",
+    "source": "fund_roster_curated"
+  }
+]

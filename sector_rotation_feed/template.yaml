@@ -1,0 +1,90 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Sector rotation v1 — 11 GICS sector ETFs vs SPY, daily Discord post
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 300
+    MemorySize: 512
+    Architectures:
+      - x86_64
+
+Parameters:
+  SectorRotationDiscordChannelId:
+    Type: String
+    Default: "1509077723245445211"
+    Description: Discord channel for sector-rotation posts
+  ScheduleLocalTz:
+    Type: String
+    Default: America/Los_Angeles
+
+Resources:
+  RotationTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "${AWS::StackName}-rotation"
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+
+  DiscordBotSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-bot"
+      Description: JSON {"bot_token":"...","channel_id":"..."} for sector-rotation Discord
+      SecretString: !Sub '{"bot_token":"","channel_id":"${SectorRotationDiscordChannelId}"}'
+
+  DiscordWebhookSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-webhook"
+      Description: Optional webhook fallback
+      SecretString: '{"webhook_url":""}'
+
+  RunRotationFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-run-rotation"
+      CodeUri: lambdas/run_rotation/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          ROTATION_TABLE_NAME: !Ref RotationTable
+          DISCORD_BOT_SECRET_ARN: !Ref DiscordBotSecret
+          DISCORD_WEBHOOK_SECRET_ARN: !Ref DiscordWebhookSecret
+          SECTOR_ROTATION_DISCORD_CHANNEL_ID: !Ref SectorRotationDiscordChannelId
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref RotationTable
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref DiscordBotSecret
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref DiscordWebhookSecret
+      Events:
+        PreOpenWeekdays:
+          Type: ScheduleV2
+          Properties:
+            # 6:30 AM America/Los_Angeles Mon–Fri (US cash open, 9:30 AM ET)
+            ScheduleExpression: cron(30 6 ? * MON-FRI *)
+            ScheduleExpressionTimezone: !Ref ScheduleLocalTz
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: "{}"
+
+Outputs:
+  RotationTableName:
+    Value: !Ref RotationTable
+  RunRotationFunction:
+    Value: !Ref RunRotationFunction
+  DiscordBotSecretArn:
+    Value: !Ref DiscordBotSecret

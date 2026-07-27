@@ -1,0 +1,134 @@
+[
+  {
+    "filer_cik": "1364742",
+    "filer_name": "Greenlight Capital (Einhorn)",
+    "signal_count": 76,
+    "status": "ranked",
+    "median_alpha_20d": 4.102,
+    "median_alpha_60d": -0.4532,
+    "hit_rate_20d": 0.5676,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 7.4325
+  },
+  {
+    "filer_cik": "1603466",
+    "filer_name": "Point72 Asset Management",
+    "signal_count": 243,
+    "status": "ranked",
+    "median_alpha_20d": 0.1373,
+    "median_alpha_60d": -1.9339,
+    "hit_rate_20d": 0.5049,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 5.1628
+  },
+  {
+    "filer_cik": "1517137",
+    "filer_name": "Starboard Value",
+    "signal_count": 33,
+    "status": "ranked",
+    "median_alpha_20d": -0.7991,
+    "median_alpha_60d": -1.7721,
+    "hit_rate_20d": 0.4839,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 4.4686
+  },
+  {
+    "filer_cik": "1273087",
+    "filer_name": "Millennium Management",
+    "signal_count": 196,
+    "status": "ranked",
+    "median_alpha_20d": -1.9247,
+    "median_alpha_60d": -2.2326,
+    "hit_rate_20d": 0.4451,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 3.7477
+  },
+  {
+    "filer_cik": "1067983",
+    "filer_name": "Berkshire Hathaway",
+    "signal_count": 24,
+    "status": "ranked",
+    "median_alpha_20d": -1.7245,
+    "median_alpha_60d": -3.1666,
+    "hit_rate_20d": 0.3333,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 2.26
+  },
+  {
+    "filer_cik": "1336528",
+    "filer_name": "Pershing Square Capital Management",
+    "signal_count": 20,
+    "status": "ranked",
+    "median_alpha_20d": -1.5589,
+    "median_alpha_60d": -8.5456,
+    "hit_rate_20d": 0.3684,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 1.3066
+  },
+  {
+    "filer_cik": "1138995",
+    "filer_name": "ValueAct Capital",
+    "signal_count": 15,
+    "status": "ranked",
+    "median_alpha_20d": -2.9005,
+    "median_alpha_60d": -7.8344,
+    "hit_rate_20d": 0.3571,
+    "anticipation_link_rate": 0,
+    "median_filing_day_alpha_1d": 0,
+    "composite_score": 0.8749
+  },
+  {
+    "filer_cik": "2045724",
+    "filer_name": "Situational Awareness LP",
+    "signal_count": 2,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1040273",
+    "filer_name": "Third Point LLC",
+    "signal_count": 5,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1029160",
+    "filer_name": "Soros Fund Management",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1536411",
+    "filer_name": "Duquesne Family Office",
+    "signal_count": 2,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1167483",
+    "filer_name": "Tiger Global Management",
+    "signal_count": 4,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1135730",
+    "filer_name": "Coatue Management",
+    "signal_count": 6,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1541617",
+    "filer_name": "Altimeter Capital",
+    "signal_count": 1,
+    "status": "insufficient_data"
+  },
+  {
+    "filer_cik": "1656456",
+    "filer_name": "Appaloosa Management (Tepper)",
+    "signal_count": 3,
+    "status": "insufficient_data"
+  }
+]

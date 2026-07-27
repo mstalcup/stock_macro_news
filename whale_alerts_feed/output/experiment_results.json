@@ -1,0 +1,3708 @@
+[
+  {
+    "id": "global_all_13dg",
+    "description": "All 13D/G filings",
+    "fund_cik": "",
+    "fund_name": "ALL",
+    "kind": "global_all",
+    "full": {
+      "n": 546,
+      "n5": 601,
+      "med20": -0.8277,
+      "med5": 0.2857,
+      "hit20": 0.4725,
+      "mean20": 2.589
+    },
+    "train": {
+      "n": 165,
+      "n5": 165,
+      "med20": -0.9668,
+      "med5": 0.5919,
+      "hit20": 0.4667,
+      "mean20": 3.7701
+    },
+    "test": {
+      "n": 381,
+      "n5": 436,
+      "med20": -0.7361,
+      "med5": 0.2395,
+      "hit20": 0.4751,
+      "mean20": 2.0775
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "global_13d_only",
+    "description": "All 13D (new+amend)",
+    "fund_cik": "",
+    "fund_name": "ALL",
+    "kind": "global_13d",
+    "full": {
+      "n": 64,
+      "n5": 66,
+      "med20": -1.5901,
+      "med5": -1.3422,
+      "hit20": 0.4375,
+      "mean20": 0.1298
+    },
+    "train": {
+      "n": 16,
+      "n5": 16,
+      "med20": 2.4122,
+      "med5": -0.3631,
+      "hit20": 0.5625,
+      "mean20": 3.8104
+    },
+    "test": {
+      "n": 48,
+      "n5": 50,
+      "med20": -2.7574,
+      "med5": -1.3422,
+      "hit20": 0.3958,
+      "mean20": -1.0971
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "global_13d_new",
+    "description": "All 13d_new",
+    "fund_cik": "",
+    "fund_name": "ALL",
+    "kind": "global_13d_new",
+    "full": {
+      "n": 9,
+      "n5": 9,
+      "med20": -1.3205,
+      "med5": 3.1322,
+      "hit20": 0.4444,
+      "mean20": 0.9277
+    },
+    "train": {
+      "n": 3,
+      "n5": 3,
+      "med20": -1.3205,
+      "med5": -2.2453,
+      "hit20": 0.3333,
+      "mean20": 0.2715
+    },
+    "test": {
+      "n": 6,
+      "n5": 6,
+      "med20": 0.0619,
+      "med5": 3.447,
+      "hit20": 0.5,
+      "mean20": 1.2558
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "global_13d_dedupe",
+    "description": "13D first per fund+ticker",
+    "fund_cik": "",
+    "fund_name": "ALL",
+    "kind": "global_13d_dedupe",
+    "full": {
+      "n": 20,
+      "n5": 21,
+      "med20": 1.9856,
+      "med5": 1.5948,
+      "hit20": 0.55,
+      "mean20": 1.8242
+    },
+    "train": {
+      "n": 10,
+      "n5": 10,
+      "med20": 3.3017,
+      "med5": -0.0404,
+      "hit20": 0.6,
+      "mean20": 5.4086
+    },
+    "test": {
+      "n": 10,
+      "n5": 11,
+      "med20": -0.4232,
+      "med5": 3.059,
+      "hit20": 0.5,
+      "mean20": -1.7602
+    },
+    "works_insample": true,
+    "works_oos_hint": true
+  },
+  {
+    "id": "global_volume",
+    "description": "Volume spike (pre-filing)",
+    "fund_cik": "",
+    "fund_name": "ALL",
+    "kind": "global_vol",
+    "full": {
+      "n": 65,
+      "n5": 65,
+      "med20": 4.9262,
+      "med5": -2.7961,
+      "hit20": 0.6,
+      "mean20": 9.1778
+    },
+    "train": {
+      "n": 59,
+      "n5": 59,
+      "med20": 4.9262,
+      "med5": -2.9796,
+      "hit20": 0.5932,
+      "mean20": 8.9781
+    },
+    "test": {
+      "n": 6,
+      "n5": 6,
+      "med20": 10.6949,
+      "med5": 8.9984,
+      "hit20": 0.6667,
+      "mean20": 11.1418
+    },
+    "works_insample": true,
+    "works_oos_hint": true
+  },
+  {
+    "id": "global_confluence",
+    "description": "2+ layers confluence",
+    "fund_cik": "",
+    "fund_name": "ALL",
+    "kind": "global_conf",
+    "full": {
+      "n": 79,
+      "n5": 80,
+      "med20": 2.5216,
+      "med5": -1.5514,
+      "hit20": 0.5696,
+      "mean20": 6.8688
+    },
+    "train": {
+      "n": 60,
+      "n5": 60,
+      "med20": 5.1595,
+      "med5": -2.9333,
+      "hit20": 0.6,
+      "mean20": 8.952
+    },
+    "test": {
+      "n": 19,
+      "n5": 20,
+      "med20": -1.2146,
+      "med5": 2.2899,
+      "hit20": 0.4737,
+      "mean20": 0.2903
+    },
+    "works_insample": true,
+    "works_oos_hint": true
+  },
+  {
+    "id": "2045724_13d_new",
+    "description": "Situational Awareness LP: 13d_new",
+    "fund_cik": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "2045724_13d",
+    "description": "Situational Awareness LP: 13D new+amend",
+    "fund_cik": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "2045724_13g",
+    "description": "Situational Awareness LP: 13G new+amend",
+    "fund_cik": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "kind": "fund_13g",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "2045724_13d_dedupe",
+    "description": "Situational Awareness LP: 13D deduped",
+    "fund_cik": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "2045724_vol",
+    "description": "Situational Awareness LP: volume pre-filing",
+    "fund_cik": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "2045724_13d_new_vol",
+    "description": "Situational Awareness LP: 13d_new + vol confirm",
+    "fund_cik": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "2045724_13d_vol",
+    "description": "Situational Awareness LP: 13D + vol confirm",
+    "fund_cik": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "2045724_conf",
+    "description": "Situational Awareness LP: confluence",
+    "fund_cik": "2045724",
+    "fund_name": "Situational Awareness LP",
+    "kind": "fund_conf",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1336528_13d_new",
+    "description": "Pershing Square Capital Management: 13d_new",
+    "fund_cik": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": -1.3205,
+      "med5": -9.8243,
+      "hit20": 0.0,
+      "mean20": -1.3205
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -1.3205,
+      "med5": -9.8243,
+      "hit20": 0.0,
+      "mean20": -1.3205
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1336528_13d",
+    "description": "Pershing Square Capital Management: 13D new+amend",
+    "fund_cik": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "kind": "fund_13d",
+    "full": {
+      "n": 19,
+      "n5": 20,
+      "med20": -1.5589,
+      "med5": -0.6946,
+      "hit20": 0.3684,
+      "mean20": -0.4323
+    },
+    "train": {
+      "n": 7,
+      "n5": 7,
+      "med20": 4.1376,
+      "med5": 0.9494,
+      "hit20": 0.5714,
+      "mean20": 3.0497
+    },
+    "test": {
+      "n": 12,
+      "n5": 13,
+      "med20": -2.6911,
+      "med5": -1.3493,
+      "hit20": 0.25,
+      "mean20": -2.4635
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1336528_13g",
+    "description": "Pershing Square Capital Management: 13G new+amend",
+    "fund_cik": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "kind": "fund_13g",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1336528_13d_dedupe",
+    "description": "Pershing Square Capital Management: 13D deduped",
+    "fund_cik": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 3,
+      "n5": 3,
+      "med20": -1.3205,
+      "med5": -2.6986,
+      "hit20": 0.3333,
+      "mean20": 0.9915
+    },
+    "train": {
+      "n": 3,
+      "n5": 3,
+      "med20": -1.3205,
+      "med5": -2.6986,
+      "hit20": 0.3333,
+      "mean20": 0.9915
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1336528_vol",
+    "description": "Pershing Square Capital Management: volume pre-filing",
+    "fund_cik": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "kind": "fund_vol",
+    "full": {
+      "n": 3,
+      "n5": 3,
+      "med20": 4.9262,
+      "med5": 2.5229,
+      "hit20": 0.6667,
+      "mean20": 2.8826
+    },
+    "train": {
+      "n": 2,
+      "n5": 2,
+      "med20": 8.1656,
+      "med5": 3.9036,
+      "hit20": 1.0,
+      "mean20": 8.1656
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": -7.6836,
+      "med5": 2.5229,
+      "hit20": 0.0,
+      "mean20": -7.6836
+    },
+    "works_insample": true,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1336528_13d_new_vol",
+    "description": "Pershing Square Capital Management: 13d_new + vol confirm",
+    "fund_cik": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1336528_13d_vol",
+    "description": "Pershing Square Capital Management: 13D + vol confirm",
+    "fund_cik": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 3,
+      "n5": 3,
+      "med20": -1.6214,
+      "med5": -1.3493,
+      "hit20": 0.3333,
+      "mean20": 1.1846
+    },
+    "train": {
+      "n": 2,
+      "n5": 2,
+      "med20": 5.5945,
+      "med5": 2.5421,
+      "hit20": 0.5,
+      "mean20": 5.5945
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": -7.6352,
+      "med5": -1.3493,
+      "hit20": 0.0,
+      "mean20": -7.6352
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1336528_conf",
+    "description": "Pershing Square Capital Management: confluence",
+    "fund_cik": "1336528",
+    "fund_name": "Pershing Square Capital Management",
+    "kind": "fund_conf",
+    "full": {
+      "n": 3,
+      "n5": 3,
+      "med20": 5.9165,
+      "med5": 2.0697,
+      "hit20": 0.6667,
+      "mean20": 4.8268
+    },
+    "train": {
+      "n": 2,
+      "n5": 2,
+      "med20": 8.6608,
+      "med5": 4.8909,
+      "hit20": 1.0,
+      "mean20": 8.6608
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": -2.8412,
+      "med5": 2.0697,
+      "hit20": 0.0,
+      "mean20": -2.8412
+    },
+    "works_insample": true,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1649339_13d_new",
+    "description": "Scion Asset Management (Burry): 13d_new",
+    "fund_cik": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1649339_13d",
+    "description": "Scion Asset Management (Burry): 13D new+amend",
+    "fund_cik": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1649339_13g",
+    "description": "Scion Asset Management (Burry): 13G new+amend",
+    "fund_cik": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "kind": "fund_13g",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1649339_13d_dedupe",
+    "description": "Scion Asset Management (Burry): 13D deduped",
+    "fund_cik": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1649339_vol",
+    "description": "Scion Asset Management (Burry): volume pre-filing",
+    "fund_cik": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1649339_13d_new_vol",
+    "description": "Scion Asset Management (Burry): 13d_new + vol confirm",
+    "fund_cik": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1649339_13d_vol",
+    "description": "Scion Asset Management (Burry): 13D + vol confirm",
+    "fund_cik": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1649339_conf",
+    "description": "Scion Asset Management (Burry): confluence",
+    "fund_cik": "1649339",
+    "fund_name": "Scion Asset Management (Burry)",
+    "kind": "fund_conf",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1350694_13d_new",
+    "description": "Elliott Investment Management: 13d_new",
+    "fund_cik": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1350694_13d",
+    "description": "Elliott Investment Management: 13D new+amend",
+    "fund_cik": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1350694_13g",
+    "description": "Elliott Investment Management: 13G new+amend",
+    "fund_cik": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "kind": "fund_13g",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1350694_13d_dedupe",
+    "description": "Elliott Investment Management: 13D deduped",
+    "fund_cik": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1350694_vol",
+    "description": "Elliott Investment Management: volume pre-filing",
+    "fund_cik": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1350694_13d_new_vol",
+    "description": "Elliott Investment Management: 13d_new + vol confirm",
+    "fund_cik": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1350694_13d_vol",
+    "description": "Elliott Investment Management: 13D + vol confirm",
+    "fund_cik": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1350694_conf",
+    "description": "Elliott Investment Management: confluence",
+    "fund_cik": "1350694",
+    "fund_name": "Elliott Investment Management",
+    "kind": "fund_conf",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1040273_13d_new",
+    "description": "Third Point LLC: 13d_new",
+    "fund_cik": "1040273",
+    "fund_name": "Third Point LLC",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": 4.2545,
+      "med5": -0.4005,
+      "hit20": 1.0,
+      "mean20": 4.2545
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": 4.2545,
+      "med5": -0.4005,
+      "hit20": 1.0,
+      "mean20": 4.2545
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1040273_13d",
+    "description": "Third Point LLC: 13D new+amend",
+    "fund_cik": "1040273",
+    "fund_name": "Third Point LLC",
+    "kind": "fund_13d",
+    "full": {
+      "n": 3,
+      "n5": 3,
+      "med20": -1.7582,
+      "med5": -1.3352,
+      "hit20": 0.3333,
+      "mean20": -0.4294
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -1.7582,
+      "med5": -3.4242,
+      "hit20": 0.0,
+      "mean20": -1.7582
+    },
+    "test": {
+      "n": 2,
+      "n5": 2,
+      "med20": 0.2349,
+      "med5": -0.8679,
+      "hit20": 0.5,
+      "mean20": 0.2349
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1040273_13g",
+    "description": "Third Point LLC: 13G new+amend",
+    "fund_cik": "1040273",
+    "fund_name": "Third Point LLC",
+    "kind": "fund_13g",
+    "full": {
+      "n": 2,
+      "n5": 2,
+      "med20": -5.7353,
+      "med5": -12.6973,
+      "hit20": 0.5,
+      "mean20": -5.7353
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 2,
+      "n5": 2,
+      "med20": -5.7353,
+      "med5": -12.6973,
+      "hit20": 0.5,
+      "mean20": -5.7353
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1040273_13d_dedupe",
+    "description": "Third Point LLC: 13D deduped",
+    "fund_cik": "1040273",
+    "fund_name": "Third Point LLC",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 2,
+      "n5": 2,
+      "med20": 1.2482,
+      "med5": -1.9123,
+      "hit20": 0.5,
+      "mean20": 1.2482
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -1.7582,
+      "med5": -3.4242,
+      "hit20": 0.0,
+      "mean20": -1.7582
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": 4.2545,
+      "med5": -0.4005,
+      "hit20": 1.0,
+      "mean20": 4.2545
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1040273_vol",
+    "description": "Third Point LLC: volume pre-filing",
+    "fund_cik": "1040273",
+    "fund_name": "Third Point LLC",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1040273_13d_new_vol",
+    "description": "Third Point LLC: 13d_new + vol confirm",
+    "fund_cik": "1040273",
+    "fund_name": "Third Point LLC",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1040273_13d_vol",
+    "description": "Third Point LLC: 13D + vol confirm",
+    "fund_cik": "1040273",
+    "fund_name": "Third Point LLC",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1040273_conf",
+    "description": "Third Point LLC: confluence",
+    "fund_cik": "1040273",
+    "fund_name": "Third Point LLC",
+    "kind": "fund_conf",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1138995_13d_new",
+    "description": "ValueAct Capital: 13d_new",
+    "fund_cik": "1138995",
+    "fund_name": "ValueAct Capital",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1138995_13d",
+    "description": "ValueAct Capital: 13D new+amend",
+    "fund_cik": "1138995",
+    "fund_name": "ValueAct Capital",
+    "kind": "fund_13d",
+    "full": {
+      "n": 4,
+      "n5": 4,
+      "med20": 27.0255,
+      "med5": -7.8395,
+      "hit20": 0.75,
+      "mean20": 18.8156
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": 36.4999,
+      "med5": 67.8228,
+      "hit20": 1.0,
+      "mean20": 36.4999
+    },
+    "test": {
+      "n": 3,
+      "n5": 3,
+      "med20": 17.5512,
+      "med5": -12.0594,
+      "hit20": 0.6667,
+      "mean20": 12.9209
+    },
+    "works_insample": true,
+    "works_oos_hint": true
+  },
+  {
+    "id": "1138995_13g",
+    "description": "ValueAct Capital: 13G new+amend",
+    "fund_cik": "1138995",
+    "fund_name": "ValueAct Capital",
+    "kind": "fund_13g",
+    "full": {
+      "n": 10,
+      "n5": 11,
+      "med20": -3.4051,
+      "med5": -0.0539,
+      "hit20": 0.2,
+      "mean20": -5.8122
+    },
+    "train": {
+      "n": 5,
+      "n5": 5,
+      "med20": -2.8451,
+      "med5": -2.0851,
+      "hit20": 0.4,
+      "mean20": -2.147
+    },
+    "test": {
+      "n": 5,
+      "n5": 6,
+      "med20": -5.8999,
+      "med5": 2.7752,
+      "hit20": 0.0,
+      "mean20": -9.4774
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1138995_13d_dedupe",
+    "description": "ValueAct Capital: 13D deduped",
+    "fund_cik": "1138995",
+    "fund_name": "ValueAct Capital",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": 36.4999,
+      "med5": 67.8228,
+      "hit20": 1.0,
+      "mean20": 36.4999
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": 36.4999,
+      "med5": 67.8228,
+      "hit20": 1.0,
+      "mean20": 36.4999
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1138995_vol",
+    "description": "ValueAct Capital: volume pre-filing",
+    "fund_cik": "1138995",
+    "fund_name": "ValueAct Capital",
+    "kind": "fund_vol",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": 36.4999,
+      "med5": 67.8228,
+      "hit20": 1.0,
+      "mean20": 36.4999
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": 36.4999,
+      "med5": 67.8228,
+      "hit20": 1.0,
+      "mean20": 36.4999
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1138995_13d_new_vol",
+    "description": "ValueAct Capital: 13d_new + vol confirm",
+    "fund_cik": "1138995",
+    "fund_name": "ValueAct Capital",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1138995_13d_vol",
+    "description": "ValueAct Capital: 13D + vol confirm",
+    "fund_cik": "1138995",
+    "fund_name": "ValueAct Capital",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": 36.4999,
+      "med5": 67.8228,
+      "hit20": 1.0,
+      "mean20": 36.4999
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": 36.4999,
+      "med5": 67.8228,
+      "hit20": 1.0,
+      "mean20": 36.4999
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1138995_conf",
+    "description": "ValueAct Capital: confluence",
+    "fund_cik": "1138995",
+    "fund_name": "ValueAct Capital",
+    "kind": "fund_conf",
+    "full": {
+      "n": 2,
+      "n5": 2,
+      "med20": 21.4611,
+      "med5": 32.8689,
+      "hit20": 1.0,
+      "mean20": 21.4611
+    },
+    "train": {
+      "n": 2,
+      "n5": 2,
+      "med20": 21.4611,
+      "med5": 32.8689,
+      "hit20": 1.0,
+      "mean20": 21.4611
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1029160_13d_new",
+    "description": "Soros Fund Management: 13d_new",
+    "fund_cik": "1029160",
+    "fund_name": "Soros Fund Management",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1029160_13d",
+    "description": "Soros Fund Management: 13D new+amend",
+    "fund_cik": "1029160",
+    "fund_name": "Soros Fund Management",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1029160_13g",
+    "description": "Soros Fund Management: 13G new+amend",
+    "fund_cik": "1029160",
+    "fund_name": "Soros Fund Management",
+    "kind": "fund_13g",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1029160_13d_dedupe",
+    "description": "Soros Fund Management: 13D deduped",
+    "fund_cik": "1029160",
+    "fund_name": "Soros Fund Management",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1029160_vol",
+    "description": "Soros Fund Management: volume pre-filing",
+    "fund_cik": "1029160",
+    "fund_name": "Soros Fund Management",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1029160_13d_new_vol",
+    "description": "Soros Fund Management: 13d_new + vol confirm",
+    "fund_cik": "1029160",
+    "fund_name": "Soros Fund Management",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1029160_13d_vol",
+    "description": "Soros Fund Management: 13D + vol confirm",
+    "fund_cik": "1029160",
+    "fund_name": "Soros Fund Management",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1029160_conf",
+    "description": "Soros Fund Management: confluence",
+    "fund_cik": "1029160",
+    "fund_name": "Soros Fund Management",
+    "kind": "fund_conf",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1536411_13d_new",
+    "description": "Duquesne Family Office: 13d_new",
+    "fund_cik": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1536411_13d",
+    "description": "Duquesne Family Office: 13D new+amend",
+    "fund_cik": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1536411_13g",
+    "description": "Duquesne Family Office: 13G new+amend",
+    "fund_cik": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "kind": "fund_13g",
+    "full": {
+      "n": 2,
+      "n5": 2,
+      "med20": 0.8979,
+      "med5": 5.6174,
+      "hit20": 0.5,
+      "mean20": 0.8979
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 2,
+      "n5": 2,
+      "med20": 0.8979,
+      "med5": 5.6174,
+      "hit20": 0.5,
+      "mean20": 0.8979
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1536411_13d_dedupe",
+    "description": "Duquesne Family Office: 13D deduped",
+    "fund_cik": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1536411_vol",
+    "description": "Duquesne Family Office: volume pre-filing",
+    "fund_cik": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1536411_13d_new_vol",
+    "description": "Duquesne Family Office: 13d_new + vol confirm",
+    "fund_cik": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1536411_13d_vol",
+    "description": "Duquesne Family Office: 13D + vol confirm",
+    "fund_cik": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1536411_conf",
+    "description": "Duquesne Family Office: confluence",
+    "fund_cik": "1536411",
+    "fund_name": "Duquesne Family Office",
+    "kind": "fund_conf",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1167483_13d_new",
+    "description": "Tiger Global Management: 13d_new",
+    "fund_cik": "1167483",
+    "fund_name": "Tiger Global Management",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1167483_13d",
+    "description": "Tiger Global Management: 13D new+amend",
+    "fund_cik": "1167483",
+    "fund_name": "Tiger Global Management",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1167483_13g",
+    "description": "Tiger Global Management: 13G new+amend",
+    "fund_cik": "1167483",
+    "fund_name": "Tiger Global Management",
+    "kind": "fund_13g",
+    "full": {
+      "n": 3,
+      "n5": 4,
+      "med20": -5.6544,
+      "med5": -7.1819,
+      "hit20": 0.3333,
+      "mean20": -8.7277
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -20.9552,
+      "med5": -9.9356,
+      "hit20": 0.0,
+      "mean20": -20.9552
+    },
+    "test": {
+      "n": 2,
+      "n5": 3,
+      "med20": -2.6139,
+      "med5": -4.4281,
+      "hit20": 0.5,
+      "mean20": -2.6139
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1167483_13d_dedupe",
+    "description": "Tiger Global Management: 13D deduped",
+    "fund_cik": "1167483",
+    "fund_name": "Tiger Global Management",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1167483_vol",
+    "description": "Tiger Global Management: volume pre-filing",
+    "fund_cik": "1167483",
+    "fund_name": "Tiger Global Management",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1167483_13d_new_vol",
+    "description": "Tiger Global Management: 13d_new + vol confirm",
+    "fund_cik": "1167483",
+    "fund_name": "Tiger Global Management",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1167483_13d_vol",
+    "description": "Tiger Global Management: 13D + vol confirm",
+    "fund_cik": "1167483",
+    "fund_name": "Tiger Global Management",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1167483_conf",
+    "description": "Tiger Global Management: confluence",
+    "fund_cik": "1167483",
+    "fund_name": "Tiger Global Management",
+    "kind": "fund_conf",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1135730_13d_new",
+    "description": "Coatue Management: 13d_new",
+    "fund_cik": "1135730",
+    "fund_name": "Coatue Management",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1135730_13d",
+    "description": "Coatue Management: 13D new+amend",
+    "fund_cik": "1135730",
+    "fund_name": "Coatue Management",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1135730_13g",
+    "description": "Coatue Management: 13G new+amend",
+    "fund_cik": "1135730",
+    "fund_name": "Coatue Management",
+    "kind": "fund_13g",
+    "full": {
+      "n": 6,
+      "n5": 6,
+      "med20": -12.8855,
+      "med5": 0.5326,
+      "hit20": 0.3333,
+      "mean20": -10.7453
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -26.8702,
+      "med5": 13.2909,
+      "hit20": 0.0,
+      "mean20": -26.8702
+    },
+    "test": {
+      "n": 5,
+      "n5": 5,
+      "med20": -1.1625,
+      "med5": -0.6233,
+      "hit20": 0.4,
+      "mean20": -7.5203
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1135730_13d_dedupe",
+    "description": "Coatue Management: 13D deduped",
+    "fund_cik": "1135730",
+    "fund_name": "Coatue Management",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1135730_vol",
+    "description": "Coatue Management: volume pre-filing",
+    "fund_cik": "1135730",
+    "fund_name": "Coatue Management",
+    "kind": "fund_vol",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": -1.1666,
+      "med5": 14.5788,
+      "hit20": 0.0,
+      "mean20": -1.1666
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -1.1666,
+      "med5": 14.5788,
+      "hit20": 0.0,
+      "mean20": -1.1666
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1135730_13d_new_vol",
+    "description": "Coatue Management: 13d_new + vol confirm",
+    "fund_cik": "1135730",
+    "fund_name": "Coatue Management",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1135730_13d_vol",
+    "description": "Coatue Management: 13D + vol confirm",
+    "fund_cik": "1135730",
+    "fund_name": "Coatue Management",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1135730_conf",
+    "description": "Coatue Management: confluence",
+    "fund_cik": "1135730",
+    "fund_name": "Coatue Management",
+    "kind": "fund_conf",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": -1.1666,
+      "med5": 14.5788,
+      "hit20": 0.0,
+      "mean20": -1.1666
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -1.1666,
+      "med5": 14.5788,
+      "hit20": 0.0,
+      "mean20": -1.1666
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1541617_13d_new",
+    "description": "Altimeter Capital: 13d_new",
+    "fund_cik": "1541617",
+    "fund_name": "Altimeter Capital",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1541617_13d",
+    "description": "Altimeter Capital: 13D new+amend",
+    "fund_cik": "1541617",
+    "fund_name": "Altimeter Capital",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1541617_13g",
+    "description": "Altimeter Capital: 13G new+amend",
+    "fund_cik": "1541617",
+    "fund_name": "Altimeter Capital",
+    "kind": "fund_13g",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": -17.7652,
+      "med5": -19.7925,
+      "hit20": 0.0,
+      "mean20": -17.7652
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": -17.7652,
+      "med5": -19.7925,
+      "hit20": 0.0,
+      "mean20": -17.7652
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1541617_13d_dedupe",
+    "description": "Altimeter Capital: 13D deduped",
+    "fund_cik": "1541617",
+    "fund_name": "Altimeter Capital",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1541617_vol",
+    "description": "Altimeter Capital: volume pre-filing",
+    "fund_cik": "1541617",
+    "fund_name": "Altimeter Capital",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1541617_13d_new_vol",
+    "description": "Altimeter Capital: 13d_new + vol confirm",
+    "fund_cik": "1541617",
+    "fund_name": "Altimeter Capital",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1541617_13d_vol",
+    "description": "Altimeter Capital: 13D + vol confirm",
+    "fund_cik": "1541617",
+    "fund_name": "Altimeter Capital",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1541617_conf",
+    "description": "Altimeter Capital: confluence",
+    "fund_cik": "1541617",
+    "fund_name": "Altimeter Capital",
+    "kind": "fund_conf",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1067983_13d_new",
+    "description": "Berkshire Hathaway: 13d_new",
+    "fund_cik": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1067983_13d",
+    "description": "Berkshire Hathaway: 13D new+amend",
+    "fund_cik": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "kind": "fund_13d",
+    "full": {
+      "n": 6,
+      "n5": 6,
+      "med20": -3.6732,
+      "med5": -1.9676,
+      "hit20": 0.3333,
+      "mean20": -1.6625
+    },
+    "train": {
+      "n": 3,
+      "n5": 3,
+      "med20": 6.1627,
+      "med5": -1.6756,
+      "hit20": 0.6667,
+      "mean20": 2.9581
+    },
+    "test": {
+      "n": 3,
+      "n5": 3,
+      "med20": -4.889,
+      "med5": -2.2596,
+      "hit20": 0.0,
+      "mean20": -6.2832
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1067983_13g",
+    "description": "Berkshire Hathaway: 13G new+amend",
+    "fund_cik": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "kind": "fund_13g",
+    "full": {
+      "n": 12,
+      "n5": 17,
+      "med20": -1.3268,
+      "med5": -0.2308,
+      "hit20": 0.3333,
+      "mean20": -2.2691
+    },
+    "train": {
+      "n": 3,
+      "n5": 3,
+      "med20": 6.0337,
+      "med5": 5.1306,
+      "hit20": 0.6667,
+      "mean20": 3.528
+    },
+    "test": {
+      "n": 9,
+      "n5": 14,
+      "med20": -1.9656,
+      "med5": -0.9171,
+      "hit20": 0.2222,
+      "mean20": -4.2015
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1067983_13d_dedupe",
+    "description": "Berkshire Hathaway: 13D deduped",
+    "fund_cik": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 2,
+      "n5": 2,
+      "med20": 6.7736,
+      "med5": 1.0387,
+      "hit20": 1.0,
+      "mean20": 6.7736
+    },
+    "train": {
+      "n": 2,
+      "n5": 2,
+      "med20": 6.7736,
+      "med5": 1.0387,
+      "hit20": 1.0,
+      "mean20": 6.7736
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1067983_vol",
+    "description": "Berkshire Hathaway: volume pre-filing",
+    "fund_cik": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "kind": "fund_vol",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": 4.9814,
+      "med5": 2.6511,
+      "hit20": 1.0,
+      "mean20": 4.9814
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": 4.9814,
+      "med5": 2.6511,
+      "hit20": 1.0,
+      "mean20": 4.9814
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1067983_13d_new_vol",
+    "description": "Berkshire Hathaway: 13d_new + vol confirm",
+    "fund_cik": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1067983_13d_vol",
+    "description": "Berkshire Hathaway: 13D + vol confirm",
+    "fund_cik": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": 6.1627,
+      "med5": 3.7531,
+      "hit20": 1.0,
+      "mean20": 6.1627
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": 6.1627,
+      "med5": 3.7531,
+      "hit20": 1.0,
+      "mean20": 6.1627
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1067983_conf",
+    "description": "Berkshire Hathaway: confluence",
+    "fund_cik": "1067983",
+    "fund_name": "Berkshire Hathaway",
+    "kind": "fund_conf",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": 4.9814,
+      "med5": 2.6511,
+      "hit20": 1.0,
+      "mean20": 4.9814
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": 4.9814,
+      "med5": 2.6511,
+      "hit20": 1.0,
+      "mean20": 4.9814
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1364742_13d_new",
+    "description": "Greenlight Capital (Einhorn): 13d_new",
+    "fund_cik": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1364742_13d",
+    "description": "Greenlight Capital (Einhorn): 13D new+amend",
+    "fund_cik": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1364742_13g",
+    "description": "Greenlight Capital (Einhorn): 13G new+amend",
+    "fund_cik": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "kind": "fund_13g",
+    "full": {
+      "n": 74,
+      "n5": 74,
+      "med20": 4.102,
+      "med5": 3.095,
+      "hit20": 0.5676,
+      "mean20": 7.7761
+    },
+    "train": {
+      "n": 74,
+      "n5": 74,
+      "med20": 4.102,
+      "med5": 3.095,
+      "hit20": 0.5676,
+      "mean20": 7.7761
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": true,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1364742_13d_dedupe",
+    "description": "Greenlight Capital (Einhorn): 13D deduped",
+    "fund_cik": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1364742_vol",
+    "description": "Greenlight Capital (Einhorn): volume pre-filing",
+    "fund_cik": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "kind": "fund_vol",
+    "full": {
+      "n": 44,
+      "n5": 44,
+      "med20": 8.9217,
+      "med5": -3.133,
+      "hit20": 0.6591,
+      "mean20": 13.4221
+    },
+    "train": {
+      "n": 44,
+      "n5": 44,
+      "med20": 8.9217,
+      "med5": -3.133,
+      "hit20": 0.6591,
+      "mean20": 13.4221
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": true,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1364742_13d_new_vol",
+    "description": "Greenlight Capital (Einhorn): 13d_new + vol confirm",
+    "fund_cik": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1364742_13d_vol",
+    "description": "Greenlight Capital (Einhorn): 13D + vol confirm",
+    "fund_cik": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1364742_conf",
+    "description": "Greenlight Capital (Einhorn): confluence",
+    "fund_cik": "1364742",
+    "fund_name": "Greenlight Capital (Einhorn)",
+    "kind": "fund_conf",
+    "full": {
+      "n": 44,
+      "n5": 44,
+      "med20": 8.9217,
+      "med5": -3.133,
+      "hit20": 0.6591,
+      "mean20": 13.4221
+    },
+    "train": {
+      "n": 44,
+      "n5": 44,
+      "med20": 8.9217,
+      "med5": -3.133,
+      "hit20": 0.6591,
+      "mean20": 13.4221
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": true,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1273087_13d_new",
+    "description": "Millennium Management: 13d_new",
+    "fund_cik": "1273087",
+    "fund_name": "Millennium Management",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1273087_13d",
+    "description": "Millennium Management: 13D new+amend",
+    "fund_cik": "1273087",
+    "fund_name": "Millennium Management",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1273087_13g",
+    "description": "Millennium Management: 13G new+amend",
+    "fund_cik": "1273087",
+    "fund_name": "Millennium Management",
+    "kind": "fund_13g",
+    "full": {
+      "n": 164,
+      "n5": 173,
+      "med20": -1.9247,
+      "med5": -0.2627,
+      "hit20": 0.4451,
+      "mean20": 0.0076
+    },
+    "train": {
+      "n": 25,
+      "n5": 25,
+      "med20": -5.0114,
+      "med5": -2.3743,
+      "hit20": 0.36,
+      "mean20": 2.9055
+    },
+    "test": {
+      "n": 139,
+      "n5": 148,
+      "med20": -1.1847,
+      "med5": 0.2395,
+      "hit20": 0.4604,
+      "mean20": -0.5136
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1273087_13d_dedupe",
+    "description": "Millennium Management: 13D deduped",
+    "fund_cik": "1273087",
+    "fund_name": "Millennium Management",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1273087_vol",
+    "description": "Millennium Management: volume pre-filing",
+    "fund_cik": "1273087",
+    "fund_name": "Millennium Management",
+    "kind": "fund_vol",
+    "full": {
+      "n": 5,
+      "n5": 5,
+      "med20": -15.8699,
+      "med5": -10.7635,
+      "hit20": 0.0,
+      "mean20": -18.2971
+    },
+    "train": {
+      "n": 5,
+      "n5": 5,
+      "med20": -15.8699,
+      "med5": -10.7635,
+      "hit20": 0.0,
+      "mean20": -18.2971
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1273087_13d_new_vol",
+    "description": "Millennium Management: 13d_new + vol confirm",
+    "fund_cik": "1273087",
+    "fund_name": "Millennium Management",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1273087_13d_vol",
+    "description": "Millennium Management: 13D + vol confirm",
+    "fund_cik": "1273087",
+    "fund_name": "Millennium Management",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1273087_conf",
+    "description": "Millennium Management: confluence",
+    "fund_cik": "1273087",
+    "fund_name": "Millennium Management",
+    "kind": "fund_conf",
+    "full": {
+      "n": 12,
+      "n5": 12,
+      "med20": -7.2424,
+      "med5": 1.4729,
+      "hit20": 0.25,
+      "mean20": -11.7933
+    },
+    "train": {
+      "n": 5,
+      "n5": 5,
+      "med20": -15.8699,
+      "med5": -10.7635,
+      "hit20": 0.0,
+      "mean20": -18.2971
+    },
+    "test": {
+      "n": 7,
+      "n5": 7,
+      "med20": -6.8356,
+      "med5": 2.4826,
+      "hit20": 0.4286,
+      "mean20": -7.1477
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1603466_13d_new",
+    "description": "Point72 Asset Management: 13d_new",
+    "fund_cik": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1603466_13d",
+    "description": "Point72 Asset Management: 13D new+amend",
+    "fund_cik": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1603466_13g",
+    "description": "Point72 Asset Management: 13G new+amend",
+    "fund_cik": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "kind": "fund_13g",
+    "full": {
+      "n": 206,
+      "n5": 243,
+      "med20": 0.1373,
+      "med5": 0.4877,
+      "hit20": 0.5049,
+      "mean20": 5.1047
+    },
+    "train": {
+      "n": 40,
+      "n5": 40,
+      "med20": -5.5992,
+      "med5": -2.1894,
+      "hit20": 0.325,
+      "mean20": -0.9747
+    },
+    "test": {
+      "n": 166,
+      "n5": 203,
+      "med20": 2.3818,
+      "med5": 1.2106,
+      "hit20": 0.5482,
+      "mean20": 6.5696
+    },
+    "works_insample": true,
+    "works_oos_hint": true
+  },
+  {
+    "id": "1603466_13d_dedupe",
+    "description": "Point72 Asset Management: 13D deduped",
+    "fund_cik": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1603466_vol",
+    "description": "Point72 Asset Management: volume pre-filing",
+    "fund_cik": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "kind": "fund_vol",
+    "full": {
+      "n": 4,
+      "n5": 4,
+      "med20": -6.3757,
+      "med5": -2.7152,
+      "hit20": 0.5,
+      "mean20": -5.9476
+    },
+    "train": {
+      "n": 4,
+      "n5": 4,
+      "med20": -6.3757,
+      "med5": -2.7152,
+      "hit20": 0.5,
+      "mean20": -5.9476
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1603466_13d_new_vol",
+    "description": "Point72 Asset Management: 13d_new + vol confirm",
+    "fund_cik": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1603466_13d_vol",
+    "description": "Point72 Asset Management: 13D + vol confirm",
+    "fund_cik": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1603466_conf",
+    "description": "Point72 Asset Management: confluence",
+    "fund_cik": "1603466",
+    "fund_name": "Point72 Asset Management",
+    "kind": "fund_conf",
+    "full": {
+      "n": 7,
+      "n5": 7,
+      "med20": -6.4869,
+      "med5": -3.5794,
+      "hit20": 0.4286,
+      "mean20": -4.9464
+    },
+    "train": {
+      "n": 4,
+      "n5": 4,
+      "med20": -6.3757,
+      "med5": -2.7152,
+      "hit20": 0.5,
+      "mean20": -5.9476
+    },
+    "test": {
+      "n": 3,
+      "n5": 3,
+      "med20": -6.4869,
+      "med5": -3.5794,
+      "hit20": 0.3333,
+      "mean20": -3.6115
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1517137_13d_new",
+    "description": "Starboard Value: 13d_new",
+    "fund_cik": "1517137",
+    "fund_name": "Starboard Value",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 6,
+      "n5": 6,
+      "med20": 1.8507,
+      "med5": 6.1998,
+      "hit20": 0.5,
+      "mean20": 1.5911
+    },
+    "train": {
+      "n": 2,
+      "n5": 2,
+      "med20": 1.0675,
+      "med5": 3.222,
+      "hit20": 0.5,
+      "mean20": 1.0675
+    },
+    "test": {
+      "n": 4,
+      "n5": 4,
+      "med20": 1.8507,
+      "med5": 6.1998,
+      "hit20": 0.5,
+      "mean20": 1.8528
+    },
+    "works_insample": true,
+    "works_oos_hint": true
+  },
+  {
+    "id": "1517137_13d",
+    "description": "Starboard Value: 13D new+amend",
+    "fund_cik": "1517137",
+    "fund_name": "Starboard Value",
+    "kind": "fund_13d",
+    "full": {
+      "n": 31,
+      "n5": 32,
+      "med20": -0.7991,
+      "med5": 0.5688,
+      "hit20": 0.4839,
+      "mean20": -1.3984
+    },
+    "train": {
+      "n": 4,
+      "n5": 4,
+      "med20": -3.0665,
+      "med5": 0.6811,
+      "hit20": 0.5,
+      "mean20": -0.9995
+    },
+    "test": {
+      "n": 27,
+      "n5": 28,
+      "med20": -0.7991,
+      "med5": 0.5688,
+      "hit20": 0.4815,
+      "mean20": -1.4575
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1517137_13g",
+    "description": "Starboard Value: 13G new+amend",
+    "fund_cik": "1517137",
+    "fund_name": "Starboard Value",
+    "kind": "fund_13g",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1517137_13d_dedupe",
+    "description": "Starboard Value: 13D deduped",
+    "fund_cik": "1517137",
+    "fund_name": "Starboard Value",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 11,
+      "n5": 12,
+      "med20": 0.6869,
+      "med5": 3.3698,
+      "hit20": 0.5455,
+      "mean20": -1.3548
+    },
+    "train": {
+      "n": 3,
+      "n5": 3,
+      "med20": 0.6869,
+      "med5": 3.6074,
+      "hit20": 0.6667,
+      "mean20": 0.9407
+    },
+    "test": {
+      "n": 8,
+      "n5": 9,
+      "med20": -1.7541,
+      "med5": 3.1322,
+      "hit20": 0.5,
+      "mean20": -2.2157
+    },
+    "works_insample": true,
+    "works_oos_hint": true
+  },
+  {
+    "id": "1517137_vol",
+    "description": "Starboard Value: volume pre-filing",
+    "fund_cik": "1517137",
+    "fund_name": "Starboard Value",
+    "kind": "fund_vol",
+    "full": {
+      "n": 6,
+      "n5": 6,
+      "med20": 10.6949,
+      "med5": 8.9984,
+      "hit20": 0.6667,
+      "mean20": 12.0504
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -2.2322,
+      "med5": 5.8041,
+      "hit20": 0.0,
+      "mean20": -2.2322
+    },
+    "test": {
+      "n": 5,
+      "n5": 5,
+      "med20": 17.8166,
+      "med5": 11.7696,
+      "hit20": 0.8,
+      "mean20": 14.9069
+    },
+    "works_insample": true,
+    "works_oos_hint": true
+  },
+  {
+    "id": "1517137_13d_new_vol",
+    "description": "Starboard Value: 13d_new + vol confirm",
+    "fund_cik": "1517137",
+    "fund_name": "Starboard Value",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 5,
+      "n5": 5,
+      "med20": -6.7925,
+      "med5": 3.7618,
+      "hit20": 0.4,
+      "mean20": -0.1903
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -8.3629,
+      "med5": -2.2453,
+      "hit20": 0.0,
+      "mean20": -8.3629
+    },
+    "test": {
+      "n": 4,
+      "n5": 4,
+      "med20": 1.8507,
+      "med5": 6.1998,
+      "hit20": 0.5,
+      "mean20": 1.8528
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1517137_13d_vol",
+    "description": "Starboard Value: 13D + vol confirm",
+    "fund_cik": "1517137",
+    "fund_name": "Starboard Value",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 6,
+      "n5": 6,
+      "med20": -7.5777,
+      "med5": 3.447,
+      "hit20": 0.3333,
+      "mean20": -1.6928
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -8.3629,
+      "med5": -2.2453,
+      "hit20": 0.0,
+      "mean20": -8.3629
+    },
+    "test": {
+      "n": 5,
+      "n5": 5,
+      "med20": -6.7925,
+      "med5": 3.7618,
+      "hit20": 0.4,
+      "mean20": -0.3588
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1517137_conf",
+    "description": "Starboard Value: confluence",
+    "fund_cik": "1517137",
+    "fund_name": "Starboard Value",
+    "kind": "fund_conf",
+    "full": {
+      "n": 6,
+      "n5": 6,
+      "med20": 10.6949,
+      "med5": 8.9984,
+      "hit20": 0.6667,
+      "mean20": 12.0504
+    },
+    "train": {
+      "n": 1,
+      "n5": 1,
+      "med20": -2.2322,
+      "med5": 5.8041,
+      "hit20": 0.0,
+      "mean20": -2.2322
+    },
+    "test": {
+      "n": 5,
+      "n5": 5,
+      "med20": 17.8166,
+      "med5": 11.7696,
+      "hit20": 0.8,
+      "mean20": 14.9069
+    },
+    "works_insample": true,
+    "works_oos_hint": true
+  },
+  {
+    "id": "1656456_13d_new",
+    "description": "Appaloosa Management (Tepper): 13d_new",
+    "fund_cik": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": -4.1308,
+      "med5": -5.1152,
+      "hit20": 0.0,
+      "mean20": -4.1308
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": -4.1308,
+      "med5": -5.1152,
+      "hit20": 0.0,
+      "mean20": -4.1308
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1656456_13d",
+    "description": "Appaloosa Management (Tepper): 13D new+amend",
+    "fund_cik": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "kind": "fund_13d",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": -4.1308,
+      "med5": -5.1152,
+      "hit20": 0.0,
+      "mean20": -4.1308
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": -4.1308,
+      "med5": -5.1152,
+      "hit20": 0.0,
+      "mean20": -4.1308
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1656456_13g",
+    "description": "Appaloosa Management (Tepper): 13G new+amend",
+    "fund_cik": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "kind": "fund_13g",
+    "full": {
+      "n": 2,
+      "n5": 2,
+      "med20": -9.7437,
+      "med5": -9.5507,
+      "hit20": 0.0,
+      "mean20": -9.7437
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 2,
+      "n5": 2,
+      "med20": -9.7437,
+      "med5": -9.5507,
+      "hit20": 0.0,
+      "mean20": -9.7437
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1656456_13d_dedupe",
+    "description": "Appaloosa Management (Tepper): 13D deduped",
+    "fund_cik": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": -4.1308,
+      "med5": -5.1152,
+      "hit20": 0.0,
+      "mean20": -4.1308
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": -4.1308,
+      "med5": -5.1152,
+      "hit20": 0.0,
+      "mean20": -4.1308
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1656456_vol",
+    "description": "Appaloosa Management (Tepper): volume pre-filing",
+    "fund_cik": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1656456_13d_new_vol",
+    "description": "Appaloosa Management (Tepper): 13d_new + vol confirm",
+    "fund_cik": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1656456_13d_vol",
+    "description": "Appaloosa Management (Tepper): 13D + vol confirm",
+    "fund_cik": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1656456_conf",
+    "description": "Appaloosa Management (Tepper): confluence",
+    "fund_cik": "1656456",
+    "fund_name": "Appaloosa Management (Tepper)",
+    "kind": "fund_conf",
+    "full": {
+      "n": 1,
+      "n5": 1,
+      "med20": -15.7396,
+      "med5": -15.6124,
+      "hit20": 0.0,
+      "mean20": -15.7396
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 1,
+      "n5": 1,
+      "med20": -15.7396,
+      "med5": -15.6124,
+      "hit20": 0.0,
+      "mean20": -15.7396
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1709323_13d_new",
+    "description": "Himalaya Capital (Li Lu): 13d_new",
+    "fund_cik": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "kind": "fund_13d_new",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1709323_13d",
+    "description": "Himalaya Capital (Li Lu): 13D new+amend",
+    "fund_cik": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "kind": "fund_13d",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1709323_13g",
+    "description": "Himalaya Capital (Li Lu): 13G new+amend",
+    "fund_cik": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "kind": "fund_13g",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1709323_13d_dedupe",
+    "description": "Himalaya Capital (Li Lu): 13D deduped",
+    "fund_cik": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "kind": "fund_13d_dedupe",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1709323_vol",
+    "description": "Himalaya Capital (Li Lu): volume pre-filing",
+    "fund_cik": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "kind": "fund_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1709323_13d_new_vol",
+    "description": "Himalaya Capital (Li Lu): 13d_new + vol confirm",
+    "fund_cik": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "kind": "fund_13d_new_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1709323_13d_vol",
+    "description": "Himalaya Capital (Li Lu): 13D + vol confirm",
+    "fund_cik": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "kind": "fund_13d_vol",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  },
+  {
+    "id": "1709323_conf",
+    "description": "Himalaya Capital (Li Lu): confluence",
+    "fund_cik": "1709323",
+    "fund_name": "Himalaya Capital (Li Lu)",
+    "kind": "fund_conf",
+    "full": {
+      "n": 0,
+      "n5": 0
+    },
+    "train": {
+      "n": 0,
+      "n5": 0
+    },
+    "test": {
+      "n": 0,
+      "n5": 0
+    },
+    "works_insample": false,
+    "works_oos_hint": false
+  }
+]
