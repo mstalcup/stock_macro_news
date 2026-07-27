@@ -1,0 +1,24 @@
+version = 0.1
+
+[default.build.parameters]
+cached = true
+parallel = true
+
+[default.deploy.parameters]
+stack_name = "robinhood-agent-feed"
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = false
+resolve_s3 = true
+region = "us-east-1"
+parameter_overrides = [
+  "AgentEnabled=true",
+  "ExecuteTrades=true",
+  "MaxOrdersPerRun=8",
+  "MaxOpenPositions=6",
+  "MaxSingleOrderPct=25",
+  "MinCashReservePct=10",
+  "AgentDiscordChannelId=1519348792623763687",
+  "MacroArtifactsBucket=macro-news-feed-newsartifactsbucket-qfoqryswgxiv",
+  "AnthropicModel=claude-sonnet-4-6",
+  "ScheduleLocalTz=America/Los_Angeles"
+]

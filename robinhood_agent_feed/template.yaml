@@ -1,0 +1,190 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Robinhood Agentic portfolio agent — daily rebalance via MCP + Anthropic
+
+Globals:
+  Function:
+    Runtime: nodejs20.x
+    Timeout: 900
+    MemorySize: 1024
+    Architectures:
+      - x86_64
+
+Conditions:
+  HasMacroBucket: !Not [!Equals [!Ref MacroArtifactsBucket, ""]]
+  HasMarketPulseTable: !Not [!Equals [!Ref MarketPulseTable, ""]]
+
+Parameters:
+  AgentDiscordChannelId:
+    Type: String
+    Default: ""
+    Description: Discord channel id for daily agent digest
+  ScheduleLocalTz:
+    Type: String
+    Default: America/Los_Angeles
+  MaxOpenPositions:
+    Type: Number
+    Default: 6
+  MinCashReservePct:
+    Type: Number
+    Default: 10
+  MaxOrdersPerRun:
+    Type: Number
+    Default: 8
+  MaxSingleOrderPct:
+    Type: Number
+    Default: 25
+  AgentEnabled:
+    Type: String
+    Default: "false"
+    AllowedValues: ["true", "false"]
+  ExecuteTrades:
+    Type: String
+    Default: "true"
+    AllowedValues: ["true", "false"]
+  AnthropicModel:
+    Type: String
+    Default: claude-sonnet-4-6
+  MacroArtifactsBucket:
+    Type: String
+    Default: ""
+    Description: macro_news_feed S3 bucket for digest headlines
+  LlmSentimentTable:
+    Type: String
+    Default: llm-sentiment-feed-sentiment
+  InfluencerTable:
+    Type: String
+    Default: influencer-feed-influencer-feed
+  RotationTable:
+    Type: String
+    Default: sector-rotation-feed-rotation
+  MarketPulseTable:
+    Type: String
+    Default: ""
+    Description: Optional legacy market-pulse table (leave empty if not deployed)
+
+Resources:
+  AgentTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "${AWS::StackName}-agent"
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+
+  RobinhoodOAuthSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/rh-oauth"
+      Description: Robinhood OAuth tokens for Agentic MCP (bootstrap locally)
+      SecretString: '{"access_token":"","refresh_token":"","device_token":"","expires_at":"","user_uuid":""}'
+
+  AgentKeysSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/agent-keys"
+      Description: JSON anthropic_api_key
+      SecretString: '{"anthropic_api_key":""}'
+
+  DiscordBotSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-bot"
+      Description: JSON bot_token + channel_id for agent digest
+      SecretString: !Sub '{"bot_token":"","channel_id":"${AgentDiscordChannelId}"}'
+
+  RunAgentFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-run-agent"
+      CodeUri: lambdas/run_agent/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          AGENT_TABLE_NAME: !Ref AgentTable
+          RH_OAUTH_SECRET_ARN: !Ref RobinhoodOAuthSecret
+          AGENT_KEYS_SECRET_ARN: !Ref AgentKeysSecret
+          DISCORD_BOT_SECRET_ARN: !Ref DiscordBotSecret
+          AGENT_DISCORD_CHANNEL_ID: !Ref AgentDiscordChannelId
+          AGENT_ENABLED: !Ref AgentEnabled
+          EXECUTE_TRADES: !Ref ExecuteTrades
+          MAX_OPEN_POSITIONS: !Ref MaxOpenPositions
+          MIN_CASH_RESERVE_PCT: !Ref MinCashReservePct
+          MAX_ORDERS_PER_RUN: !Ref MaxOrdersPerRun
+          MAX_SINGLE_ORDER_PCT: !Ref MaxSingleOrderPct
+          ANTHROPIC_MODEL: !Ref AnthropicModel
+          MACRO_ARTIFACTS_BUCKET: !Ref MacroArtifactsBucket
+          LLM_SENTIMENT_TABLE: !Ref LlmSentimentTable
+          INFLUENCER_TABLE: !Ref InfluencerTable
+          ROTATION_TABLE: !Ref RotationTable
+          MARKET_PULSE_TABLE: !If [HasMarketPulseTable, !Ref MarketPulseTable, ""]
+          INFLUENCER_USER_ID: default
+          CONTEXT_SLOT: pre_open
+          SCHEDULE_LOCAL_TZ: !Ref ScheduleLocalTz
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref AgentTable
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref RobinhoodOAuthSecret
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref AgentKeysSecret
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref DiscordBotSecret
+        - Statement:
+            - Effect: Allow
+              Action:
+                - secretsmanager:PutSecretValue
+              Resource: !Ref RobinhoodOAuthSecret
+        - DynamoDBReadPolicy:
+            TableName: !Ref LlmSentimentTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref InfluencerTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref RotationTable
+        - !If
+          - HasMarketPulseTable
+          - DynamoDBReadPolicy:
+              TableName: !Ref MarketPulseTable
+          - !Ref AWS::NoValue
+        - !If
+          - HasMacroBucket
+          - Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource: !Sub "arn:aws:s3:::${MacroArtifactsBucket}/*"
+              - Effect: Allow
+                Action:
+                  - s3:ListBucket
+                Resource: !Sub "arn:aws:s3:::${MacroArtifactsBucket}"
+          - !Ref AWS::NoValue
+      Events:
+        WeekdayAgentRun:
+          Type: ScheduleV2
+          Properties:
+            ScheduleExpression: cron(30 7 ? * MON-FRI *)
+            ScheduleExpressionTimezone: !Ref ScheduleLocalTz
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: "{}"
+
+Outputs:
+  AgentTableName:
+    Value: !Ref AgentTable
+  RunAgentFunction:
+    Value: !Ref RunAgentFunction
+  RobinhoodOAuthSecretArn:
+    Value: !Ref RobinhoodOAuthSecret
+  AgentKeysSecretArn:
+    Value: !Ref AgentKeysSecret
+  DiscordBotSecretArn:
+    Value: !Ref DiscordBotSecret

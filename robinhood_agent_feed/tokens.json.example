@@ -1,0 +1,8 @@
+{
+  "access_token": "PASTE_FROM_MCP_OAUTH_RESPONSE",
+  "refresh_token": "PASTE_FROM_MCP_OAUTH_RESPONSE",
+  "device_token": "PASTE_FROM_MCP_OAUTH_REQUEST",
+  "client_id": "PASTE_FROM_JWT_meta.oid_OR_CLAUDE_EXPORT",
+  "expires_at": "",
+  "user_uuid": ""
+}

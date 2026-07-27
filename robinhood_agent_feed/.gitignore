@@ -1,0 +1,9 @@
+node_modules/
+.aws-sam/
+.env
+tokens.json
+tokens.web-backup.json
+*.har
+rh_har*
+rh-tokens.json
+*.log
