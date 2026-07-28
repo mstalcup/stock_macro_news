@@ -1,0 +1,13 @@
+version = 0.1
+
+[default.build.parameters]
+cached = true
+parallel = true
+
+[default.deploy.parameters]
+stack_name = "premarket-scanner-feed"
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = false
+resolve_s3 = true
+region = "us-east-1"
+parameter_overrides = "ScannerDiscordChannelId=\"1519348792623763687\""

@@ -78,6 +78,42 @@ async function loadRotation(table, issueDate) {
   };
 }
 
+async function loadScanner(table, issueDate) {
+  if (!table) return null;
+  const [gappersResp, tjlResp] = await Promise.all([
+    ddb.send(
+      new GetCommand({
+        TableName: table,
+        Key: { pk: `ISSUE#${issueDate}`, sk: "GAPPERS" },
+      })
+    ),
+    ddb.send(
+      new GetCommand({
+        TableName: table,
+        Key: { pk: `ISSUE#${issueDate}`, sk: "TJL" },
+      })
+    ),
+  ]);
+  const gappers = gappersResp.Item?.payload;
+  const tjl = tjlResp.Item?.payload;
+  if (!gappers && !tjl) return { error: `no scanner rows for ${issueDate}` };
+  return {
+    gappers: (gappers?.gappers || []).slice(0, 10).map((g) => ({
+      symbol: g.symbol,
+      gap_pct: g.gap_pct,
+      price: g.price,
+      catalyst: g.catalyst,
+      headlines: (g.headlines || []).slice(0, 2),
+    })),
+    tjl_hits: (tjl?.hits || []).slice(0, 10),
+    tjl_results: (tjl?.all_results || []).slice(0, 10),
+    scanned_at: {
+      gappers: gappers?.scanned_at || null,
+      tjl: tjl?.scanned_at || null,
+    },
+  };
+}
+
 async function loadLlmSentiment(table, issueDate) {
   if (!table) return null;
   const resp = await ddb.send(
@@ -156,7 +192,7 @@ async function loadMarketPulse(table, issueDate) {
   };
 }
 
-function buildConfluence(macro, llm, influencer) {
+function buildConfluence(macro, llm, influencer, scanner) {
   /** @type {Map<string, { long: string[], short: string[] }>} */
   const map = new Map();
   const add = (ticker, dir, source) => {
@@ -183,6 +219,12 @@ function buildConfluence(macro, llm, influencer) {
     const c = (row.consensus || "").toLowerCase();
     if (c.includes("bear") || c.includes("short")) add(row.ticker, "short", "influencer");
     else if (c.includes("bull") || c.includes("long")) add(row.ticker, "long", "influencer");
+  }
+  for (const g of scanner?.gappers || []) {
+    add(g.symbol, "long", "scanner:gapper");
+  }
+  for (const h of scanner?.tjl_hits || []) {
+    add(h.symbol, "long", "scanner:tjl_pass");
   }
 
   const rows = [];
@@ -211,27 +253,29 @@ export async function buildMarketContext(cfg) {
   const issueDate = cfg.contextIssueDate || marketIssueDate();
   const slot = cfg.contextSlot || "pre_open";
 
-  const [macro, rotation, llm, influencer, pulse] = await Promise.all([
+  const [macro, rotation, llm, influencer, pulse, scanner] = await Promise.all([
     loadMacro(cfg.macroBucket, issueDate, slot),
     loadRotation(cfg.rotationTable, issueDate),
     loadLlmSentiment(cfg.llmSentimentTable, issueDate),
     loadInfluencer(cfg.influencerTable, issueDate, cfg.influencerUserId),
     loadMarketPulse(cfg.marketPulseTable, issueDate),
+    loadScanner(cfg.scannerTable, issueDate),
   ]);
 
-  const confluence = buildConfluence(macro, llm, influencer);
+  const confluence = buildConfluence(macro, llm, influencer, scanner);
 
   const parts = [
     `## Cross-feed intelligence (${issueDate}, slot=${slot})`,
     "",
     "_Optional background from our daily pipelines — one input among many; use your own judgment._",
     "",
+    formatSection("Premarket scanner — gappers + TJL (premarket_scanner_feed)", scanner),
     formatSection("Sector rotation (sector_rotation_feed)", rotation),
     formatSection("Macro digest + watchlist (macro_news_feed)", macro),
     formatSection("LLM sentiment panel (llm_sentiment_feed)", llm),
     formatSection("Influencer digest (influencer_feed)", influencer),
     formatSection("Market pulse signals (market-pulse)", pulse),
-    "### Ticker confluence (macro + LLM + influencer)",
+    "### Ticker confluence (macro + LLM + influencer + scanner)",
     confluence.length
       ? confluence
           .map(
@@ -242,7 +286,7 @@ export async function buildMarketContext(cfg) {
       : "_No confluence — feeds may be empty for this date._",
   ];
 
-  const loaded = [macro, rotation, llm, influencer, pulse].filter((x) => x && !x.error);
+  const loaded = [macro, rotation, llm, influencer, pulse, scanner].filter((x) => x && !x.error);
   if (!loaded.length) {
     parts.push(
       "",

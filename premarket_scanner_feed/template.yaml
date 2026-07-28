@@ -1,0 +1,111 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: Premarket gappers + Trend Join Long scanner — Discord + DynamoDB for agent context
+
+Globals:
+  Function:
+    Runtime: python3.12
+    Timeout: 300
+    MemorySize: 512
+    Architectures:
+      - x86_64
+
+Parameters:
+  ScannerDiscordChannelId:
+    Type: String
+    Default: "1519348792623763687"
+    Description: Discord channel for gappers + TJL posts (default = RH agent channel)
+  ScheduleLocalTz:
+    Type: String
+    Default: America/Los_Angeles
+  NewsKeysSecretArn:
+    Type: String
+    Default: "arn:aws:secretsmanager:us-east-1:629115319102:secret:macro-news-feed/news-api-keys-kBQ0l6"
+    Description: macro_news_feed secret with finnhub_api_key for catalysts
+
+Resources:
+  ScannerTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub "${AWS::StackName}-scanner"
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: pk
+          AttributeType: S
+        - AttributeName: sk
+          AttributeType: S
+      KeySchema:
+        - AttributeName: pk
+          KeyType: HASH
+        - AttributeName: sk
+          KeyType: RANGE
+
+  DiscordBotSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-bot"
+      Description: JSON {"bot_token":"...","channel_id":"..."} for scanner Discord
+      SecretString: !Sub '{"bot_token":"","channel_id":"${ScannerDiscordChannelId}"}'
+
+  DiscordWebhookSecret:
+    Type: AWS::SecretsManager::Secret
+    Properties:
+      Name: !Sub "${AWS::StackName}/discord-webhook"
+      Description: Optional webhook fallback
+      SecretString: '{"webhook_url":""}'
+
+  RunScannerFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: !Sub "${AWS::StackName}-run-scanner"
+      CodeUri: lambdas/run_scanner/
+      Handler: handler.handler
+      Environment:
+        Variables:
+          SCANNER_TABLE_NAME: !Ref ScannerTable
+          DISCORD_BOT_SECRET_ARN: !Ref DiscordBotSecret
+          DISCORD_WEBHOOK_SECRET_ARN: !Ref DiscordWebhookSecret
+          SCANNER_DISCORD_CHANNEL_ID: !Ref ScannerDiscordChannelId
+          NEWS_KEYS_SECRET_ARN: !Ref NewsKeysSecretArn
+          MIN_GAP_PCT: "5"
+          MIN_PRICE: "3"
+          MIN_VOLUME: "50000"
+          TOP_N: "10"
+      Policies:
+        - DynamoDBCrudPolicy:
+            TableName: !Ref ScannerTable
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref DiscordBotSecret
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref DiscordWebhookSecret
+        - AWSSecretsManagerGetSecretValuePolicy:
+            SecretArn: !Ref NewsKeysSecretArn
+      Events:
+        PremarketGappers:
+          Type: ScheduleV2
+          Properties:
+            # 6:00 AM PT Mon–Fri — still in US premarket (9:00 AM ET)
+            ScheduleExpression: cron(0 6 ? * MON-FRI *)
+            ScheduleExpressionTimezone: !Ref ScheduleLocalTz
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: '{"mode":"gappers"}'
+        TrendJoinLong:
+          Type: ScheduleV2
+          Properties:
+            # 7:05 AM PT = 10:05 AM ET — TJL window start, before agent 7:30
+            ScheduleExpression: cron(5 7 ? * MON-FRI *)
+            ScheduleExpressionTimezone: !Ref ScheduleLocalTz
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: '{"mode":"tjl"}'
+
+Outputs:
+  ScannerTableName:
+    Value: !Ref ScannerTable
+  RunScannerFunction:
+    Value: !Ref RunScannerFunction
+  DiscordBotSecretArn:
+    Value: !Ref DiscordBotSecret

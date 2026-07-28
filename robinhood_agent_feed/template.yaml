@@ -24,16 +24,16 @@ Parameters:
     Default: America/Los_Angeles
   MaxOpenPositions:
     Type: Number
-    Default: 6
+    Default: 8
   MinCashReservePct:
     Type: Number
-    Default: 10
+    Default: 5
   MaxOrdersPerRun:
     Type: Number
-    Default: 8
+    Default: 12
   MaxSingleOrderPct:
     Type: Number
-    Default: 25
+    Default: 35
   AgentEnabled:
     Type: String
     Default: "false"
@@ -58,6 +58,9 @@ Parameters:
   RotationTable:
     Type: String
     Default: sector-rotation-feed-rotation
+  ScannerTable:
+    Type: String
+    Default: premarket-scanner-feed-scanner
   MarketPulseTable:
     Type: String
     Default: ""
@@ -125,6 +128,7 @@ Resources:
           LLM_SENTIMENT_TABLE: !Ref LlmSentimentTable
           INFLUENCER_TABLE: !Ref InfluencerTable
           ROTATION_TABLE: !Ref RotationTable
+          SCANNER_TABLE: !Ref ScannerTable
           MARKET_PULSE_TABLE: !If [HasMarketPulseTable, !Ref MarketPulseTable, ""]
           INFLUENCER_USER_ID: default
           CONTEXT_SLOT: pre_open
@@ -149,6 +153,8 @@ Resources:
             TableName: !Ref InfluencerTable
         - DynamoDBReadPolicy:
             TableName: !Ref RotationTable
+        - DynamoDBReadPolicy:
+            TableName: !Ref ScannerTable
         - !If
           - HasMarketPulseTable
           - DynamoDBReadPolicy:
@@ -170,7 +176,18 @@ Resources:
         WeekdayAgentRun:
           Type: ScheduleV2
           Properties:
+            # After TJL (7:05) — primary morning rebalance
             ScheduleExpression: cron(30 7 ? * MON-FRI *)
+            ScheduleExpressionTimezone: !Ref ScheduleLocalTz
+            State: ENABLED
+            FlexibleTimeWindow:
+              Mode: "OFF"
+            Input: "{}"
+        MiddayAgentRun:
+          Type: ScheduleV2
+          Properties:
+            # 10:00 AM PT = 1:00 PM ET — harvest winners / chase afternoon setups
+            ScheduleExpression: cron(0 10 ? * MON-FRI *)
             ScheduleExpressionTimezone: !Ref ScheduleLocalTz
             State: ENABLED
             FlexibleTimeWindow:
